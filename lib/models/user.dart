@@ -2,16 +2,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User{
-  final String email ;
-  final String username;
-  final String uid;
-  final String photoUrl;
-  final String bio;
-  final String phone;
-  final List followers ;
-  final List following ;
+  late  String email ;
+  late   String username;
+  late  String uid;
+  late    String photoUrl;
+  late  String bio;
+  late   String phone;
+  late  List followers ;
+  late List following ;
 
-  const User({
+   User({
     required this.email,
     required this.uid,
     required this.photoUrl ,
@@ -22,18 +22,29 @@ class User{
     required this.following,
 
       });
-  Map<String , dynamic>toJason() =>{
-    'username' :username,
-    'uid'   :uid,
-    'email' :email ,
-    'bio':bio,
-    'photoUrl' :photoUrl ,
-    'phone' : phone ,
-    'followers' :followers,
-    'following' :following ,
+    User.fromjson(Map<String,dynamic>json ){
+    email = json['email'];
+    username = json['username'];
+    phone = json['phone'];
+    uid = json['uid'];
+    photoUrl = json['photoUrl'];
+    bio = json['bio'];
+    followers = json['followers'];
+    following = json['following'];
 
-
-  } ;
+  }
+  Map<String , dynamic>toJason() {
+    return{
+      'username' :username,
+      'uid'   :uid,
+      'email' :email ,
+      'bio':bio,
+      'photoUrl' :photoUrl ,
+      'phone' : phone ,
+      'followers' :followers,
+      'following' :following ,
+    } ;
+  }
 
   // we gonna build a Function to convert  document snap shot to user model
 //  that function we use it  in the dart file that could auth_methods in the get user details to use it in deferant places in the app
@@ -53,5 +64,6 @@ class User{
     ) ;
 
   }
+
 
 }
