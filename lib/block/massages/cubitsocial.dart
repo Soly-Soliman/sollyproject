@@ -4,19 +4,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_1/block/massages/statesocial.dart';
+import 'package:graduation_1/models/Massage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import '../../models/Massage.dart';
+
 import '../../models/user.dart';
+
 class SocialCubit extends Cubit<SocialState>
+
 {
+  String uId = "" ;
   SocialCubit() : super(SocialInitialState());
   static SocialCubit get(context) => BlocProvider.of(context);
-
   User ?model;
   void getUser(){
     emit(SocialLoadingStateGet());
-    FirebaseFirestore.instance.collection('Users').doc("").get().then((value) {
+    FirebaseFirestore.instance.collection('Users').doc("uid").get().then((value) {
       Map<String, dynamic>?name = value.data();
       model = User.fromjson(name!);
       print(value.data());
@@ -27,9 +30,10 @@ class SocialCubit extends Cubit<SocialState>
     });
 
   }
+  int currentIndex = 0;
 
   File ?profileimage;
-  File?coverimage;
+
   String profileUrl ='';
   Future getprofileimage(ImageSource imageSource)async {
     var pickerfile = await ImagePicker().pickImage(source: imageSource);
@@ -41,34 +45,21 @@ class SocialCubit extends Cubit<SocialState>
       emit(changeCoverImageerror());
     }
   }
-  //Function get profile
-  //////////////////////////////////////
-  Future getCoverimage(ImageSource imageSource)async {
-    var pickerfile = await ImagePicker().pickImage(source: imageSource);
-    if(pickerfile !=null){
-      coverimage = File(pickerfile.path);
-      emit(changeImagesuccess());
-    }
-    else{
-      emit(changeImageerror());
-    }
-  }
-  //function get coverimage
   /////////////////////////////////////////////
   void uploadImage({
     required String name,
     required String phone,
     required String bio
-}){
+  }){
     emit(loadingimage());
     firebase_storage.FirebaseStorage.instance.
     ref().
     child('Users/${Uri.file(profileimage!.path).pathSegments.last}').putFile(profileimage!).then((value) {
       value.ref.getDownloadURL()
           .then((value) {
-            //emit(UploadImagesusses());
-     print(value);
-     updateUser(name: name, phone: phone, bio: bio,image: value);
+        //emit(UploadImagesusses());
+        print(value);
+        updateUser(name: name, phone: phone, bio: bio,image: value);
       }).catchError((error){
         emit(UploadImageerror());
       });
@@ -77,53 +68,32 @@ class SocialCubit extends Cubit<SocialState>
     emit(UploadImageerror());
 
   } // Function Upload Image
-////////////////////////////////////////////
-  void uploadconerImage({
+
+  void updateUser({
     required String name,
     required String phone,
-    required String bio
-}){
-    emit(loadingimage());
-    firebase_storage.FirebaseStorage.instance.
-    ref().
-    child('Users/${Uri.file(coverimage!.path).pathSegments.last}').putFile(coverimage!).then((value) {
-      value.ref.getDownloadURL()
-          .then((value) {
-        //emit(UploadImagecoversusses());
-        print(value);
-        updateUser(name: name, phone: phone, bio: bio,cover: value);
-      }).catchError((error){
-        emit(UploadImagecovererror());
-      });
-
-    }).catchError((error){});
-    emit(UploadImagecovererror());
-  }
-  // Function Upload coverimage
-  /////////////////////////////////////
-  void updateUser({
-  required String name,
-  required String phone,
-  required String bio,
+    required String bio,
     String? cover,
     String? image
-}){
-      User Usermodel = User(
-        username: name,
-        phone: phone,
-        uid: model!.uid,
-        bio: bio,
-        photoUrl: image??model!.photoUrl,
-        email: model!.email, following: [], followers: [],
-      );
-      FirebaseFirestore.instance.collection('Users').doc(model!.uid).update(Usermodel.toJason()).
-      then((value) {
-        getUser();
-      }).catchError((error){
-         emit(updateusererror());
-      });
-    }
-    //FUnction UpdateUser
+  }){
+    User Usermodel = User(
+      username: name,
+      phone: phone,
+      uid: model!.uid,
+
+      bio: bio,
+
+      photoUrl: image??model!.photoUrl,
+      email: model!.email, following: [],  followers: [],
+    );
+    FirebaseFirestore.instance.collection('Users').doc(model!.uid).update(Usermodel.toJason()).
+    then((value) {
+      getUser();
+    }).catchError((error){
+      emit(updateusererror());
+    });
+  }
+  //FUnction UpdateUser
 ///////////////////////////////
   File? postimage;
   Future getPostImage(ImageSource imageSource)async {
@@ -137,66 +107,62 @@ class SocialCubit extends Cubit<SocialState>
     }
   }
 
-  void deletePost(){
-    postimage = null;
-    emit(SocialDeletePostImage());
-  }
-  //Function delete Post
-////////////////////////////////
-   List<User>users = [];
+  List<User>users = [];
   void getAllUsers(){
-    if(users.length==0) {
+    if (users.isEmpty) {
+      FirebaseFirestore.instance
+          .collection('Users')
+          .get()
+          .then((value) {
 
-      FirebaseFirestore.instance.collection('Users').get().then((value) {
-      value.docs.forEach((element) {
-        if(element.data()['uid']!=model!.uid) {
+        for (var element in value.docs) {
           users.add(User.fromjson(element.data()));
         }
         emit(SocialGetAllUsersSuccess());
-
+        print(users.length) ;
+      }).catchError((error) {
+        emit(SocialGetAllUsersError(error.toString()));
+        print(error.toString()) ;
       });
-    }).catchError((erreor){
-      emit(SocialGetAllUsersError(erreor.toString()));
-
-    });
     }
+
   }
   //Function get users
- //////////////////////////////////////////
-void sendMessage({
-  required String receiverId,
-  required String dataTime,
-  required String text
-}){
-     MessageModel messageModel = MessageModel(
-       text: text,
-       datatime: dataTime,
-       recevierId: receiverId,
-       senderId: model!.uid
-     );
-     FirebaseFirestore.instance.collection('Users')
-         .doc(model!.uid)
-         .collection('chats')
-         .doc(receiverId)
-         .collection('messages')
-         .add(messageModel.tomap()).then((value) {
-           emit(SocialSendMessageSuccess());
-     }).catchError((error){
-       emit(SocialSendMessageError(error.toString()));
-     });
-     FirebaseFirestore.instance.collection('Users')
-         .doc(receiverId)
-         .collection('chats')
-         .doc(model!.uid)
-         .collection('messages')
-         .add(messageModel.tomap()).then((value) {
-       emit(SocialSendMessageSuccess());
-     }).catchError((error){
-       emit(SocialSendMessageError(error.toString()));
-     });
-}
+  //////////////////////////////////////////
+  void sendMessage({
+    required String receiverId,
+    required String dataTime,
+    required String text
+  }){
+    MessageModel messageModel = MessageModel(
+        text: text,
+        datatime: dataTime,
+        recevierId: receiverId,
+        senderId: model!.uid
+    );
+    FirebaseFirestore.instance.collection('Users')
+        .doc(model!.uid)
+        .collection('chats')
+        .doc(receiverId)
+        .collection('messages')
+        .add(messageModel.tomap()).then((value) {
+      emit(SocialSendMessageSuccess());
+    }).catchError((error){
+      emit(SocialSendMessageError(error.toString()));
+    });
+    FirebaseFirestore.instance.collection('Users')
+        .doc(receiverId)
+        .collection('chats')
+        .doc(model!.uid)
+        .collection('messages')
+        .add(messageModel.tomap()).then((value) {
+      emit(SocialSendMessageSuccess());
+    }).catchError((error){
+      emit(SocialSendMessageError(error.toString()));
+    });
+  }
 // Function send message
-List<MessageModel>message = [];
+  List<MessageModel>message = [];
   void getMessage({required String receiverId,}){
     FirebaseFirestore.instance.collection('Users')
         .doc(model!.uid)
@@ -205,15 +171,15 @@ List<MessageModel>message = [];
         .collection('messages').orderBy('datatime')
         .snapshots()
         .listen((event) {
-          message=[];
-          event.docs.forEach((element) {
-            message.add(MessageModel.fromjson(element.data()));
-          });
-          emit(SocialGetMessageSuccess());
+      message=[];
+      event.docs.forEach((element) {
+        message.add(MessageModel.fromjson(element.data()));
+      });
+      emit(SocialGetMessageSuccess());
 
     });
   }
-  // function get nessage
+// function get nessage
 
 
 }

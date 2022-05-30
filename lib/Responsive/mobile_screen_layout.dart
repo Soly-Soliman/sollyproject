@@ -1,8 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import '../Utils/Diamentions.dart';
+import '../block/massages/cubitsocial.dart';
 import '../screens/add_post_screen.dart';
 class MobileScreen extends StatefulWidget
 {
@@ -26,7 +28,8 @@ class _MobileScreenState extends State<MobileScreen> {
     pageController.dispose() ;
   }
  void navigationtapped (int page){
-pageController.jumpToPage(page) ;
+  pageController.jumpToPage(page) ;
+
  }
 
  void onpagechanged(int page){
@@ -37,42 +40,45 @@ setState(() {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: PageView(
-        children: homeScreenItems,
-        // لو احنا عايزين نقلب يمين وشمال من عالي البرنامج ممكن بالخاصيه دي
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged:onpagechanged,
-      ) ,
-      bottomNavigationBar: CupertinoTabBar(
-         items: [
-           BottomNavigationBarItem(
-             icon: Icon(Icons.home ,
-            color:_page==0?  tealColor :secondaryColor , ),
-           label: 'Home',
-           backgroundColor:  Colors.teal,) ,
-
-           BottomNavigationBarItem(
-             icon: Icon(Icons.add_circle_outlined,
-               color:_page==1? tealColor:secondaryColor ,),
-             label: 'Events',
+    return  BlocProvider(
+      create: (context ) =>SocialCubit(),
+      child: Scaffold(
+        body: PageView(
+          children: homeScreenItems,
+          // لو احنا عايزين نقلب يمين وشمال من عالي البرنامج ممكن بالخاصيه دي
+          physics: const NeverScrollableScrollPhysics(),
+          controller: pageController,
+          onPageChanged:onpagechanged,
+        ) ,
+        bottomNavigationBar: CupertinoTabBar(
+           items: [
+             BottomNavigationBarItem(
+               icon: Icon(Icons.home ,
+              color:_page==0?  tealColor :secondaryColor , ),
+             label: 'Home',
              backgroundColor:  Colors.teal,) ,
 
-           BottomNavigationBarItem(
-             icon: Icon(Icons.chat,
+             BottomNavigationBarItem(
+               icon: Icon(Icons.add_circle_outlined,
+                 color:_page==1? tealColor:secondaryColor ,),
+               label: 'Events',
+               backgroundColor:  Colors.teal,) ,
 
-               color:_page==2? tealColor:secondaryColor ,),
-             label: 'Chat',
-             backgroundColor:  Colors.teal,) ,
-           BottomNavigationBarItem(
-             icon: Icon(Icons.perm_identity,
-               color:_page==3? tealColor:secondaryColor ,),
-             label: 'Profile',
-             backgroundColor:  Colors.teal,) ,
-         ],
-        onTap: navigationtapped,
+             BottomNavigationBarItem(
+               icon: Icon(Icons.chat,
 
+                 color:_page==2? tealColor:secondaryColor ,),
+               label: 'Chat',
+               backgroundColor:  Colors.teal,) ,
+             BottomNavigationBarItem(
+               icon: Icon(Icons.perm_identity,
+                 color:_page==3? tealColor:secondaryColor ,),
+               label: 'Profile',
+               backgroundColor:  Colors.teal,) ,
+           ],
+          onTap: navigationtapped,
+
+        ),
       ),
     );
   }

@@ -29,7 +29,7 @@ void main() async{
             appId: '1:131765305088:web:c84d89e5d137a8ddbd3de5',
             messagingSenderId: '131765305088',
             projectId: 'gradproject1-323d9',
-          storageBucket: 'gradproject1-323d9.appspot.com',
+            storageBucket: 'gradproject1-323d9.appspot.com',
         ),
       );
   }

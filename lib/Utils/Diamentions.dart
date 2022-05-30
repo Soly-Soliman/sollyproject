@@ -13,8 +13,8 @@ List <Widget> homeScreenItems =[
   FeedScreen(),
   AddPostScreen(),
   ChatsScreen(),
-  //GoogleMapPage() ,
-  ProfileScreen(uid:  FirebaseAuth.instance.currentUser!.uid,),
+  ProfileScreen(uid:  FirebaseAuth.instance.currentUser!.uid,
+  ),
 
 
 
