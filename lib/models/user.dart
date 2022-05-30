@@ -45,11 +45,6 @@ class User{
       'following' :following ,
     } ;
   }
-
-  // we gonna build a Function to convert  document snap shot to user model
-//  that function we use it  in the dart file that could auth_methods in the get user details to use it in deferant places in the app
-//we will go to the data base and match the userId and then get the information to use it here with the function snapshot
-  // and we get that one time so we call it snap shot like camera it take photo at once by snap shot
   static User fromSnap(DocumentSnapshot snap){
     var snapshot = snap.data()  as Map < String ,dynamic> ;
     return User(
