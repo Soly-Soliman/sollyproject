@@ -135,10 +135,11 @@ class SocialCubit extends Cubit<SocialState>
     required String text
   }){
     MessageModel messageModel = MessageModel(
+
         text: text,
         datatime: dataTime,
         recevierId: receiverId,
-        senderId: model!.uid
+        senderId: model!.uid, MassageID: ''
     );
     FirebaseFirestore.instance.collection('Users')
         .doc(model!.uid)
@@ -173,7 +174,7 @@ class SocialCubit extends Cubit<SocialState>
         .listen((event) {
       message=[];
       event.docs.forEach((element) {
-        message.add(MessageModel.fromjson(element.data()));
+      //  message.add(MessageModel.fromjson(element.data()));
       });
       emit(SocialGetMessageSuccess());
 

@@ -9,6 +9,8 @@ import 'package:graduation_1/models/event.dart';
 import 'package:graduation_1/resourses/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
+import '../models/Massage.dart';
+
 class FireStoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -131,6 +133,8 @@ try{
       print(e.toString()) ;
     }
   }
+
+
   Future<void> postcomment( String PostID,String text,String uid,String name ,String ProfilePicture ,) async{
     try{
 
@@ -155,6 +159,38 @@ try{
              }
     }catch(e){
        print (e.toString()) ;
+    }
+  }
+  
+  
+  
+  Future<void> SendMassage( String text,String uid,String Reciverid  ) async{
+    try{
+
+      String MassageID =const Uuid().v1();
+      MessageModel messageModel = MessageModel(
+
+
+        datatime: DateTime.now(),
+        recevierId:Reciverid ,
+        senderId: uid,
+        text: text,
+        MassageID: MassageID,
+      
+        
+      );
+      if(text.isNotEmpty){
+        await _firestore.collection('Massages').doc(MassageID).set(
+
+          messageModel.tomap(),
+
+        );
+      }
+      else{
+        print('Text is empty') ;
+      }
+    }catch(e){
+      print (e.toString()) ;
     }
   }
   Future<void> eventcomment( String eventID,String text,String uid,String name ,String ProfilePicture ,) async{

@@ -1,10 +1,7 @@
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:graduation_1/Components/follow_button.dart';
 import 'package:graduation_1/Components/post_card.dart';
 import 'package:graduation_1/Utils/utils.dart';
@@ -52,9 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       followers = userSnap.data()!['followers'].length;
       following = userSnap.data()!['following'].length;
 
-      isFollowing = userSnap
-          .data()!['followers']
-          .contains(FirebaseAuth.instance.currentUser!.uid);
+      isFollowing = userSnap.data()!['followers'].contains(FirebaseAuth.instance.currentUser!.uid);
       setState(() {});
     } catch (e) {
       showSnackBar(e.toString(), context);
@@ -66,11 +61,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const Center(
+    if (isLoading) {
+      return const Center(
             child: CircularProgressIndicator(),
-          )
-        : Scaffold(
+          );
+    } else {
+      return Scaffold(
             // appBar: AppBar(flexibleSpace: Text('LOGO'),),
             body: ListView(
               children: [
@@ -93,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 children: [
 
                                   Container(
-                                    padding: EdgeInsets.all(7),
+                                    padding: const EdgeInsets.all(7),
                                     decoration: BoxDecoration(
                                            color: Colors.teal,
                                         borderRadius:
@@ -102,12 +98,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height: 50,
                                     child: Text(
                                       userdata['username'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black, fontSize: 25),
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.only(top: 9),
+                                    padding: const EdgeInsets.only(top: 9),
                                 //       color: Colors.red,
                                     child: SizedBox(
                                       height: 51,
@@ -116,12 +112,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         children: [
                                           Text(
                                             '$postlenght',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Icon(Icons.star,color:Colors.amber ,)
+                                          const Icon(Icons.star,color:Colors.amber ,)
                                         ],
                                       ),
                                     ),
@@ -131,8 +127,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Row(
                                 children: [
                                   Container(
-                                      padding: EdgeInsets.all(7),
-                                      margin: EdgeInsets.only(left: 7, top: 7),
+                                      padding: const EdgeInsets.all(7),
+                                      margin: const EdgeInsets.only(left: 7, top: 7),
                                       decoration: BoxDecoration(
                                           color: Colors.grey,
                                           borderRadius:
@@ -141,28 +137,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       height: 30,
                                       child: Text(
                                         userdata['bio'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.black, fontSize: 15),
                                       )),
-                                  Container(
-                                    //      color: Colors.red,
-                                    child: SizedBox(
-                                      height: 20,
-                                      width: 80,
-                                    ),
+                                  const SizedBox(
+                                    height: 20,
+                                    width: 80,
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                          Container(
-                           // color: Colors.black,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.grey,
-                              radius: 41,
-                              backgroundImage:
-                                  NetworkImage(userdata['photoUrl']),
-                            ),
+                          CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 41,
+                            backgroundImage:
+                                NetworkImage(userdata['photoUrl']),
                           ),
                         ],
                       ),
@@ -174,24 +164,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         //      color: Colors.lime,
                         height: 50,
                         width: 400,
-                        padding: EdgeInsets.all(2),
+                        padding: const EdgeInsets.all(2),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.all(3),
+                                padding: const EdgeInsets.all(3),
                                 child: Column(
                                   children: [
                                     Text(
                                       '$followers',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 17.0,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Followers',
                                       style: TextStyle(
                                           color: Colors.grey,
@@ -206,17 +196,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.all(3),
+                                padding: const EdgeInsets.all(3),
                                 child: Column(
                                   children: [
                                     Text(
                                       '$following',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 17.0,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Follwing',
                                       style: TextStyle(
                                           color: Colors.grey,
@@ -230,8 +220,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.all(4),
-                                margin: EdgeInsets.all(2),
+                                padding: const EdgeInsets.all(4),
+                                margin: const EdgeInsets.all(2),
                                 child: Column(
                                   children: [
                                     FirebaseAuth.instance.currentUser!.uid ==
@@ -241,10 +231,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        (EditProfileScreen()),
+                                                        (const EditProfileScreen()),
                                                   ),
                                                 ),
-                                            child: Text(
+                                            child: const Text(
                                               'EDIT',
                                               style: TextStyle(
                                                   color: Colors.black,
@@ -259,10 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       bordercolor: Colors.grey,
                                       function: () async {
                                         await FireStoreMethods()
-                                            .followuser(
-                                          FirebaseAuth.instance
-                                              .currentUser!.uid,
-                                          userdata['uid'],
+                                            .followuser(FirebaseAuth.instance.currentUser!.uid, userdata['uid'],
                                         );
                                         setState(() {
                                           isFollowing= false ;
@@ -341,5 +328,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
           );
+    }
   }
 }

@@ -5,6 +5,7 @@ import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_1/screens/events_feed_screan.dart';
+import 'package:graduation_1/screens/feed_users_screen.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _FeedScreenState extends State<FeedScreen> {
     return Scaffold(
         appBar: width >webScreenSize ? null
             : AppBar(
-     backgroundColor: mobileBackgroundColor,
+          backgroundColor: Colors.cyan.shade200,
           centerTitle: false,
           title:  Text('APP LOGO' ,
           style: TextStyle(
@@ -51,7 +52,10 @@ class _FeedScreenState extends State<FeedScreen> {
                   Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
              },
                        icon: Icon(Icons.search_outlined, color: Colors.teal,),) ,
-
+           IconButton(onPressed: (){
+             Navigator.push(context,MaterialPageRoute(builder: (context) =>const FeedUsersScreen()));
+           },
+             icon: Icon(Icons.send, color: Colors.white,),) ,
          ],
         ),
         body:  SafeArea
@@ -69,7 +73,7 @@ class _FeedScreenState extends State<FeedScreen> {
                  children: [
                    Expanded(
                      child: MaterialButton(
-                       color: Colors.teal,
+                       color: Colors.blue.shade100,
                        onPressed: () {Navigator.push(
                          context,
                          MaterialPageRoute(

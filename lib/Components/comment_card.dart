@@ -20,7 +20,7 @@ class _CommentCardState extends State<CommentCard> {
       decoration: BoxDecoration(
         color: const Color(0xFFFFE306) ,
           border: Border.all(color: Colors.blueAccent,),
-        borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+        borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
         ),
       ),
          child: Row(
@@ -48,13 +48,13 @@ class _CommentCardState extends State<CommentCard> {
                            children: [
                              TextSpan(
                                text:widget.snap['username'] ,
-                               style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:15),
+                               style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize:15),
                              ),
                            ],
                          ),
                        ),
                        Padding(
-                         padding: EdgeInsets.only(left: 10),
+                         padding: const EdgeInsets.only(left: 10),
                          child: Text(
                               DateFormat.yMd().format(
                                  widget.snap['dataPublished'].toDate(),
@@ -72,13 +72,13 @@ class _CommentCardState extends State<CommentCard> {
                     decoration: BoxDecoration(
                       color: Colors.white ,
                       border: Border.all(color: Colors.blueAccent,),
-                      borderRadius: BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                      borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
                       ),
                     ),
                     child: RichText(
                      text:  TextSpan(
                            text: widget.snap ['description'] ,
-                           style: TextStyle(color: Colors.black,)
+                           style: const TextStyle(color: Colors.black,)
                        ),),
                   ),
 
@@ -92,7 +92,7 @@ class _CommentCardState extends State<CommentCard> {
                child: InkWell(
                  onTap: (){},
 
-                 child:Icon(Icons.favorite,color: Colors.white,size: 40,),
+                 child:const Icon(Icons.favorite,color: Colors.white,size: 30,),
                ),
              ),
            ],

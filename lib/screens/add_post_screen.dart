@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/Utils/utils.dart';
@@ -120,8 +119,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.all(6),
-                        padding: EdgeInsets.only(left: 2),
+                        margin: const EdgeInsets.all(6),
+                        padding: const EdgeInsets.only(left: 2),
                         //  color: Colors.amber,
                         child: InkWell(
                           onTap: (){},
@@ -150,17 +149,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
                                 builder: (context) => const SearchScreen()),
                           );
                         },
-                        icon: Icon(Icons.search_rounded))
+                        icon: const Icon(Icons.search_rounded))
                   ],
                 ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     // height: 45,
                     width: 400,
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(15),
+                    decoration: const BoxDecoration(
                       color: Colors.indigo,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -172,25 +171,23 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           width: 120,
                           height: 45,
                           alignment: Alignment.center,
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
                             color: Colors.amber.shade900,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: Text('Add Event ....'),
+                          child: const Text('Add Event ....'),
                         ),
-                        Container(
-                          child: IconButton(
-                            icon: Icon(Icons.event),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Add_Event()));
-                            },
-                          ),
+                        IconButton(
+                          icon: const Icon(Icons.event),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Add_Event()));
+                          },
                         ),
                       ],
                     ),
@@ -199,9 +196,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
+                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.all(15),
+                    decoration: const BoxDecoration(
                       color: Colors.amber,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
@@ -209,19 +206,19 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       children: [
                         Container(
                           alignment: Alignment.center,
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
                           height: 45,
                           width: 120,
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.all(15),
+                          decoration: const BoxDecoration(
                             color: Colors.indigo,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: Text('Add Photo'),
+                          child: const Text('Add Photo'),
                         ),
                         IconButton(
-                          icon: Icon(Icons.upload_outlined),
+                          icon: const Icon(Icons.upload_outlined),
                           onPressed: () => _selctImage(context),
                         ),
                       ],
@@ -250,7 +247,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 TextButton(
                     onPressed: () =>
                         UpImagePost(user.uid, user.username, user.photoUrl),
-                    child: Text(
+                    child: const Text(
                       'up',
                       style: TextStyle(
                         color: Colors.teal,
@@ -264,7 +261,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               children: [
                 _isLoading
                     ? const LinearProgressIndicator()
-                    : Padding(
+                    : const Padding(
                         padding: EdgeInsets.only(top: 0),
                       ),
                 const Divider(
@@ -275,7 +272,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(user.photoUrl),
                         radius: 35,

@@ -1,30 +1,37 @@
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Components/components.dart';
 import '../block/massages/cubitsocial.dart';
 import '../block/massages/statesocial.dart';
 import '../models/Massage.dart';
 import '../models/user.dart';
 
-class ChatDetails extends StatelessWidget {
-  var textcontroller = TextEditingController();
+class ChatDetails extends StatefulWidget {
   User userModel;
 
-  ChatDetails(this.userModel);
+  ChatDetails(this.userModel, {Key? key}) : super(key: key);
+
+  @override
+  State<ChatDetails> createState() => _ChatDetailsState();
+}
+
+class _ChatDetailsState extends State<ChatDetails> {
+  var textcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Builder(
         builder: (context) {
-          SocialCubit.get(context).getMessage(receiverId: userModel.uid);
+          SocialCubit.get(context).getMessage(receiverId: widget.userModel.uid);
           return BlocConsumer<SocialCubit,SocialState>(
             listener: (context,state){},
             builder: (context,state){
-              print(SocialCubit.get(context).message.length);
+              if (kDebugMode) {
+                print(SocialCubit.get(context).message.length);
+              }
               return Scaffold(
                 backgroundColor: Colors.white,
                 appBar: AppBar(
@@ -36,16 +43,16 @@ class ChatDetails extends StatelessWidget {
                     children:  [
                       CircleAvatar(
                         radius: 20.0,
-                        backgroundImage: NetworkImage(userModel.photoUrl),
+                        backgroundImage: NetworkImage(widget.userModel.photoUrl),
                       ),
-                      SizedBox(width: 15.0,),
+                      const SizedBox(width: 15.0,),
                       InkWell(
                         onTap: (){
                      //     navigatto(context, AddPostScreen() );
                         },
                         child: Text(
-                          userModel.username,
-                          style: TextStyle(color: Colors.black),
+                          widget.userModel.username,
+                          style: const TextStyle(color: Colors.black),
                         ),
                       )
                     ],
@@ -97,13 +104,13 @@ class ChatDetails extends StatelessWidget {
                                 child: MaterialButton(
                                   onPressed: (){
                                     SocialCubit.get(context).sendMessage(
-                                        receiverId: userModel.uid,
+                                        receiverId: widget.userModel.uid,
                                         dataTime: DateTime.now().toString(),
                                         text: textcontroller.text
                                     );
                                   },
                                   minWidth: 1,
-                                  child: Icon(Icons.send,
+                                  child: const Icon(Icons.send,
                                     size: 16,
                                     color: Colors.white,
                                   ),
@@ -123,6 +130,7 @@ class ChatDetails extends StatelessWidget {
         }
     );
   }
+
   Widget buildMessage(MessageModel model)=>Align(
     alignment: AlignmentDirectional.centerStart,
     child: Container(
@@ -134,7 +142,7 @@ class ChatDetails extends StatelessWidget {
             topStart: Radius.circular(10.0),
           )
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           vertical: 5,
           horizontal: 10
       ),
@@ -143,6 +151,7 @@ class ChatDetails extends StatelessWidget {
       ),
     ),
   );
+
   Widget buildMyMessage(MessageModel model)=>Align(
     alignment: AlignmentDirectional.centerEnd,
     child: Container(
@@ -154,7 +163,7 @@ class ChatDetails extends StatelessWidget {
             topStart: Radius.circular(10.0),
           )
       ),
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           vertical: 5,
           horizontal: 10
       ),
@@ -163,7 +172,5 @@ class ChatDetails extends StatelessWidget {
       ),
     ),
   );
-
-
 }
 

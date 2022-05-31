@@ -1,21 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:graduation_1/Components/post_card.dart';
-import 'package:graduation_1/models/Post.dart';
+import 'package:graduation_1/Components/User.dart';
 import 'package:graduation_1/screens/profile_screen.dart';
-import '../Utils/Diamentions.dart';
-import '../Utils/colors.dart';
+
+import 'Chat_ID_screen.dart';
 
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+class SearchChatScreen extends StatefulWidget {
+  const SearchChatScreen({Key? key}) : super(key: key);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<SearchChatScreen> createState() => _SearchChatScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchChatScreenState extends State<SearchChatScreen> {
   final TextEditingController searchController = TextEditingController();
   bool isShowUsers = false;
 
@@ -40,13 +38,13 @@ class _SearchScreenState extends State<SearchScreen> {
               setState(() {
                 isShowUsers = true;
               });
-              print(_);
+            //  print(_);
             },
           ),
         ),
       ),
       body:
-     isShowUsers ?
+      isShowUsers ?
       FutureBuilder(
         future: FirebaseFirestore.instance
             .collection('Users')
@@ -67,9 +65,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 onTap: ()
                 => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => ProfileScreen(
-                      uid: (snapshot.data! as dynamic).docs[index]['u'
-                          'id'],
+                    builder: (context) => CHAT_ID_Screen(
+                      
+                      uid: (snapshot.data! as dynamic).docs[index]['uid'],
                     ),
                   ),
                 ),
@@ -91,24 +89,23 @@ class _SearchScreenState extends State<SearchScreen> {
       )
           : FutureBuilder(
                   future: FirebaseFirestore.instance
-                   .collection('posts')
-                   //.orderBy('datePublished')
-                   .get(),
-                builder: (context,
-           AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
-                   {
-                  if (!snapshot.hasData) {
-                   return const Center(
-                   child: CircularProgressIndicator(),
-                   );
-                  }
-                  return ListView.builder(
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) =>PostCard(
-                      snapshot: snapshot.data!.docs[index].data(),
-                    ),
-                  );
-          },),
+              .collection('Users')
+              //.orderBy('datePublished')
+             .get(),
+             builder: (context,
+             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
+        {
+              if (!snapshot.hasData) {
+                  return const Center(
+                       child: CircularProgressIndicator(),
+                     );
+          }
+          return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) =>User_card(snapshot: snapshot.data!.docs[index].data(),
+                ),
+          );
+        },),
     );
   }
 }
