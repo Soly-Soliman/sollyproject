@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // if we found the connection is steal happening so we have to show the circular waiting progress to tell the user
             // that you have to wait some time until the log in is done
             if (snapshot.connectionState == ConnectionState.waiting){
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(
                   color: Colors.black,
                 ),

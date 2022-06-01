@@ -1,12 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/comment_card.dart';
-import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
-
-import '../Components/text_field_input.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 

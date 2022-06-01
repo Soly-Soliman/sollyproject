@@ -1,13 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_1/Components/comment_card.dart';
-import 'package:graduation_1/Utils/colors.dart';
-import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
-
-import '../Components/Massage_Card.dart';
-import '../Components/text_field_input.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 
@@ -80,8 +72,8 @@ class _ChatFinalScreenState extends State<ChatFinalScreen> {
               InkWell(
                 onTap: () {},
                 child: Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   // color: Colors.white,
                   child: CircleAvatar(
                     radius: 20,

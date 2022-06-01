@@ -16,23 +16,21 @@ class SocialCubit extends Cubit<SocialState>
   String uId = "" ;
   SocialCubit() : super(SocialInitialState());
   static SocialCubit get(context) => BlocProvider.of(context);
-  User ?model;
+  User? model;
   void getUser(){
     emit(SocialLoadingStateGet());
     FirebaseFirestore.instance.collection('Users').doc("uid").get().then((value) {
       Map<String, dynamic>?name = value.data();
       model = User.fromjson(name!);
-      print(value.data());
       emit(SocialGetUserSuccessState());
     }).catchError((error){
-      print(error.toString());
       emit(SocialGetUserErrorState(error.toString()));
     });
 
   }
   int currentIndex = 0;
 
-  File ?profileimage;
+  File? profileimage;
 
   String profileUrl ='';
   Future getprofileimage(ImageSource imageSource)async {
@@ -80,7 +78,6 @@ class SocialCubit extends Cubit<SocialState>
       username: name,
       phone: phone,
       uid: model!.uid,
-
       bio: bio,
 
       photoUrl: image??model!.photoUrl,

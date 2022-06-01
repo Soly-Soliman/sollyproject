@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/User.dart';
-import 'package:graduation_1/screens/profile_screen.dart';
-
 import 'Chat_ID_screen.dart';
 
 
