@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/animatios.dart';
 import 'package:graduation_1/Utils/colors.dart';
@@ -358,15 +359,8 @@ class _EventCardState extends State<EventCard> {
                     ),*/
                   ),*/
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.only(
-                      top: 8.0,
-                    ),
-                  ),
-                ),
+
+
               ],
             ),
           ),

@@ -6,7 +6,7 @@ class MessageModel {
   late String recevierId;
   late String MassageID;
   late String text;
-
+  late  String profileImageUrl;
   MessageModel({
 
     required this.datatime ,
@@ -14,6 +14,7 @@ class MessageModel {
     required this.senderId,
     required this.recevierId,
     required this.text,
+    required this.profileImageUrl
   });
 
   MessageModel.fromjson(Map<String,dynamic>json, this.datatime){
@@ -22,6 +23,7 @@ class MessageModel {
     recevierId = json['recevierId'];
     text = json['text'];
     MassageID = json['MassageID'];
+    MassageID = json['profileImageUrl'];
 
   }
 
@@ -32,7 +34,7 @@ class MessageModel {
       'recevierId':recevierId,
       'MassageID':MassageID,
       'text':text,
-
+      'profileImageUrl':profileImageUrl
     };
   }
   static MessageModel fromSnap(DocumentSnapshot snap){
@@ -43,6 +45,7 @@ class MessageModel {
       datatime: snapshot['datatime'],
       senderId: snapshot['senderId'],
       MassageID: snapshot['MassageID'],
+        profileImageUrl :snapshot['profileImageUrl']
 
 
     ) ;

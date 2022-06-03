@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/Massage_Card.dart';
 import 'package:graduation_1/Utils/utils.dart';
+import 'package:graduation_1/block/massages/cubitsocial.dart';
+import 'package:graduation_1/models/Massage.dart';
 import 'package:graduation_1/providers/user_provider.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,7 @@ class CHAT_ID_Screen extends StatefulWidget {
   final String uid;
 
 
+
   const CHAT_ID_Screen({Key? key, required this.uid,}) : super(key: key);
 
   @override
@@ -25,6 +28,7 @@ class CHAT_ID_Screen extends StatefulWidget {
 
 class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
   final TextEditingController _MassageController = TextEditingController();
+  List<MessageModel>message = [];
   @override
   void dispose() {
     super.dispose();
@@ -121,13 +125,21 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                 style: const TextStyle(
                     color: Colors.black, fontSize: 25),
               ):
-
-
                           StreamBuilder(
-                              stream: FirebaseFirestore.instance
+                              stream:
+                            /*
+                              FirebaseFirestore.instance
                                   .collection('Massages')
-                              .where('recevierId', isEqualTo: FirebaseAuth.instance.currentUser!.uid )
-                              .where('senderId', isEqualTo: ReciverID)
+                              .where('recevierId', isEqualTo:
+                              FirebaseAuth.instance.currentUser!.uid ).
+                              where('senderId', isEqualTo: ReciverID)
+                                  .snapshots(),
+                             */
+
+                              FirebaseFirestore.instance
+                                  .collection('Users').doc(user.uid)
+                                  .collection('chats').doc(ReciverID)
+                                  .collection('Massages')
                                   .snapshots(),
                               builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
                               {
@@ -189,21 +201,14 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                           border: null,
                           hintText: 'Massages as ${user.username}',
                         ),
-                        /*TextFieldInput (
-                   lapel: 'Comment',
-                   hinttext: 'Comment...',
-                   textEditingController: ,
-                   isPass: false,
-                   textInputType: TextInputType.text,*/
+
                       ),
                     ),
                   ),
                   InkWell(
                     onTap: () async
                     {
-                      FireStoreMethods().SendMassage(_MassageController.text, user.uid, ReciverID);
-
-
+                     FireStoreMethods().SendMassage(_MassageController.text, user.uid, ReciverID ,user.photoUrl);
                       setState(() {
                         _MassageController.text= '';
                       });

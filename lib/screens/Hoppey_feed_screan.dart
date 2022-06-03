@@ -5,14 +5,14 @@ import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 
-class EventsFeedScreen extends StatefulWidget {
-  const EventsFeedScreen ({ Key? key }) : super(key: key);
+class HoppyFeedScreen extends StatefulWidget {
+  const HoppyFeedScreen ({ Key? key }) : super(key: key);
 
   @override
-  State<EventsFeedScreen> createState() => _EventsFeedScreenState();
+  State<HoppyFeedScreen> createState() => _HoppyFeedScreenState();
 }
 
-class _EventsFeedScreenState extends State<EventsFeedScreen> {
+class _HoppyFeedScreenState extends State<HoppyFeedScreen> {
   @override
   Widget build(BuildContext context) {
     final width =MediaQuery.of(context).size.width;
@@ -38,55 +38,7 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
       body:  SafeArea
         (
 
-          child: Column(
-            children: [
-              Container(
-                //     color: Colors.amber,
-                margin: const EdgeInsets.only(top: 2,bottom: 2),
-                padding: const EdgeInsets.only(top: 2),
-                height: 20,
-                child: Row(
-                  children: [
-
-                  ],
-                ),
-              ),
-              Container(
-                color: Colors.black,
-                height: 2,
-              ),
-
-
-               Expanded(
-                child:
-                StreamBuilder(
-                  stream: FirebaseFirestore.instance.collection('events').snapshots(),
-                  builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
-                  {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index)=>Container(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: width >webScreenSize?width*0.3 :0 ,
-                          vertical: width >webScreenSize?15 :0 ,
-                        ),
-                        child: EventCard(
-                          snapshot: snapshot.data!.docs[index].data() ,
-
-                        ),
-                      ),
-                    );
-                  }
-              ),)
-
-
-            ],
-          )
+        child: Center(child: Text("الهوايات ")),
       ),
 
       /*  StreamBuilder(

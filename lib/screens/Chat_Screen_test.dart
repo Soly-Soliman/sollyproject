@@ -86,9 +86,13 @@ class _SearchChatScreenState extends State<SearchChatScreen> {
         },
       )
           : FutureBuilder(
-                  future: FirebaseFirestore.instance
+        future:
+
+
+
+        FirebaseFirestore.instance
               .collection('Users')
-              //.orderBy('datePublished')
+              .orderBy('username')
              .get(),
              builder: (context,
              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)

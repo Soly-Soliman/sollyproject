@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../resourses/firestore_methods.dart';
+
 
 class Massage_Card extends StatefulWidget {
   final snap;
@@ -18,7 +20,7 @@ class _Massage_CardState extends State<Massage_Card> {
       margin: const EdgeInsets.all(10.0),
       padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFE306) ,
+
         border: Border.all(color: Colors.blueAccent,),
         borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
         ),
@@ -27,15 +29,7 @@ class _Massage_CardState extends State<Massage_Card> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-      /*    InkWell(
-            onTap: (){},
-            child: CircleAvatar(
-              radius: 10,
-              backgroundImage: NetworkImage(
-                widget.snap['profileUrl'],
-              ),
-            ),
-          ),*/
+
           Padding(padding: const EdgeInsets.only(left:10 ) ,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -43,6 +37,15 @@ class _Massage_CardState extends State<Massage_Card> {
               children: [
                 Row(
                   children: [
+                    InkWell(
+                      onTap: (){},
+                      child: CircleAvatar(
+                        radius: 10,
+                        backgroundImage: NetworkImage(
+                          widget.snap['profileImageUrl'],
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
@@ -54,6 +57,40 @@ class _Massage_CardState extends State<Massage_Card> {
                             fontSize: 12
                         ),
                       ),),
+
+                    Positioned(child:     IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            child: ListView(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 16,
+                              ),
+                              shrinkWrap: true,
+                              children: ['Delete']
+                                  .map(
+                                    (e) => InkWell(
+                                  onTap: () async{
+                                    FireStoreMethods().deleteMassage(widget.snap['senderId'],widget.snap['recevierId'],widget.snap['MassageID']) ;
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Text(e),
+                                  ),
+                                ),
+                              )
+                                  .toList(),
+                            ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.more_horiz_outlined,
+                      ),
+                    ),)
                   ],
                 ),
                 Container(

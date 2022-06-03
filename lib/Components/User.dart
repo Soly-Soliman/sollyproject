@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_1/screens/comments_screen.dart';
 
-import '../screens/Chat_Details_Screan_App.dart';
+
+import '../screens/Chat_ID_screen.dart';
 class User_card extends StatefulWidget {
   final snapshot;
   const User_card({
@@ -24,8 +24,8 @@ class _User_cardState extends State<User_card> {
             child: InkWell(
               onTap:  () => Navigator.of(context).push(
               MaterialPageRoute(
-               builder: (context) => ChatFinalScreen(
-                   snapshot: widget.snapshot,
+               builder: (context) => CHAT_ID_Screen(
+                  uid: widget.snapshot['uid'],
                 ),
                ),
                 ),

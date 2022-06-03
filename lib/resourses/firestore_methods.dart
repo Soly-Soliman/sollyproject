@@ -1,7 +1,6 @@
 
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_1/models/Post.dart';
 import 'package:graduation_1/models/comment.dart';
@@ -164,7 +163,7 @@ try{
   
   
   
-  Future<void> SendMassage( String text,String uid,String Reciverid  ) async{
+  Future<void> SendMassage( String text,String uid,String Reciverid ,  String profileImageUrl  ) async{
     try{
 
       String MassageID =const Uuid().v1();
@@ -175,16 +174,22 @@ try{
         recevierId:Reciverid ,
         senderId: uid,
         text: text,
-        MassageID: MassageID,
+        MassageID: MassageID, profileImageUrl:profileImageUrl,
       
         
       );
       if(text.isNotEmpty){
-        await _firestore.collection('Massages').doc(MassageID).set(
-
+ await _firestore..collection('Users').doc(uid) .collection('chats')
+     .doc(Reciverid).collection('Massages').doc(MassageID).set(
+      //  await _firestore.collection('Massages').doc(MassageID).set(
           messageModel.tomap(),
-
         );
+ await _firestore..collection('Users').doc(Reciverid) .collection('chats')
+     .doc(uid).collection('Massages').doc(MassageID).set(
+   //  await _firestore.collection('Massages').doc(MassageID).set(
+   messageModel.tomap(),
+ );
+
       }
       else{
         print('Text is empty') ;
@@ -223,6 +228,20 @@ try{
   Future<void> deletepost(String PostID) async{
     try{
         await _firestore.collection('posts').doc(PostID).delete();
+    }catch(error){
+      print(error.toString());
+
+    }
+  }
+  Future<void> deleteMassage(String uid , String ReciverID ,String MassageID) async{
+    try{
+      _firestore..collection('Users').doc(uid) .collection('chats')
+          .doc(ReciverID).collection('Massages').doc(MassageID).delete() ;
+
+      await _firestore..collection('Users').doc(ReciverID) .collection('chats')
+          .doc(uid).collection('Massages').doc(MassageID).delete() ;
+
+
     }catch(error){
       print(error.toString());
 

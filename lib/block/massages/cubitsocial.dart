@@ -132,7 +132,7 @@ class SocialCubit extends Cubit<SocialState>
     required String text
   }){
     MessageModel messageModel = MessageModel(
-
+        profileImageUrl :"" ,
         text: text,
         datatime: dataTime,
         recevierId: receiverId,
