@@ -1,72 +1,120 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:graduation_1/Components/event_card.dart';
-import 'package:graduation_1/Utils/Diamentions.dart';
-import 'package:graduation_1/Utils/colors.dart';
-import 'package:graduation_1/screens/search_screen.dart';
+import 'package:flutter/services.dart' as rootBundle;
+import 'package:graduation_1/models/DataviewModel.dart';
+
+
 
 class HoppyFeedScreen extends StatefulWidget {
-  const HoppyFeedScreen ({ Key? key }) : super(key: key);
+  const HoppyFeedScreen({Key? key,}) : super(key: key);
 
   @override
   State<HoppyFeedScreen> createState() => _HoppyFeedScreenState();
 }
 
 class _HoppyFeedScreenState extends State<HoppyFeedScreen> {
+  var values = [];
+  var searchValues = [];
+
   @override
-  Widget build(BuildContext context) {
-    final width =MediaQuery.of(context).size.width;
+  Widget build(BuildContext buildContext,) {
+    ReadJsonData();
     return Scaffold(
-      appBar: width >webScreenSize ? null
-          : AppBar(
-        backgroundColor: Colors.blue.shade200,
-        centerTitle: false,
-        title:  const Text('APP LOGO' ,
-          style: TextStyle(
-            color: tealColor,
-          ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(48,),
+        child: AppBar(
+          title: const Text('Flutter Demo Project 03',),
+          centerTitle: true,
         ),
-        //هنا المفروض هيبقي اللوجو
-        actions: [
-          IconButton(onPressed: (){
-            Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
-          },
-            icon: const Icon(Icons.search_outlined, color: Colors.red,),) ,
-
-        ],
       ),
-      body:  SafeArea
-        (
+      body: FutureBuilder(
+        future: ReadJsonData(),
+        builder: (context,data){
+          if(data.hasError){
+            return Center(child: Text("${data.error}"),);
+          }else if(data.hasData){
+            var items= data.data as List<DataviewModel>;
+            return ListView.builder(
+              itemCount: items==null? 0:items.length,
+                itemBuilder: (context,index){
+                  return Card(
+                    elevation: 5,
+                    margin: EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 120,
+                            height: 120,
+                            child: Image(image: NetworkImage(items[index].imageURL.toString()),fit: BoxFit.fill,),
+                          ),
+                          Expanded(child: Container(
+                            padding: EdgeInsets.only(bottom: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].hobbies.toString(),style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),),),
+                                Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].about.toString(),style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),),),
+                                Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].age.toString(),style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),),),
+                                Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].palace.toString(),style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),),),
+                              ],
 
-        child: Center(child: Text("الهوايات ")),
-      ),
+                            ),
+                          ),
+                          )
 
-      /*  StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('posts').snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
-                {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                   return const Center(
-                     child: CircularProgressIndicator(),
-                );
-           }
-                return ListView.builder(
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index)=>Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: width >webScreenSize?width*0.3 :0 ,
-                        vertical: width >webScreenSize?15 :0 ,
+                        ],
+                      ),
                     ),
-                    child: PostCard(
-                    snapshot: snapshot.data!.docs[index].data() ,
+                  );
+                }
+            );
 
-                    ),
-                  ),
-                );
+          }else{
+            return Center(child: CircularProgressIndicator(),);
           }
-        ),*/
+        },
+      )
     );
   }
 
-  isPost() {}
-}
+  /*void getSearchValues(String value) {
+    searchValues.clear();
+    searchValues = values
+        .where(
+            (element) {
+          DataviewModel dataviewModel = element as DataviewModel;
+          return DataviewModel().hobbies.toString().contains(value.toString(),);
+        }
+    ).toList();*/
+   //     .where(
+   //         (element) {
+   //       DataviewModel _jsonObject = element as DataviewModel;
+    //      return _jsonObject.hobbies.toString().startsWith(value.toString(),);
+    //    }
+   // ).toList();
+  }
+
+  Future<List<DataviewModel>> ReadJsonData() async {
+    final jsondata = await rootBundle.rootBundle.loadString('jsonfile/data1.json');
+    final list = json.decode(jsondata) as List<dynamic>;
+
+    return list.map((e) => DataviewModel.fromJson(e)).toList();
+  }

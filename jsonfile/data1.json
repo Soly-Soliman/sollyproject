@@ -1,0 +1,30 @@
+[
+{
+  "HOBBIES": "Acting",
+  "About": "the art or occupation of performing fictional roles in plays, films, or television.",
+  "Palace": "The theater",
+  "Age": "all ages",
+  "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+},
+  {
+    "HOBBIES": "Air hockey",
+    "About": "a game in which players attempt to knock a plastic disc into their opponent's goal across a specially designed table that produces a cushion of air to reduce friction",
+    "Palace": "Sport club",
+    "Age": "20+",
+    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+  },
+  {
+    "HOBBIES": "American football",
+    "About": "a form of team game played with an oval ball on a field marked out as a gridiron. Points are scored mainly through touchdowns and field goals. Each side has eleven players on the field at any time.In the US called simply football.",
+    "Palace": "Playground",
+    "Age": "20+",
+    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+  },
+  {
+    "HOBBIES": "Aerobics",
+    "About": "vigorous exercises designed to increase cardiovascular efficiency.",
+    "Palace": "gym",
+    "Age": "16+",
+    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+  }
+]

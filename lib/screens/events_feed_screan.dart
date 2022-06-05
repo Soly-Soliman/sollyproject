@@ -31,7 +31,7 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
           IconButton(onPressed: (){
             Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
           },
-            icon: const Icon(Icons.search_outlined, color: Colors.red,),) ,
+            icon: const Icon(Icons.search_outlined, color: Colors.blue,),) ,
 
         ],
       ),
