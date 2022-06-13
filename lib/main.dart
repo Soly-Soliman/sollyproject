@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           create: (_) =>UserProvider(),),
       ],
       child: MaterialApp(
+
         debugShowCheckedModeBanner: false, // عشان اخفي علامه التكويد اللي ع اليمين فوق
         title: 'hoppy app',
         theme: ThemeData.light().copyWith(

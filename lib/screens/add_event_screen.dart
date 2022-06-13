@@ -9,6 +9,7 @@ import 'package:place_picker/entities/localization_item.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:place_picker/widgets/place_picker.dart';
 import 'package:provider/provider.dart';
+import '../Utils/colors.dart';
 import '../Utils/utils.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
@@ -200,7 +201,7 @@ class _Add_EventState extends State<Add_Event> {
         MaterialPageRoute(builder: (context) =>
             PlacePicker(
             "AIzaSyBvZz649nf18qks0X_LNPtbilX1tUL9uzk" ,
-              displayLocation: LatLng(30.039234, 31.224565),
+              displayLocation: const LatLng(30.039234, 31.224565),
 
         ),
 
@@ -216,8 +217,8 @@ class _Add_EventState extends State<Add_Event> {
     if (_file == null) {}
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-        title: Center(
+        backgroundColor: selection,
+        title: const Center(
           child: Text('Create New Event'),
         ),
       ),
@@ -234,7 +235,7 @@ class _Add_EventState extends State<Add_Event> {
                   children: [
                     CircleAvatar(
                       radius: 33,
-                      backgroundColor: Colors.grey,
+                      backgroundColor: selection2,
                       backgroundImage: NetworkImage(user.photoUrl),
                     ),
                   ],
@@ -242,7 +243,7 @@ class _Add_EventState extends State<Add_Event> {
                 const Divider(
                   color: Colors.black,
                 ),
-                Text(
+                const Text(
                   'Event Name',
                   style: TextStyle(
                     color: Colors.black,
@@ -252,17 +253,17 @@ class _Add_EventState extends State<Add_Event> {
                 ),
                 TextFormField(
                   controller: _nameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'name',
                     suffixIcon: Icon(
                       Icons.account_box,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                const Text(
                   'Discription',
                   style: TextStyle(
                     color: Colors.black,
@@ -272,20 +273,20 @@ class _Add_EventState extends State<Add_Event> {
                 ),
                 TextFormField(
                   controller: _eventDescriptionController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Discription',
                     suffixIcon: Icon(
                       Icons.account_box,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'Date',
                       style: TextStyle(
@@ -337,12 +338,12 @@ class _Add_EventState extends State<Add_Event> {
                     },
                       child:
                       Text(
-                        Date,style: TextStyle(
+                        Date,style: const TextStyle(
                         color: Colors.black
                       ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                       width: 50,
                     ),
@@ -373,17 +374,17 @@ class _Add_EventState extends State<Add_Event> {
                       //  "${selectedTime.hour}:${selectedTime.minute}",
                          "${selectedTime.format(context)}",
                        // "${selectedTime.hourOfPeriod} :${selectedTime.minute}:${selectedTime.period}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black
                       ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
-                Text(
+                const Text(
                   'Place',
                   style: TextStyle(
                     color: Colors.black,
@@ -393,7 +394,7 @@ class _Add_EventState extends State<Add_Event> {
                 ),
                 TextFormField(
                   controller: _placeController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Enter the place ',
                     suffixIcon: Icon(
                       Icons.location_on,
@@ -408,19 +409,19 @@ class _Add_EventState extends State<Add_Event> {
                   // ()=>GoogleMapPage()
 
 
-                 ,child: Text('map'),) ,
-                SizedBox(
+                 ,child: const Text('map'),) ,
+                const SizedBox(
                   height: 20.0,
                 ),
-                Text(
+                const Text(
                   'Image',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 Row(
@@ -428,7 +429,7 @@ class _Add_EventState extends State<Add_Event> {
                     _file == null
                         ? IconButton(
                             onPressed: () => _selctImage(context),
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.image,
                               size: 40,
                               color: Colors.lightBlue,
@@ -443,7 +444,7 @@ class _Add_EventState extends State<Add_Event> {
                                 decoration: BoxDecoration(
                                   color: Colors.grey,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   image: DecorationImage(
                                     fit: BoxFit.fill,
                                     image: MemoryImage(_file!),
@@ -454,12 +455,12 @@ class _Add_EventState extends State<Add_Event> {
                               ),
                             ),
                           ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                       width: 20,
                     ),
                     _file == null
-                        ? SizedBox(
+                        ? const SizedBox(
                             height: 10.0,
                             width: 20,
                           )
@@ -468,7 +469,7 @@ class _Add_EventState extends State<Add_Event> {
                             width: 150.0,
                             child: IconButton(
                               onPressed: clearImage,
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete,
                                 color: Colors.blue,
                               ),
@@ -487,7 +488,7 @@ class _Add_EventState extends State<Add_Event> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),*/
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
             /*    SingleChildScrollView(
@@ -558,7 +559,7 @@ class _Add_EventState extends State<Add_Event> {
                     ],
                   ),
                 ),*/
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Container(
@@ -566,9 +567,9 @@ class _Add_EventState extends State<Add_Event> {
                   color: Colors.blue,
                   child: MaterialButton(
                     onPressed: ()=> create_event(user.uid,user.username,user.photoUrl),
-                    child: Text(
+                    child: const Text(
                       'Create',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                     ),

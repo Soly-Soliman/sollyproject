@@ -2,6 +2,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../Utils/colors.dart';
 void navigatto(context,widget)=>Navigator.push(context,
   MaterialPageRoute(builder:
       (context)=>widget
@@ -82,6 +84,41 @@ Widget lineavater()=>Padding(
     width: double.infinity,
     height: 1.0,
     color: Colors.grey[300],
+  ),
+);
+Widget ItemDrawer({
+  required String title,
+  required IconData iconData,
+})=> Padding(
+  padding: const EdgeInsets.all(15.0),
+  child: Row(
+    children:  [
+      Expanded(
+        child: Icon(
+          iconData,
+          size: 30,
+          color:  primaryColor,
+        ),
+      ),
+      Expanded(
+        flex: 3,
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),  color: primaryColor,
+          ),
+          child: Center(
+            child: Text(
+              title,
+              style:  const TextStyle(
+                  color:  primary,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
+        ),
+      ),
+    ],
   ),
 );
 

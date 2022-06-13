@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as rootBundle;
 import 'package:graduation_1/models/DataviewModel.dart';
 
+import '../Utils/colors.dart';
+
 
 
 class HoppyFeedScreen extends StatefulWidget {
@@ -21,9 +23,13 @@ class _HoppyFeedScreenState extends State<HoppyFeedScreen> {
   Widget build(BuildContext buildContext,) {
     ReadJsonData();
     return Scaffold(
+        backgroundColor:blue1 ,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
+          backgroundColor:selection ,
+          foregroundColor: primary,
+
           title: const Text('Learn Hobby',),
           centerTitle: true,
         ),

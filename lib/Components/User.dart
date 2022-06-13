@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+import '../Utils/colors.dart';
 import '../screens/Chat_ID_screen.dart';
 class User_card extends StatefulWidget {
   final snapshot;
@@ -16,11 +17,16 @@ class _User_cardState extends State<User_card> {
   Widget build(BuildContext context) {
     return Container(
 
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+
       child: Column(
         children: [
           Container(
-            color: Colors.white70,
+            width: 350,
+            decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(6),
+                color: blue1,
+
+            ),
+
             child: InkWell(
               onTap:  () => Navigator.of(context).push(
               MaterialPageRoute(
@@ -33,7 +39,7 @@ class _User_cardState extends State<User_card> {
                 children: [
                   SizedBox(width: 10,),
                   CircleAvatar(
-                    radius: 23,
+                    radius: 26,
                     backgroundImage: NetworkImage(
                       widget.snapshot['photoUrl'],
                     ),

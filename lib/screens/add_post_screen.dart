@@ -114,9 +114,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
             child: Column(
               children: [
                 AppBar(
+                  backgroundColor: selection,
                   flexibleSpace: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
+
                     children: [
                       Container(
                         margin: const EdgeInsets.all(6),
@@ -135,7 +137,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         width: 5,
                         height: 55,
                         child: Container(
-                          color: Colors.blue,
+                          color: selection,
                         ),
                       ),
                     ],
@@ -175,7 +177,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                               horizontal: 10, vertical: 10),
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                            color: Colors.lightBlue,
+                            color: selection,
                             borderRadius: const BorderRadius.all(Radius.circular(10)),
                           ),
                           child: const Text('ADD Event ....'),
@@ -231,17 +233,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
           )
         : Scaffold(
             appBar: AppBar(
-              backgroundColor: mobileBackgroundColor,
+              backgroundColor: selection,
               leading: IconButton(
                 icon: const Icon(
                   Icons.arrow_back,
-                  color: Colors.green,
+                  color: Colors.white,
                 ),
                 onPressed: clearImage,
               ),
               title: const Text(
                 'ADD POSTS',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
               centerTitle: false,
               actions: [

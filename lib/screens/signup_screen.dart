@@ -9,6 +9,8 @@ import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/aut_methods.dart';
 import 'package:graduation_1/screens/login_screen.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../Utils/colors.dart';
 class SingupScreen extends StatefulWidget{
   const SingupScreen({Key?key}) :super(key: key) ;
   @override
@@ -83,6 +85,7 @@ class _SingupScreenState extends State<SingupScreen>{
   Widget build(BuildContext context)
   {
     return Scaffold(
+      backgroundColor: blue1,
       body: SafeArea(
         child: Container(
           padding: const  EdgeInsets.symmetric(horizontal: 35),

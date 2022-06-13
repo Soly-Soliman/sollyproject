@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:graduation_1/Utils/colors.dart';
 import 'package:intl/intl.dart';
 
 import '../resourses/firestore_methods.dart';
@@ -17,10 +18,11 @@ class _Massage_CardState extends State<Massage_Card> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
-      decoration: BoxDecoration(
 
+      margin: const EdgeInsets.all(5.0),
+   //   padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
+      decoration: BoxDecoration(
+      color: primary,
         border: Border.all(color: Colors.blueAccent,),
         borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
         ),
@@ -30,7 +32,7 @@ class _Massage_CardState extends State<Massage_Card> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          Padding(padding: const EdgeInsets.only(left:10 ) ,
+          Padding(padding: const EdgeInsets.only(left:5) ,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,26 +41,50 @@ class _Massage_CardState extends State<Massage_Card> {
                   children: [
                     InkWell(
                       onTap: (){},
-                      child: CircleAvatar(
-                        radius: 10,
-                        backgroundImage: NetworkImage(
-                          widget.snap['profileImageUrl'],
-                        ),
+                      child: Column(
+                        children: [
+                         //
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              DateFormat.yMd().format(
+                                widget.snap['datatime'].toDate(),
+                              ),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 12
+                              ),
+                            ),),
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundImage: NetworkImage(
+                              widget.snap['profileImageUrl'],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        DateFormat.yMd().format(
-                          widget.snap['datatime'].toDate(),
-                        ),
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 12
-                        ),
-                      ),),
 
-                    Positioned(child:     IconButton(
+                    Container(
+                      width: 250,
+                      margin: const EdgeInsets.all(3.0),
+                      padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
+                      decoration: BoxDecoration(
+                        color: Colors.white ,
+                        border: Border.all(color: Colors.blueAccent,),
+                        borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+                        ),
+                      ),
+                      child: RichText(
+                        text:  TextSpan(
+                            text: widget.snap ['text'] ,
+                            style: const TextStyle(color: Colors.black,)
+                        ),),
+                    ),
+                    Align(
+
+
+                      child:     IconButton(
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -93,7 +119,7 @@ class _Massage_CardState extends State<Massage_Card> {
                     ),)
                   ],
                 ),
-                Container(
+               /* Container(
                   margin: const EdgeInsets.all(3.0),
                   padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
                   decoration: BoxDecoration(
@@ -107,7 +133,7 @@ class _Massage_CardState extends State<Massage_Card> {
                         text: widget.snap ['text'] ,
                         style: const TextStyle(color: Colors.black,)
                     ),),
-                ),
+                ),*/
 
               ],
             ),

@@ -13,8 +13,6 @@ class DataviewModel {
     this.age,
     this.imageURL
   });
-
-
   DataviewModel.fromJson(Map<String,dynamic> json)
   {
     hobbies = json['HOBBIES'];

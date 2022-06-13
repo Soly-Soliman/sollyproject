@@ -8,6 +8,8 @@ import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:graduation_1/screens/Edit_Profile_Screen.dart';
 
+import '../Utils/colors.dart';
+
 class ProfileScreen extends StatefulWidget {
   final String uid;
   const ProfileScreen({Key? key, required this.uid}) : super(key: key);
@@ -67,7 +69,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
     } else {
       return Scaffold(
-            // appBar: AppBar(flexibleSpace: Text('LOGO'),),
+             appBar: PreferredSize(
+               preferredSize: const Size.fromHeight(24,),
+               child: AppBar(
+                 backgroundColor:selection ,
+                 foregroundColor: primary,
+
+                 title: const Text('xx',),
+                 centerTitle: true,
+               ),
+             ),
+        backgroundColor:blue1 ,
             body: ListView(
               children: [
                 Padding(

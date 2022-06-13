@@ -11,6 +11,7 @@ import 'package:graduation_1/providers/user_provider.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
 import '../Components/post_card.dart';
+import '../Utils/colors.dart';
 import '../models/user.dart';
 
 
@@ -95,11 +96,15 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
     } else {
       return SafeArea(
         child: Scaffold(
-            appBar: AppBar(flexibleSpace:
+          backgroundColor: blue1,
+            appBar: AppBar(
+              backgroundColor:selection ,
+              foregroundColor: primary,
+              flexibleSpace:
             Row(
               children: [
 
-                const SizedBox(width: 30,),
+                const SizedBox(width: 50,),
                 CircleAvatar(
                   backgroundColor: Colors.grey,
                   radius: 25,
@@ -111,7 +116,7 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                 Text(
                   userdata['username'],
                   style: const TextStyle(
-                      color: Colors.black, fontSize: 25),
+                      color: Colors.white, fontSize: 25),
                 ),
               ],
             ),
@@ -127,15 +132,6 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
               ):
                           StreamBuilder(
                               stream:
-                            /*
-                              FirebaseFirestore.instance
-                                  .collection('Massages')
-                              .where('recevierId', isEqualTo:
-                              FirebaseAuth.instance.currentUser!.uid ).
-                              where('senderId', isEqualTo: ReciverID)
-                                  .snapshots(),
-                             */
-
                               FirebaseFirestore.instance
                                   .collection('Users').doc(user.uid)
                                   .collection('chats').doc(ReciverID)
@@ -165,8 +161,11 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
 
                 ),
 
-          bottomNavigationBar: SafeArea(
+          bottomNavigationBar:
+          SafeArea(
+
             child: Container(
+              color: primary,
               margin:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
               padding: const EdgeInsets.only(left: 16, right: 8),

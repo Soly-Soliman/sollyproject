@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 
 import '../Components/User.dart';
+import '../Utils/colors.dart';
 class FeedUsersScreen extends StatefulWidget {
   const FeedUsersScreen ({ Key? key }) : super(key: key);
 
@@ -16,9 +17,15 @@ class _FeedUsersScreenState extends State<FeedUsersScreen> {
     final width =MediaQuery.of(context).size.width;
 
     return Scaffold(
-        body:  SafeArea
-           (
+      backgroundColor:blue1 ,
+
+
+      body:  SafeArea
+
+
+      (
           child: Column(
+
             children: [
               Container(
                 color: Colors.black,

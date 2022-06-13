@@ -10,6 +10,7 @@ import 'package:graduation_1/screens/signup_screen.dart';
 import '../Responsive/Responsive_layout_Screen.dart';
 import '../Responsive/mobile_screen_layout.dart';
 import '../Responsive/web_screen_layout.dart';
+import '../Utils/colors.dart';
 
 class LoginScreen extends StatefulWidget{
   const LoginScreen({Key?key}) :super(key: key) ;
@@ -61,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen>{
   Widget build(BuildContext context)
   {
     return Scaffold(
+      backgroundColor:blue1 ,
       body: SafeArea(
         child: Container(
           padding: MediaQuery.of(context).size.width> webScreenSize
