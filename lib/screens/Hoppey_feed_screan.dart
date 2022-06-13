@@ -24,7 +24,7 @@ class _HoppyFeedScreenState extends State<HoppyFeedScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
-          title: const Text('Flutter Demo Project 03',),
+          title: const Text('Learn Hobby',),
           centerTitle: true,
         ),
       ),

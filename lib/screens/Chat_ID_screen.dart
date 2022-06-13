@@ -218,7 +218,7 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       child: const Icon(
                         Icons.ads_click_rounded,
-                        color: Colors.teal,
+                        color: Colors.blue,
                       ),
                     ),
                   ),

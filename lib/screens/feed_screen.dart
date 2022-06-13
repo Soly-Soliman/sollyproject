@@ -27,9 +27,9 @@ class _FeedScreenState extends State<FeedScreen> {
     return Scaffold(
         appBar: width >webScreenSize ? null
             : AppBar(
-          backgroundColor: Colors.cyan.shade200,
+          backgroundColor: Colors.lightBlue.shade600,
           centerTitle: false,
-          title:  const Text('APP LOGO' ,
+          title:  const Text('HOBBY APP' ,
           style: TextStyle(
             color: tealColor,
           ),
@@ -39,11 +39,11 @@ class _FeedScreenState extends State<FeedScreen> {
               IconButton(onPressed: (){
                   Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
              },
-                       icon: Icon(Icons.search_outlined, color: Colors.teal,),) ,
-           IconButton(onPressed: (){
-             Navigator.push(context,MaterialPageRoute(builder: (context) =>const FeedUsersScreen()));
-           },
-             icon: Icon(Icons.send, color: Colors.white,),) ,
+                       icon: Icon(Icons.search_outlined, color: Colors.white,),) ,
+         //  IconButton(onPressed: (){
+           //  Navigator.push(context,MaterialPageRoute(builder: (context) =>const FeedUsersScreen()));
+        //   },
+         //    icon: Icon(Icons.send, color: Colors.white,),) ,
          ],
         ),
         body:  SafeArea
@@ -56,12 +56,12 @@ class _FeedScreenState extends State<FeedScreen> {
            //     color: Colors.amber,
                 margin: EdgeInsets.only(top: 0,bottom: 2),
 
-                height: 20,
+                height: 37,
                child: Row(
                  children: [
                    Expanded(
                      child: MaterialButton(
-                       color: Colors.blue.shade100,
+                       color: Colors.lightBlue.shade500,
                        onPressed: () {Navigator.push(
                          context,
                          MaterialPageRoute(
@@ -78,7 +78,7 @@ class _FeedScreenState extends State<FeedScreen> {
                    ),
                    Expanded(
                      child: MaterialButton(
-                       color: Colors.blue.shade100,
+                       color: Colors.lightBlue.shade500,
                        onPressed: () {Navigator.push(
                          context,
                          MaterialPageRoute(

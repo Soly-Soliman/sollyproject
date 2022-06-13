@@ -122,7 +122,7 @@ class _SingupScreenState extends State<SingupScreen>{
                       child:IconButton(
                         onPressed: selectImage,
                         icon: const Icon(Icons.add_a_photo,
-                        color: Colors.teal,),
+                        color: Colors.blue,),
                       ),
                   ),
                   ],
@@ -187,7 +187,7 @@ class _SingupScreenState extends State<SingupScreen>{
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),),
                         ),
-                        color: Colors.teal
+                        color: Colors.blue
                     ),
 
                   ),

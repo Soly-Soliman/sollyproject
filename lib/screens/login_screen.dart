@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen>{
                 Text(
                   ' Hiwayah',
                   style: TextStyle(
-                    color: Colors.amber.shade700,
+                    color: Colors.blue,
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen>{
                         borderRadius: BorderRadius.all(
                       Radius.circular(10),),
                       ),
-                    color: Colors.teal
+                    color: Colors.blue
                 ),
 
                 ),
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen>{
                 child:  Container(
                     child: const  Text('Register' ,
                       style: TextStyle(
-                      color: Colors.amber,
+                      color: Colors.blue,
                       fontSize: 20,
                       fontWeight:FontWeight.bold ,
 

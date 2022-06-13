@@ -11,20 +11,545 @@
     "About": "a game in which players attempt to knock a plastic disc into their opponent's goal across a specially designed table that produces a cushion of air to reduce friction",
     "Palace": "Sport club",
     "Age": "20+",
-    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+    "imageURL": "https://th.bing.com/th/id/OIP.goj3ybsd5RLXHiN_wdSooQHaE7?pid=ImgDet&rs=1"
   },
   {
     "HOBBIES": "American football",
     "About": "a form of team game played with an oval ball on a field marked out as a gridiron. Points are scored mainly through touchdowns and field goals. Each side has eleven players on the field at any time.In the US called simply football.",
     "Palace": "Playground",
     "Age": "20+",
-    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+    "imageURL": "https://th.bing.com/th/id/R.916f7e8ce4e39e665fcedec7c2c52c6f?rik=Vp2Zf%2btVhcHbcQ&pid=ImgRaw&r=0"
   },
   {
     "HOBBIES": "Aerobics",
     "About": "vigorous exercises designed to increase cardiovascular efficiency.",
     "Palace": "gym",
     "Age": "16+",
-    "imageURL": "https://www.barrowgroup.org/wp-content/uploads/2018/05/4P4A7125.jpg"
+    "imageURL": "https://www.aileyextension.com/sites/default/files/styles/400x225/public/Latin%20Jazz%20hero.jpg?itok=3gtBbb4v"
+  },
+  {
+    "HOBBIES": "Animal care",
+    "About": "A hobby farmer who wants to raise animals must understand that he or she is responsible for their care. Animals need food, water, exercise and clean shelter everyday. Good hygiene and care can deter health problems. This is the minimum care you should give your farm animals: Provide clean (and unfrozen) water daily.",
+    "Palace": "Farm",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.uuZgLJq-s2ngqaSuyJZq8AHaIK?pid=ImgDet&w=1200&h=1322&rs=1"
+  },
+  {
+    "HOBBIES": "Arcade Games",
+    "About": "An arcade game is a coin-operated entertainment machine, usually installed in public businesses, such as restaurants, bars, and particularly amusement arcades. Most arcade games are video games, pinball machines, electro-mechanical games, redemption games, and merchandisers.",
+    "Palace": "home",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.-vo2gTJZiGoQDDuxUsTx_gHaLG?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Archery",
+    "About": "Archery is the sport, practice, or skill of using a bow to shoot arrows. The word comes from the Latin arcus, meaning bow. Historically, archery has been used for hunting and combat. In modern times, it is mainly a competitive sport and recreational activity. A person who practices archery is typically called an archer, bowman or toxophilite",
+    "Palace": "empty space",
+    "Age": "18+",
+    "imageURL": "https://th.bing.com/th/id/R.63981bba8d6be511540fa98cdbaecc73?rik=G%2b87xVsnFeviFQ&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Archery/Crossbow",
+    "About": "Archery is the sport, practice, or skill of using a bow to shoot arrows. The word comes from the Latin arcus, meaning bow. Historically, archery has been used for hunting and combat. In modern times, it is mainly a competitive sport and recreational activity. A person who practices archery is typically called an archer, bowman or toxophilite",
+    "Palace": "empty space",
+    "Age": "18+",
+    "imageURL": "https://moor-house.org.uk/app/uploads/Archery-2.jpg"
+  },
+  {
+    "HOBBIES": "Architecture",
+    "About": "Architecture is both the process and the product of planning, designing, and constructing buildings or other structures. Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art. Historical civilizations are often identified with their surviving architectural achievements.",
+    "Palace": "location",
+    "Age": "21+",
+    "imageURL": "https://th.bing.com/th/id/R.8f7fd0fe4aed83cc5350aecaa7dbbb3f?rik=2TPVwx9tXbS%2bSw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Aromatherapy",
+    "About": "Aromatherapy is based on the usage of aromatic materials, including essential oils, and other aroma compounds, with claims for improving psychological or physical well-being. It is offered as a complementary therapy or as a form of alternative medicine, the first meaning alongside standard treatments, the second instead of conventional, evidence-based treatments.",
+    "Palace": "perfume shop",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/R.4ff51cfb163c48bfc912e146c5767255?rik=rHg9VySzD7aS%2bg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Art Activities",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "Egypt Public Library",
+    "Age": "all ages",
+    "imageURL": "https://assets.website-files.com/5defbfd220b40f28dec337ba/5e9628b71af25d6cd7160d8d_0411_ArtClasses_Blog2.jpg"
+  },
+  {
+    "HOBBIES": "Art Collecting / Collectibles",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "school",
+    "Age": "all ages",
+    "imageURL": "https://ei.marketwatch.com/Multimedia/2017/09/11/Photos/ZH/MW-FU074_wr_art_20170911194445_ZH.jpg?uuid=30f673b2-974b-11e7-8426-9c8e992d421e"
+  },
+  {
+    "HOBBIES": "Art and Crafts",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "home",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.7ca2a5a171c033b5dc34748343e9f4f8?rik=Nq%2fkSZpGkLA2dQ&riu=http%3a%2f%2fpacelifestyles.com%2fwp-content%2fuploads%2f2020%2f05%2fc50d1ae3deb0bb5d1484d01306ebe54f.png&ehk=gQKjkdG4kd7qoIaLi2qexYEY75k1S3ED47c%2f0UHY%2bRM%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Art collecting",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "Egypt Public Library",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.bGz-mdny7p07n4IDB6KEBQHaE6?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Art/antique collecting",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "Egypt Public Library",
+    "Age": "all ages",
+    "imageURL": "https://cdn.u2.wrvc.co.uk/cag/FA060911/975.jpg?width=1600"
+  },
+  {
+    "HOBBIES": "Arts and Crafts",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "home",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.493dea4b336601192f6ceae23a474251?rik=0ZnsMnLdBFKjmQ&riu=http%3a%2f%2fwww.thepeacefulnestblog.com%2fwp-content%2fuploads%2f2019%2f06%2f044-1-e1561470953469-scaled.jpg&ehk=HGPFG0TY7AFg%2ff35Cg%2bUd0DemHDMVrzSLlkhoM%2bdJAw%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Arts/cultural",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "Egypt Public Library",
+    "Age": "all ages",
+    "imageURL": "https://www.moroccoworldnews.com/wp-content/uploads/2017/04/ubudesque-party.jpg"
+  },
+  {
+    "HOBBIES": "Artwork",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "school",
+    "Age": "all ages",
+    "imageURL": "https://www.100hdwallpapers.com/wallpapers/2560x1440/cheetah_artwork-hd_wallpapers.jpg"
+  },
+  {
+    "HOBBIES": "Association football",
+    "About": "Association football, more commonly known as simply football or soccer, is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport. The game is played on a rectangular field called a pitch with a goal at each end. The objective of the game is to score more goals than the opposition by moving the ball beyond the goal line into the opposing goal, usually within a time frame of 90 or more minutes.",
+    "Palace": "club",
+    "Age": "7+",
+    "imageURL": "https://daily.jstor.org/wp-content/uploads/2015/06/FIFA_Logo_1050x700.jpg"
+  },
+  {
+    "HOBBIES": "Astrology",
+    "About": "the study of the movements and relative positions of celestial bodies interpreted as having an influence on human affairs and the natural world.",
+    "Palace": "college",
+    "Age": "22+",
+    "imageURL": "https://th.bing.com/th/id/R.aa6c83b07ce318a6af80367614555383?rik=yqcQ7dn4HGMIAw&riu=http%3a%2f%2freviews.hubgarden.com%2fimages%2fastrology-answers1.jpg&ehk=qkMDs%2bN%2bn%2fAQ8GRLJiMarbO68FZc5iICaCZZFegouOE%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Astronomy",
+    "About": "the branch of science which deals with celestial objects, space, and the physical universe as a whole",
+    "Palace": "college",
+    "Age": "24+",
+    "imageURL": "https://th.bing.com/th/id/OIP.LvHdOkJbkfa_8aCyf-fqegHaE9?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Auto racing",
+    "About": "Auto racing (also known as car racing, motor racing, or automobile racing) is a motorsport involving the racing of automobiles for competition. Auto racing has existed since the invention of the automobile. Races of various sorts were organised, with the first recorded as early as 1867.",
+    "Palace": "empty roads",
+    "Age": "24+",
+    "imageURL": "https://th.bing.com/th/id/R.413fe1be37de8f8b8f53f11628ff0336?rik=Qh%2fgeC2ykBOxXQ&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Automotive work/repair",
+    "About": "The automotive industry comprises a wide range of companies and organizations involved in the design, development, manufacturing, marketing, and selling of motor vehicles. It is one of the world's largest industries by revenue. It is also the industry with the highest spending on research & development.",
+    "Palace": "car workshop",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/OIP.nemITSm-8fJHDqkr8fLP_QEsDI?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Ballet",
+    "About": "an artistic dance form performed to music, using precise and highly formalized set steps and gestures. Classical ballet, which originated in Renaissance Italy and established its present form during the 19th century, is characterized by light, graceful movements and the use of pointe shoes with reinforced toes.",
+    "Palace": "Captin Jii Fitness Centre",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/R.22e52ff87c243d1f58f14856d647388b?rik=XwsP9UG4OeyL%2bw&riu=http%3a%2f%2ffavim.com%2forig%2f201104%2f05%2fFavim.com-13624.jpg&ehk=MdOH%2bzKTbJYd5Pm4LX7Z20S7jXrZEw947RBh62Yekak%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Ballet Dancing",
+    "About": "an artistic dance form performed to music, using precise and highly formalized set steps and gestures. Classical ballet, which originated in Renaissance Italy and established its present form during the 19th century, is characterized by light, graceful movements and the use of pointe shoes with reinforced toes.",
+    "Palace": "Captin Jii Fitness Centre",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/R.11b8f3ced6d55a49003963d369f384cc?rik=52E4Lo2tA9bNng&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Ballooning",
+    "About": "the sport or pastime of flying in a balloon.",
+    "Palace": "empty palce",
+    "Age": "20+",
+    "imageURL": "https://moniqueliveslife.com/wp-content/uploads/2017/10/img_4729.jpg"
+  },
+  {
+    "HOBBIES": "Baseball",
+    "About": "a ball game played between two teams of nine on a diamond-shaped circuit of four bases. It is played chiefly as a warm-weather sport in the US and Canada.",
+    "Palace": "united states or canada",
+    "Age": "21+",
+    "imageURL": "https://th.bing.com/th/id/R.c87e1d533e280bd978ded3e74bda6c77?rik=wsLFS%2bXh07EeVw&riu=http%3a%2f%2fwww.themindseye.net%2fwp-content%2fuploads%2f2019%2f07%2fMLB.jpg&ehk=X7RNGcYh%2bvHmhKkqIHSupwaAZA4Y%2bnoHrmlgJbNzYjw%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Basketball",
+    "About": "a game played between two teams of five players in which goals are scored by throwing a ball through a netted hoop fixed at each end of the court.",
+    "Palace": "club",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/OIP.ZHXSxgWg7YCG9Q8HRKbGnQHaFm?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Beach Volleyball",
+    "About": "a form of volleyball played on sand by teams of two players.",
+    "Palace": "sandy playground",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/OIP.LHf8IppmAeJ9j-LsWHbRDAHaE7?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Beatboxing",
+    "About": "Beatboxing is a form of vocal percussion primarily involving the art of producing drum beats, rhythm, and musical sounds using one's mouth, lips, tongue, and voice. It may also involve singing, vocal imitation of turntablism, and the simulation of horns, strings, and other musical instruments.",
+    "Palace": "the threater",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP._QDpo76loTxBvzEJCNNEGgHaHa?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Bicycling",
+    "About": "a vehicle consisting of two wheels held in a frame one behind the other, propelled by pedals and steered with handlebars attached to the front wheel.",
+    "Palace": "empty roads",
+    "Age": "10+",
+    "imageURL": "https://www.hearst.com/documents/33329/261843/Bicycling-carousel-1_2560x1440.jpg/341d5b0c-fc53-fcbe-a3ce-9bf76d9e6551?t=1548788317528"
+  },
+  {
+    "HOBBIES": "Billiards",
+    "About": "a game for two people, played on a billiard table, in which three balls are struck with cues into pockets round the edge of the tabl, with points scored by cannons, pocketing an object ball, or cannoning the cue ball into a pocket. In North America the game is known as English billiards.",
+    "Palace": "Billiard Hall",
+    "Age": "all ages",
+    "imageURL": "https://images.squarespace-cdn.com/content/v1/5d9e4c16d79eda4ae8faac69/1622736711210-SNEAHC5T882BX5YUBVBY/DSC01949.jpg?format=1000w"
+  },
+  {
+    "HOBBIES": "Bird watching",
+    "About": "Birdwatching, or birding, is the observing of birds, either as a recreational activity or as a form of citizen science.",
+    "Palace": "any whrere",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.9YOHGyJp5C1FLzbtyoVy5gHaE7?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Blacksmithing",
+    "About": "The word blacksmith refers to iron, which turns black when heated and exposed to oxygen, and the word smith which means �to strike.� A blacksmith is a type of metalworker who specializes in working with iron or steel by heating it up and striking it with a hammer to shape it",
+    "Palace": "Blacksmith shop",
+    "Age": "25+",
+    "imageURL": "https://th.bing.com/th/id/OIP.-zZnt7c5bFxioRQugf6RvwHaE8?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Book collecting",
+    "About": "Book collecting is the collecting of books, including seeking, locating, acquiring, organizing, cataloging, displaying, storing, and maintaining whatever books are of interest to a given individual collector. The love of books is bibliophilia, and someone who loves to read, admire, and collect books is a bibliophile.",
+    "Palace": "library",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.c6169ecea8b8ff7b27a3f6a5df9ca917?rik=oTL80VjmqjrRbQ&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Bowling",
+    "About": "Bowling is a target sport and recreational activity in which a player rolls a ball toward pins or another target. The term bowling usually refers to pin bowling, though in the United Kingdom and Commonwealth countries, bowling could also refer to target bowling, such as lawn bowls.",
+    "Palace": "bowling alley",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/R.bc8f0cf2930fa3d3c2249c2fe3ae49c9?rik=D4nD1W8%2fGpMJQg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Boxing",
+    "About": "the sport or practice of fighting with the fists, especially with padded gloves in a roped square ring according to prescribed rules",
+    "Palace": "Arena",
+    "Age": "22+",
+    "imageURL": "https://th.bing.com/th/id/OIP.7YN-POz9sYchKuyh3roQuAHaEK?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Camping",
+    "About": "Camping is an outdoor activity involving overnight stays away from home, either without shelter or using basic shelter such as a tent or a recreational vehicle. Typically participants leave developed areas to spend time outdoors in more natural ones in pursuit of activities providing them enjoyment or an educational experience. The night spent outdoors distinguishes camping from day-tripping, picnicking, and other similarly short-term recreational activities.",
+    "Palace": "desert or forest",
+    "Age": "25+",
+    "imageURL": "https://th.bing.com/th/id/R.4cfb3ebe4bc09ce6fde45903297a2b0c?rik=nI%2fXNNiJSBrNbw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "racing",
+    "About": "Auto racing (also known as car racing, motor racing, or automobile racing) is a motorsport involving the racing of automobiles for competition. Auto racing has existed since the invention of the automobile. Races of various sorts were organised, with the first recorded as early as 1867.",
+    "Palace": "empty roads",
+    "Age": "24+",
+    "imageURL": "https://th.bing.com/th/id/R.8c5c231e59fd358fd677e28d36502c04?rik=tJptqCYjf335%2bw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Chess",
+    "About": "a board game of strategic skill for two players, played on a chequered board on which each playing piece is moved according to precise rules. The object is to put the opponent's king under a direct attack from which escape is impossible (checkmate)",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.d7aadf076fa6beba5c743f5a5fc2e97e?rik=MxZMizH657jq3g&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Climbing",
+    "About": "the sport or activity of climbing mountains or cliffs.",
+    "Palace": "mountains",
+    "Age": "25+",
+    "imageURL": "https://th.bing.com/th/id/R.a92d0bf8a7bb268e9b47c6b643f7fa5b?rik=pbq4obJ%2bfrIwdg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Coloring",
+    "About": "change the colour of (something) by painting, dyeing, or shading it.",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.jLoDV1IC6kBbU6-u__TQGAHaEh?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Computer activities",
+    "About": "gaming or watching movies",
+    "Palace": "home",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.a0358b38e15f03c93945fd63265fb746?rik=6lHEVUBLk0n5Gw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Computer programming",
+    "About": "Computer programming is the process of performing a particular computation (or more generally, accomplishing a specific computing result)",
+    "Palace": "center or college",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.3bea241d8ce889f32bc8cefd7b245e15?rik=JlQPZX83%2b7hhPg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-odSJ9e-AYTo%2fUwZ8qIhhGqI%2fAAAAAAAABks%2fEZdOY1R5E5E%2fs1600%2fComputer%2bProgramming.jpg&ehk=0xduxBHMd9zX0v%2bqy0DaRW%2fMecsJ%2bb0vTOVmaVTnGQg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
+  },
+  {
+    "HOBBIES": "Cooking",
+    "About": "Cooking, cookery, or culinary arts is the art, science and craft of using heat to prepare food for consumption. Cooking techniques and ingredients vary widely, from grilling food over an open fire to using electric stoves, to baking in various types of ovens, reflecting local conditions.",
+    "Palace": "kitchen",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/OIP.2dh1L1PlKYljuGeCWP-2RwHaEK?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "cycling",
+    "About": "a vehicle consisting of two wheels held in a frame one behind the other, propelled by pedals and steered with handlebars attached to the front wheel.",
+    "Palace": "empty roads",
+    "Age": "10+",
+    "imageURL": "https://www.logolynx.com/images/logolynx/3b/3be69ad1fbd1b8bed139d5e58f6dde5a.jpeg"
+  },
+  {
+    "HOBBIES": "Dance",
+    "About": "Dance is a performing art form consisting of sequences of movement, either improvised or purposefully selected. This movement has aesthetic and often symbolic value. Dance can be categorized and described by its choreography, by its repertoire of movements, or by its historical period or place of origin.",
+    "Palace": "the threater",
+    "Age": "15+",
+    "imageURL": "https://th.bing.com/th/id/OIP.FG3zmnGwWP35eDBFjl3LwAHaE7?pid=ImgDet&w=1200&h=798&rs=1"
+  },
+  {
+    "HOBBIES": "Dancing",
+    "About": "Dance is a performing art form consisting of sequences of movement, either improvised or purposefully selected. This movement has aesthetic and often symbolic value. Dance can be categorized and described by its choreography, by its repertoire of movements, or by its historical period or place of origin.",
+    "Palace": "the threater",
+    "Age": "15+",
+    "imageURL": "https://www.trbimg.com/img-53f66383/turbine/ct-dancing-festival-review"
+  },
+  {
+    "HOBBIES": "Dominoes",
+    "About": "the game played with dominoes, in which they are laid down to form a line, each player in turn trying to find and lay down a domino with a value matched by that of a piece at either end of the line already formed.",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://i.ytimg.com/vi/YnM_E2IsgXM/maxresdefault.jpg"
+  },
+  {
+    "HOBBIES": "Driving",
+    "About": "the control and operation of a motor vehicle",
+    "Palace": "roads",
+    "Age": "18+",
+    "imageURL": "https://th.bing.com/th/id/R.ccf30c8e8ef48305d01bfbae38a77b9f?rik=0JAYKccchNQSfw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Drawing",
+    "About": "the expression or application of human creative skill and imagination, typically in a visual form such as painting or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
+    "Palace": "school",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.adAFpmdhU6lg2p3T1Uk7UgHaFj?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Eating out",
+    "About": "  plenty of times, when people talk about eating out, they mean eating at a restaurant as opposed to at home",
+    "Palace": "restaurant",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.a2bb82d0a4407ac720b236c5efcdbf1b?rik=hKj%2fI0KOIMeZOA&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Exercise",
+    "About": "activity requiring physical effort, carried out to sustain or improve health and fitness.",
+    "Palace": "gym",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.5792ff0bd38ffa2525b503990d32fb53?rik=t6hN45Nh6Oq7hg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Fishing",
+    "About": "the activity of catching fish, either for food or as a sport.",
+    "Palace": "river",
+    "Age": "12+",
+    "imageURL": "https://th.bing.com/th/id/R.88580235432092719f0aa0fe82b3ecd5?rik=VysCaNM3e3njKA&riu=http%3a%2f%2fwww.fantaseacharters.com%2fmedia%2fattachments%2fview%2fimg%2fdown_rigging_fishing_rod%2fjpg&ehk=7ACdvAM6O8HEhETPZk1jQyK4MhG0qXytAt9YdLyU0RU%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Football",
+    "About": "Association football, more commonly known as simply football or soccer, is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport. The game is played on a rectangular field called a pitch with a goal at each end. The objective of the game is to score more goals than the opposition by moving the ball beyond the goal line into the opposing goal, usually within a time frame of 90 or more minutes.",
+    "Palace": "club",
+    "Age": "7+",
+    "imageURL": "https://th.bing.com/th/id/OIP.wMmdxrJOJGj96CcRD7e4GQHaEU?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Golf",
+    "About": "a game played on a large open-air course, in which a small hard ball is struck with a club into a series of small holes in the ground, the object being to use the fewest possible strokes to complete the course.",
+    "Palace": "open-air",
+    "Age": "25+",
+    "imageURL": "https://th.bing.com/th/id/R.63b47b20afdb6c7522ae7db29816b772?rik=O5pUpO97CiZNSw&riu=http%3a%2f%2fcroatia.hr%2fsites%2fdefault%2ffiles%2f2017-11%2fshutterstock_158881226_golf_0.jpg&ehk=BKZjSah1T5Qx%2f98AuUV0UAayV3PFcklOAKiuexIA8y4%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Golfing",
+    "About": "a game played on a large open-air course, in which a small hard ball is struck with a club into a series of small holes in the ground, the object being to use the fewest possible strokes to complete the course.",
+    "Palace": "open-air",
+    "Age": "25+",
+    "imageURL": "https://th.bing.com/th/id/R.d8a239abdb25e7447ab2d8489602df53?rik=IwuI3rJ3i%2fNCfw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Handball",
+    "About": "Handball is a team sport in which two teams of seven players each pass a ball using their hands with the aim of throwing it into the goal of the other team. A standard match consists of two periods of 30 minutes, and the team that scores more goals wins",
+    "Palace": "club",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/R.7e3f40703f9f5c2f719ee32bad6d7b04?rik=ZMAQVAGf50c18w&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Horse riding",
+    "About": "the sport or activity of riding horses.",
+    "Palace": "open-air",
+    "Age": "18+",
+    "imageURL": "https://th.bing.com/th/id/OIP.1xlYscjEW8EUZy_ANLILaQHaE8?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Hunting",
+    "About": "Hunting is the practice of seeking, pursuing and capturing or killing wildlife or feral animals. The most common reasons for humans to hunt are to harvest useful animal products, for recreation/taxidermy, to remove predators dangerous to humans or domestic animals, to eliminate pests and nuisance animals that damage crops/livestock/poultry or spread diseases, for trade/tourism, or for ecological conservation against overpopulation and invasive species.",
+    "Palace": "open-air",
+    "Age": "21+",
+    "imageURL": "https://th.bing.com/th/id/R.71f1d21cf1ab3e09c12fc71f89c16ad6?rik=rDBT59uqsQRsVg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Ice hockey",
+    "About": "a fast contact sport played on an ice rink between two teams of six skaters, who attempt to drive a small rubber disc or puck into the opposing goal with hooked or angled sticks. It developed from field hockey in Canada in the second half of the 19th century.",
+    "Palace": "ice rink",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/R.4536541a364d9d4def47952b3a45116a?rik=hp6njldMyt8YFg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Ice skating",
+    "About": "a fast contact sport played on an ice rink between two teams of six skaters, who attempt to drive a small rubber disc or puck into the opposing goal with hooked or angled sticks. It developed from field hockey in Canada in the second half of the 19th century.",
+    "Palace": "ice rink",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/R.5c9aae9a5cd5db782605f56763357dae?rik=ZAnJ0HmB9E1naA&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Photography",
+    "About": "Photography is the art, application, and practice of creating durable images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It is employed in many fields of science, manufacturing, and business, as well as its more direct uses for art, film and video production, recreational purposes, hobby, and mass communication.",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.09be1384c6bbacfae27b45d23937bb92?rik=8pZZc2yMwfgCqg&riu=http%3a%2f%2fmedia-cache-ec0.pinimg.com%2f736x%2f5b%2fd4%2faa%2f5bd4aafc21b749eb6a721b6c418cf771.jpg&ehk=XHrw%2fzQLFPpTmLbKB12Rc%2fWQKiwTxkZcP3xvUKdbADk%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Shooting",
+    "About": "the action or practice of shooting with a gun.",
+    "Palace": "open-air",
+    "Age": "22+",
+    "imageURL": "https://th.bing.com/th/id/R.a5e5ed1514a50c00583b8d81ca748912?rik=Ic5T6zWoNkh1oA&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Vehicle",
+    "About": "a vehicle consisting of two wheels held in a frame one behind the other, propelled by pedals and steered with handlebars attached to the front wheel.",
+    "Palace": "empty roads",
+    "Age": "10+",
+    "imageURL": "https://th.bing.com/th/id/R.941d20b89dee2b12f16265ff2f89963c?rik=fKzHC2NHPC4HlQ&riu=http%3a%2f%2feasyreach.co.in%2fwp-content%2fuploads%2f2018%2f08%2findustrial-vehicle.jpg&ehk=eJhGnNucxdFw0Rl0ZYkKJNnies9GzPJO%2fnz1EGmPuys%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Video Games",
+    "About": "A video game or computer game is an electronic game that involves interaction with a user interface or input device � such as a joystick, controller, keyboard, or motion sensing device � to generate visual feedback. This feedback is shown on a video display device, such as a TV set, monitor, touchscreen, or virtual reality headset. Video games are often augmented with audio feedback delivered through speakers or headphones, and sometimes with other types of feedback, including haptic technology. Computer games are not all video games�for example text adventure games, computer chess, and so on do not always depend upon a graphics display.",
+    "Palace": "computer games hall",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/OIP.3_5O0Htm_eS-YIHbI93gJAHaE8?pid=ImgDet&w=600&h=400&rs=1"
+  },
+  {
+    "HOBBIES": "Volleyball",
+    "About": "a game for two teams, usually of six players, in which a large ball is hit by hand over a high net, the aim being to score points by making the ball reach the ground on the opponent's side of the court",
+    "Palace": "club",
+    "Age": "18+",
+    "imageURL": "https://th.bing.com/th/id/R.5d05781b7741961366c4ee9e426c6d7c?rik=Aj7zO2w0clUwrg&riu=http%3a%2f%2fwww.washingtonpost.com%2fblogs%2flondon-2012-olympics%2ffiles%2f2012%2f08%2fusvolley.jpg&ehk=AlxxVS5CRjYg8%2b5rH3C3Cz7bVUZiXxtt7GKRG0Z0ojU%3d&risl=&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Writing",
+    "About": "the activity or occupation of composing text for publication.",
+    "Palace": "the threater",
+    "Age": "all ages",
+    "imageURL": "https://www.onlyinfotech.com/wp-content/uploads/2019/08/5-Everyday-Activities-to-Improve-Your-Creative-Writing-Skills-750x430.jpg"
+  },
+  {
+    "HOBBIES": "Yoga",
+    "About": "a Hindu spiritual and ascetic discipline, a part of which, including breath control, simple meditation, and the adoption of specific bodily postures, is widely practised for health and relaxation.",
+    "Palace": "quite place",
+    "Age": "all ages",
+    "imageURL": "https://s3.amazonaws.com/sutra-images/wp-content/uploads/2018/09/27231941/C17_0502_SutraClass_158_WEB-min.jpg"
+  },
+  {
+    "HOBBIES": "Judo",
+    "About": "a sport of unarmed combat derived from ju-jitsu and intended to train the body and mind. It involves using holds and leverage to unbalance the opponent.",
+    "Palace": "Combat games hall",
+    "Age": "20+",
+    "imageURL": "https://th.bing.com/th/id/R.8fd38675ee17553634f0d7ee47313a45?rik=mflZWnvK%2bjvTrg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Jump Roping",
+    "About": "play or exercise using a skipping rope",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://sa1s3optim.patientpop.com/assets/images/provider/photos/1757899.jpg"
+  },
+  {
+    "HOBBIES": "Kitchen",
+    "About": "Cooking, cookery, or culinary arts is the art, science and craft of using heat to prepare food for consumption. Cooking techniques and ingredients vary widely, from grilling food over an open fire to using electric stoves, to baking in various types of ovens, reflecting local conditions.",
+    "Palace": "kitchen",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/R.d59ed37ccac9ee9daf8d46174edd0d94?rik=z8BFuvpUIlvcxg&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "racing",
+    "About": "Auto racing (also known as car racing, motor racing, or automobile racing) is a motorsport involving the racing of automobiles for competition. Auto racing has existed since the invention of the automobile. Races of various sorts were organised, with the first recorded as early as 1867.",
+    "Palace": "empty roads",
+    "Age": "24+",
+    "imageURL": "https://th.bing.com/th/id/OIP.jFwjHln9NY_Wd-KNNlAsBAHaE7?pid=ImgDet&rs=1"
+  },
+  {
+    "HOBBIES": "Sky diving",
+    "About": "the sport or activity of jumping from an aircraft and performing acrobatic manoeuvres in the air under free fall before landing by parachute",
+    "Palace": "open-air",
+    "Age": "22+",
+    "imageURL": "https://th.bing.com/th/id/R.83c2134f0f32a5666cddffe54ccfcd78?rik=ZtVG3CnQNIm0iQ&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Squash",
+    "About": "Squash is a racket and ball sport played by two or four players in a four-walled court with a small, hollow rubber ball. The players alternate in striking the ball with their rackets onto the playable surfaces of the four walls of the court. The objective of the game is to hit the ball in such a way that the opponent is not able to play a valid return. There are about 20 million people who play squash regularly world-wide in over 185 countries. The governing body of Squash, the World Squash Federation, is recognized by the International Olympic Committee, but the sport is not part of the Olympic Games, despite a number of applications. Supporters continue to lobby for its incorporation in a future Olympic program. The Professional Squash Association organizes the pro tour. The sport is infrequently called \"squash rackets\", to distinguish itself from the related sport of rackets",
+    "Palace": "four-walled court",
+    "Age": "18+",
+    "imageURL": "https://media.istockphoto.com/photos/men-playing-squash-picture-id524068255?k=6&m=524068255&s=170667a&w=0&h=SVDLsYcq13vqPjti6YERDxrdICGvP80zy5vf91NVFIo="
+  },
+  {
+    "HOBBIES": "Swimming",
+    "About": "Swimming is an individual or team racing sport that requires the use of one's entire body to move through water. The sport takes place in pools or open water. Competitive swimming is one of the most popular Olympic sports, with varied distance events in butterfly, backstroke, breaststroke, freestyle, and individual medley. In addition to these individual events, four swimmers can take part in either a freestyle or medley relay. A medley relay consists of four swimmers who will each swim a different stroke, ordered as backstroke, breaststroke, butterfly and freestyle.",
+    "Palace": "pools or open water",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.e0085adaf488de83eef3e7ca076c7a10?rik=CrXz%2fiv9EEA2yw&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Tennis",
+    "About": "Tennis is a racket sport that can be played individually against a single opponent (singles) or between two teams of two players each (doubles). Each player uses a tennis racket that is strung with cord to strike a hollow rubber ball covered with felt over or around a net and into the opponent's court. The object of the game is to manoeuvre the ball in such a way that the opponent is not able to play a valid return",
+    "Palace": "Tennis Court",
+    "Age": "16+",
+    "imageURL": "https://th.bing.com/th/id/R.7851a40011d08c9251e7aca6cf9cbb0f?rik=mSo71w0ZqRAJ9w&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Traveling",
+    "About": "go from one place to another, typically over a distance of some length.",
+    "Palace": "any where",
+    "Age": "all ages",
+    "imageURL": "https://th.bing.com/th/id/R.cbc93ad397141cabc79038eeb586b153?rik=lajB54giWVCt7A&pid=ImgRaw&r=0"
+  },
+  {
+    "HOBBIES": "Soccer",
+    "About": "Association football, more commonly known as simply football or soccer, is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport. The game is played on a rectangular field called a pitch with a goal at each end. The objective of the game is to score more goals than the opposition by moving the ball beyond the goal line into the opposing goal, usually within a time frame of 90 or more minutes.",
+    "Palace": "club",
+    "Age": "7+",
+    "imageURL": "https://th.bing.com/th/id/OIP.dfUUoYCPfEgFy_dp9P6r8gHaHa?pid=ImgDet&rs=1"
   }
 ]

@@ -84,6 +84,7 @@ class _ChatDetailsState extends State<ChatDetails> {
                                   width: 1.0
                               ),
                               borderRadius: BorderRadius.circular(15.0)
+
                           ),
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           child: Row(

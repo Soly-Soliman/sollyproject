@@ -57,7 +57,7 @@ class _PostCardState extends State<PostCard> {
         children: [
           // that is the header to the post and it contains the username his photo  and function delete post
           Container(
-            color: Colors.teal,
+            color: Colors.lightBlue.shade200,
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16)
                 .copyWith(right: 0),
             child: Row(

@@ -216,7 +216,7 @@ class _Add_EventState extends State<Add_Event> {
     if (_file == null) {}
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.lightBlue,
         title: Center(
           child: Text('Create New Event'),
         ),
@@ -245,7 +245,7 @@ class _Add_EventState extends State<Add_Event> {
                 Text(
                   'Event Name',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -265,7 +265,7 @@ class _Add_EventState extends State<Add_Event> {
                 Text(
                   'Discription',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -289,7 +289,7 @@ class _Add_EventState extends State<Add_Event> {
                     Text(
                       'Date',
                       style: TextStyle(
-                        color: Colors.red,
+                        color: Colors.black,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -303,7 +303,7 @@ class _Add_EventState extends State<Add_Event> {
                     Text(
                       'Time',
                       style: TextStyle(
-                        color: Colors.red,
+                        color: Colors.black,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -313,7 +313,7 @@ class _Add_EventState extends State<Add_Event> {
                 Row(
                   children: [
                     RaisedButton(
-                      color: Colors.amber, splashColor: Colors.green,
+                      color: Colors.lightBlue.shade200, splashColor: Colors.blueAccent,
                         mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                     async {
@@ -338,7 +338,7 @@ class _Add_EventState extends State<Add_Event> {
                       child:
                       Text(
                         Date,style: TextStyle(
-                        color: Colors.red
+                        color: Colors.black
                       ),
                       ),
                     ),
@@ -347,7 +347,7 @@ class _Add_EventState extends State<Add_Event> {
                       width: 50,
                     ),
                     RaisedButton(
-                      color: Colors.amber, splashColor: Colors.green,
+                      color: Colors.lightBlue.shade200, splashColor: Colors.blue,
                       mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                       async {
@@ -374,7 +374,7 @@ class _Add_EventState extends State<Add_Event> {
                          "${selectedTime.format(context)}",
                        // "${selectedTime.hourOfPeriod} :${selectedTime.minute}:${selectedTime.period}",
                         style: TextStyle(
-                          color: Colors.red
+                          color: Colors.black
                       ),
                       ),
                     ),
@@ -386,7 +386,7 @@ class _Add_EventState extends State<Add_Event> {
                 Text(
                   'Place',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -415,7 +415,7 @@ class _Add_EventState extends State<Add_Event> {
                 Text(
                   'Image',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -431,7 +431,7 @@ class _Add_EventState extends State<Add_Event> {
                             icon: Icon(
                               Icons.image,
                               size: 40,
-                              color: Colors.amber,
+                              color: Colors.lightBlue,
                             ),
                           )
                         : Container(
@@ -441,7 +441,7 @@ class _Add_EventState extends State<Add_Event> {
                               aspectRatio: 487 / 451,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.red,
+                                  color: Colors.grey,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                   image: DecorationImage(
@@ -470,7 +470,7 @@ class _Add_EventState extends State<Add_Event> {
                               onPressed: clearImage,
                               icon: Icon(
                                 Icons.delete,
-                                color: Colors.red,
+                                color: Colors.blue,
                               ),
                             ),
                           ),
@@ -563,7 +563,7 @@ class _Add_EventState extends State<Add_Event> {
                 ),
                 Container(
                   width: double.infinity,
-                  color: Colors.red,
+                  color: Colors.blue,
                   child: MaterialButton(
                     onPressed: ()=> create_event(user.uid,user.username,user.photoUrl),
                     child: Text(

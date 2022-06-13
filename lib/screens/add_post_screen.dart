@@ -135,7 +135,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         width: 5,
                         height: 55,
                         child: Container(
-                          color: Colors.red,
+                          color: Colors.blue,
                         ),
                       ),
                     ],
@@ -160,7 +160,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     width: 400,
                     padding: const EdgeInsets.all(15),
                     decoration: const BoxDecoration(
-                      color: Colors.indigo,
+                      color: Colors.blueGrey,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
                       ),
@@ -175,10 +175,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
                               horizontal: 10, vertical: 10),
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                            color: Colors.amber.shade900,
+                            color: Colors.lightBlue,
                             borderRadius: const BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: const Text('Add Event ....'),
+                          child: const Text('ADD Event ....'),
+
                         ),
                         IconButton(
                           icon: const Icon(Icons.event),
@@ -199,7 +200,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     padding: const EdgeInsets.all(15),
                     decoration: const BoxDecoration(
-                      color: Colors.amber,
+                      color: Colors.blueGrey,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     child: Row(
@@ -212,10 +213,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           width: 120,
                           padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
-                            color: Colors.indigo,
+                            color: Colors.lightBlue,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: const Text('Add Photo'),
+                          child: const Text('ADD PHOTO'),
                         ),
                         IconButton(
                           icon: const Icon(Icons.upload_outlined),

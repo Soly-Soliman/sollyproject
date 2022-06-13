@@ -56,25 +56,25 @@ setState(() {
                icon: Icon(Icons.home ,
               color:_page==0?  tealColor :secondaryColor , ),
              label: 'Home',
-             backgroundColor:  Colors.teal,) ,
+             backgroundColor:  Colors.blue,) ,
 
              BottomNavigationBarItem(
                icon: Icon(Icons.add_circle_outlined,
                  color:_page==1? tealColor:secondaryColor ,),
                label: 'Events',
-               backgroundColor:  Colors.teal,) ,
+               backgroundColor:  Colors.blue,) ,
 
              BottomNavigationBarItem(
                icon: Icon(Icons.chat,
 
                  color:_page==2? tealColor:secondaryColor ,),
                label: 'Chat',
-               backgroundColor:  Colors.teal,) ,
+               backgroundColor:  Colors.blue,) ,
              BottomNavigationBarItem(
                icon: Icon(Icons.perm_identity,
                  color:_page==3? tealColor:secondaryColor ,),
                label: 'Profile',
-               backgroundColor:  Colors.teal,) ,
+               backgroundColor:  Colors.blue,) ,
            ],
           onTap: navigationtapped,
 

@@ -91,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Container(
                                     padding: const EdgeInsets.all(7),
                                     decoration: BoxDecoration(
-                                           color: Colors.teal,
+                                           color: Colors.blue,
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     width: 200,
@@ -244,7 +244,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         : isFollowing ?
                                     FollowButton(
                                       name: 'Unfollow',
-                                      backgrouncolor: Colors.teal,
+                                      backgrouncolor: Colors.blue,
                                       textcolor: Colors.black,
                                       bordercolor: Colors.grey,
                                       function: () async {
@@ -261,7 +261,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             : FollowButton(
                                                 textcolor: Colors.black,
                                                 name: 'Follow',
-                                                backgrouncolor: Colors.teal,
+                                                backgrouncolor: Colors.blue,
                                                 bordercolor: Colors.grey,
                                                 function: () async {
                                                 await FireStoreMethods()
@@ -280,7 +280,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ],
                                 ),
                                 decoration: BoxDecoration(
-                                    color: Colors.teal,
+                                    color: Colors.blue,
                                     borderRadius: BorderRadius.circular(10)),
                                 height: 100,
                               ),

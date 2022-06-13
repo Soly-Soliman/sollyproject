@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/animatios.dart';
-import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
-import 'package:graduation_1/screens/comments_screen.dart';
 import 'package:graduation_1/screens/eventcomments.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +57,7 @@ class _EventCardState extends State<EventCard> {
         children: [
           // that is the header to the post and it contains the username his photo  and function delete post
           Container(
-            color: Colors.yellowAccent,
+            color: Colors.blue.shade200,
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16)
                 .copyWith(right: 0),
             child: Row(
@@ -140,52 +138,54 @@ class _EventCardState extends State<EventCard> {
             ),
           ),
           Container(
-            child: Row(
-              children: [
-                SizedBox(width: 30,),
-                Column(
-                  children: [
-                    Text('Date : '),
-                    Text('Time : '),
-                    Text('DES VV:  '),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Text(
-                      widget.snapshot['date'],
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      widget.snapshot['time'],
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      widget.snapshot['description'],
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 50,) ,
-                Text('Place : '),
-                Text(
-                  widget.snapshot['description'],
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Row(
+                children: [
+                  SizedBox(width: 30,),
+                  Column(
+                    children: [
+                      Text('Date : '),
+                      Text('Time : '),
+                      Text('DES VV:  '),
+                    ],
                   ),
-                ),
-              ],
+                  Column(
+                    children: [
+                      Text(
+                        widget.snapshot['date'],
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        widget.snapshot['time'],
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        widget.snapshot['description'],
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 50,) ,
+                  Text('Place : '),
+                  Text(
+                    widget.snapshot['description'],
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
 
+              ),
             ),
           ),
           GestureDetector(

@@ -18,8 +18,8 @@ class _CommentCardState extends State<CommentCard> {
       margin: const EdgeInsets.all(10.0),
       padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFE306) ,
-          border: Border.all(color: Colors.blueAccent,),
+        color: const Color(0xFFFFFFFF) ,
+          border: Border.all(color: Colors.blue,),
         borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
         ),
       ),

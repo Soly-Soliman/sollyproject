@@ -19,9 +19,9 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
     return Scaffold(
       appBar: width >webScreenSize ? null
           : AppBar(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: Colors.blue,
         centerTitle: false,
-        title:  const Text('APP LOGO' ,
+        title:  const Text('EVENT' ,
           style: TextStyle(
             color: tealColor,
           ),
@@ -31,7 +31,7 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
           IconButton(onPressed: (){
             Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
           },
-            icon: const Icon(Icons.search_outlined, color: Colors.blue,),) ,
+            icon: const Icon(Icons.search_outlined, color: Colors.white),) ,
 
         ],
       ),

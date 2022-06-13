@@ -25,7 +25,7 @@ class _SearchChatScreenState extends State<SearchChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blue,
         title: Form(
           child: TextFormField(
             controller: searchController,

@@ -28,7 +28,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
     final User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blue,
         title: const Text(
           'Comments',
           style: TextStyle(color: Colors.black),
@@ -112,7 +112,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                   child: const Icon(
                     Icons.ads_click_rounded,
-                    color: Colors.teal,
+                    color: Colors.blue,
                   ),
                 ),
               ),
