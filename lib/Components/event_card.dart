@@ -8,8 +8,10 @@ import 'package:graduation_1/screens/eventcomments.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../Utils/colors.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
+import '../screens/google_map_screen.dart';
 
 class EventCard extends StatefulWidget {
   final snapshot;
@@ -51,19 +53,23 @@ class _EventCardState extends State<EventCard> {
     final User user = Provider.of<UserProvider>(context).getUser;
 
     return Container(
-        color: Color(0xFFFFFFFF),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(23),
+        color: const Color(0xFFFFFFFF),
+        
+      ),
+         margin: EdgeInsets.all(6),
+
+  //    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       child: Column(
         children: [
           // that is the header to the post and it contains the username his photo  and function delete post
           Container(
-            color: Colors.blue.shade200,
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16)
-                .copyWith(right: 0),
+
+         //   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16).copyWith(right: 0),
             child: Row(
               children: [
                 CircleAvatar(
-                  radius: 23,
+                  radius: 24,
                   backgroundImage: NetworkImage(
                     widget.snapshot['profileUrl'],
                   ),
@@ -77,29 +83,17 @@ class _EventCardState extends State<EventCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text("Event Name :"),
-                            Text(
-                              widget.snapshot['name'],
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
+
                       ],
                     ),
                   ),
                 ),
-                Container(
-                  child: Text(
-                    DateFormat.yMd().format(
-                      widget.snapshot['dataPublished'].toDate(),
-                    ),
-                    // ' ${}',
-                    style: const TextStyle(fontSize: 16, color: Colors.black),
+                Text(
+                  DateFormat.yMd().format(
+                    widget.snapshot['dataPublished'].toDate(),
                   ),
+                  // ' ${}',
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 IconButton(
                   onPressed: () {
@@ -115,7 +109,7 @@ class _EventCardState extends State<EventCard> {
                               .map(
                                 (e) => InkWell(
                               onTap: () async{
-                                FireStoreMethods().deletepost(widget.snapshot['EventID']) ;
+                                FireStoreMethods().deleteevent(widget.snapshot['EventID']) ;
                                 Navigator.of(context).pop();
                               },
                               child: Container(
@@ -137,57 +131,7 @@ class _EventCardState extends State<EventCard> {
               ],
             ),
           ),
-          Container(
-            child: SingleChildScrollView(
-              child: Row(
-                children: [
-                  SizedBox(width: 30,),
-                  Column(
-                    children: [
-                      Text('Date : '),
-                      Text('Time : '),
-                      Text('DES VV:  '),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        widget.snapshot['date'],
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        widget.snapshot['time'],
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        widget.snapshot['description'],
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 50,) ,
-                  Text('Place : '),
-                  Text(
-                    widget.snapshot['description'],
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
 
-              ),
-            ),
-          ),
           GestureDetector(
             onDoubleTap: () async {
               await FireStoreMethods().likedPost(widget.snapshot['EventID'],
@@ -197,29 +141,185 @@ class _EventCardState extends State<EventCard> {
               });
             },
             child: Stack(
+              
               alignment: Alignment.center,
               children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.35,
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: Image.network(
-                    widget.snapshot['EventUrl'],
-                    //    fit: BoxFit.scaleDown,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        width: 230,
+              //          color: Colors.pink,
+                        child: Image.network(
+                          widget.snapshot['EventUrl'],
+                          //    fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 5,),
+                    Expanded(
+
+                          child:
+                              Container(
+                             //   color: Colors.cyan.shade200,
+                                child: Column(
+
+                                  children:  [
+                                    Container(
+   //                                 color: Colors.purple,
+                                      height: 40,
+                                      width: 180,
+                                      child: Row(
+                                        children: [
+                                        /*
+                                          const Text("Event : " ,  style: const TextStyle(
+                                            color: Colors.black,
+
+                                            fontSize: 20,
+                                          ),),
+                                         */
+                                          Text(
+                                            widget.snapshot['name'],
+                                            style: const TextStyle(
+
+                                              fontSize: 20,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(height: 2,color: Colors.black,),
+                                    Container(
+                                      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(7),
+                                     //   color: Colors.yellowAccent,
+                                      ),
+
+                                      height: 40,
+                                      width: 180,
+                                      child: Row(
+                                        children:  [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.calendar_today_outlined ,size: 14,),
+                                                  Text('Date : ' , style: const TextStyle(
+
+                                                    fontSize: 18,
+                                                  ),),
+                                                ],
+                                              ),
+                                              Container(width: 70,height: 1,color: Colors.black,) ,
+                                              Text(
+                                                widget.snapshot['date'],
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                         SizedBox(width: 30,),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+
+                                              Row(
+                                                children: [
+                                                  Icon(Icons.timer ,size: 14,),
+
+                                                  Text('Time : ', style: const TextStyle(
+
+                                                    fontSize: 18,
+                                                  ),),
+                                                ],
+                                              ),
+                                              Container(width: 70,height: 1,color: Colors.black,) ,
+                                              Text(
+                                                widget.snapshot['time'],
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(height: 2,color: Colors.black,) ,
+                                    SizedBox(height: 5,),
+                                    Row(
+                                      children: [
+                                        Text('Place : ' ,
+                                          style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18 ,
+                                        ),),
+                                        Container(
+                                      //    color: Colors.yellow,
+                                          width: 120,
+                                          child: Text(
+                                            widget.snapshot['place'],
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    ),
+
+                                    Divider(height: 2,color: Colors.black,) ,
+                                    SizedBox(height: 5,),
+                                    Container(
+                                      width: 170,
+                                //      color: Colors.yellowAccent,
+                                      child: Row(
+                                        children:  [
+                                          Container(
+                                            width: 170,
+                                            child: Text(
+                                              widget.snapshot['description'],
+                                              style: const TextStyle(
+                                                color: Colors.black,
+
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(height: 2,color: Colors.black,) ,
+
+                                  ],
+                                ),
+                              ),
+
+
+                        ),
+
+                  ],
                 ),
                 AnimatedOpacity(
-                  duration: const Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds:100),
                   opacity: isLikeAnimating ? 1 : 0,
                   child: Like_Animation(
                     child: const Icon(
                       Icons.favorite,
-                      color: Colors.indigo,
+                      color: Colors.pink,
                       size: 130,
                     ),
                     isAnimating: isLikeAnimating,
                     smallLike: true,
-                    duration: const Duration(milliseconds: 400),
+                    duration: const Duration(milliseconds: 200),
                     onEnd: () {
                       setState(() {
                         isLikeAnimating = false;
@@ -230,9 +330,7 @@ class _EventCardState extends State<EventCard> {
               ],
             ),
           ),
-          const Divider(
-            color: Colors.black,
-          ),
+
           //the next row is to the last part and it contains likes & comment
           Row(
             children: [
@@ -247,11 +345,11 @@ class _EventCardState extends State<EventCard> {
                         widget.snapshot['likes']);
                   },
                   icon: widget.snapshot['likes'].contains(user.uid)
-                      ? Icon(
+                      ? const Icon(
                     Icons.people,
                     color: Colors.red,
                   )
-                      : Icon(
+                      : const Icon(
                     Icons.person,
                     color: Colors.black,
                   ),
@@ -265,7 +363,7 @@ class _EventCardState extends State<EventCard> {
                     ),
                   ),
                 ),
-                icon: Icon(
+                icon: const Icon(
                   Icons.quickreply,
                   color: Colors.black,
                 ),
@@ -292,19 +390,19 @@ class _EventCardState extends State<EventCard> {
                                         Navigator.of(context).pop();
                                       },
                                     ),
-                                    Icon(Icons.send),
+                                    const Icon(Icons.send),
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Share',
                                     ),
                                     IconButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      icon: Icon(Icons.repeat),
+                                      icon: const Icon(Icons.repeat),
                                     ),
                                   ],
                                 ),
@@ -314,7 +412,7 @@ class _EventCardState extends State<EventCard> {
                     ),
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.repeat,
                   color: Colors.black,
                 ),
@@ -322,9 +420,21 @@ class _EventCardState extends State<EventCard> {
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.bookmarks_outlined),
+
+                  child: Stack(
+
+                    children: [
+                    CircleAvatar(
+                      backgroundColor:selection2 ,
+                      radius: 24,
+                      child: IconButton(
+                            color: Colors.white,
+                        onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);},
+                        icon: const Icon(Icons.location_on ,size: 25)
+                      ),
+                    ),
+                    //  Positioned(child: Text('MAP') ,left: 9,bottom: 35,)
+                    ]
                   ),
                 ),
               ),
@@ -339,7 +449,7 @@ class _EventCardState extends State<EventCard> {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 8.0,
                   ),
                 /* child: RichText(

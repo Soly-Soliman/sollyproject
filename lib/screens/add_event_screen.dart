@@ -402,14 +402,16 @@ class _Add_EventState extends State<Add_Event> {
                   ),
                 ),
                FlatButton(
+                 color: Colors.purple.shade200,
                  onPressed:()
                  {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
-                //   {showPlacePicker();}
+                 ,child: Row(
+                   children: [
+                      Icon(Icons.location_on,size: 25, color: Colors.black,),
+                     const Text('Click  go to the Map'),
 
-                  // ()=>GoogleMapPage()
-
-
-                 ,child: const Text('map'),) ,
+                   ],
+                 ),) ,
                 const SizedBox(
                   height: 20.0,
                 ),

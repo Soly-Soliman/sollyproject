@@ -17,13 +17,14 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
   Widget build(BuildContext context) {
     final width =MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: blue1,
       appBar: width >webScreenSize ? null
           : AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: selection,
         centerTitle: false,
-        title:  const Text('EVENT' ,
+        title:  const Text('Events' ,
           style: TextStyle(
-            color: tealColor,
+            color: primary,
           ),
         ),
         //هنا المفروض هيبقي اللوجو
@@ -40,23 +41,6 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
 
           child: Column(
             children: [
-              Container(
-                //     color: Colors.amber,
-                margin: const EdgeInsets.only(top: 2,bottom: 2),
-                padding: const EdgeInsets.only(top: 2),
-                height: 20,
-                child: Row(
-                  children: [
-
-                  ],
-                ),
-              ),
-              Container(
-                color: Colors.black,
-                height: 2,
-              ),
-
-
                Expanded(
                 child:
                 StreamBuilder(
@@ -83,36 +67,9 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
                     );
                   }
               ),)
-
-
             ],
           )
       ),
-
-      /*  StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('posts').snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
-                {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                   return const Center(
-                     child: CircularProgressIndicator(),
-                );
-           }
-                return ListView.builder(
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index)=>Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: width >webScreenSize?width*0.3 :0 ,
-                        vertical: width >webScreenSize?15 :0 ,
-                    ),
-                    child: PostCard(
-                    snapshot: snapshot.data!.docs[index].data() ,
-
-                    ),
-                  ),
-                );
-          }
-        ),*/
     );
   }
 
