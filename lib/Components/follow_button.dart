@@ -23,23 +23,29 @@ class FollowButton extends StatelessWidget {
      padding: const EdgeInsets.all(5),
       child: InkWell(
           onTap: function,
-          child: Container(
-            decoration: BoxDecoration(
-              color: backgrouncolor,
-              border: Border.all(color: backgrouncolor),
-            // borderRadius: BorderRadius.circular(5),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              style: TextStyle(
-                color: textcolor,
-                fontWeight: FontWeight.bold,
+          
+
+            child: Container(
+
+
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: backgrouncolor,
+                border: Border.all(color: backgrouncolor),
+              // borderRadius: BorderRadius.circular(5),
               ),
+              alignment: Alignment.center,
+              child: Text(
+                name,
+                style: TextStyle(
+                  color: textcolor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+
             ),
-
-
-          )),
+          )
     );
   }
 }

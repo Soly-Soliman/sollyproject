@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/post_card.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/screens/events_feed_screan.dart';
 import 'package:graduation_1/screens/search_screen.dart';
+import 'package:graduation_1/screens/testing_profile.dart';
 import 'AboutAPP.dart';
 import 'Hoppey_feed_screan.dart';
 
@@ -61,7 +63,6 @@ class _FeedScreenState extends State<FeedScreen> {
                 ),
               ],
             ),
-
 
             centerTitle: true,
                     title:  const Text('HOBBY APP' ,
@@ -163,7 +164,7 @@ class _FeedScreenState extends State<FeedScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About()),
+                                      builder: (context) =>  ProfilePage()),
                                 );
                               },
                               child: Container(
