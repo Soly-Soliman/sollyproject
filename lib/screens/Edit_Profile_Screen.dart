@@ -4,6 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:graduation_1/resourses/aut_methods.dart';
 import 'package:graduation_1/screens/login_screen.dart';
 
+import '../Utils/colors.dart';
+
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
              appBar: AppBar(
+               backgroundColor: selection2,
            actions: [
                 IconButton(onPressed: () async{
                   await AuthMethod().SignOut();

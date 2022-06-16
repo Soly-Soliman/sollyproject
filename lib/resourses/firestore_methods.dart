@@ -2,6 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:graduation_1/models/Hobby.dart';
 import 'package:graduation_1/models/Post.dart';
 import 'package:graduation_1/models/comment.dart';
 import 'package:graduation_1/models/event.dart';
@@ -87,6 +88,52 @@ class FireStoreMethods {
     return res ;
 
   }
+
+  Future<String> uploadHobby(
+      String description,
+      String name,
+      String place,
+      String date,
+      String time,
+      Uint8List file,
+      String uid,
+      String username,
+      String profileImageUrl,
+      String Age,
+
+      ) async {
+    String res = ' some error occurred';
+
+    try {
+      String PhotoUrl =  await StorageMethods().uploadImagetoStorage('Hobby', file, true);
+      String HobbyID = const Uuid().v1();
+      Hobby event = Hobby(
+          likes: [],
+          follower: [],
+          username: username,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: description,
+          profileImageUrl: profileImageUrl,
+          time: time,
+          name:name,
+          date: date ,
+          place:place,
+          HobbyUrl: PhotoUrl,
+          HobbyID: HobbyID,
+          Age: Age );
+      _firestore.collection('Hobby').doc(HobbyID).set(
+        event.toJason(),
+      );
+      res ='success' ;
+    } catch (error) {
+      res =error.toString();
+    }
+    return res ;
+
+  }
+
+
   Future <void> likedPost(String postId, String uid,List likes) async{
 
 try{

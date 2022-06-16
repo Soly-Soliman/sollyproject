@@ -26,50 +26,51 @@ class EventCard extends StatefulWidget {
 
 class _EventCardState extends State<EventCard> {
   bool isLikeAnimating = false;
-  int commentLenght =0 ;
+  int commentLenght = 0;
   @override
   void initState() {
     super.initState();
     getComment();
   }
 
-  void getComment() async{
+  void getComment() async {
     try {
-      QuerySnapshot snap = await FirebaseFirestore.instance.collection('events')
-          .doc(widget.snapshot['EventID']).collection('comments')
+      QuerySnapshot snap = await FirebaseFirestore.instance
+          .collection('events')
+          .doc(widget.snapshot['EventID'])
+          .collection('comments')
           .get();
       commentLenght = snap.docs.length;
-    }catch(e){
+    } catch (e) {
       showSnackBar(e.toString(), context);
     }
-    setState(() {
-
-    });
+    setState(() {});
   }
-
 
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
 
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(23),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadiusDirectional.circular(20),
         color: const Color(0xFFFFFFFF),
-        
       ),
-         margin: EdgeInsets.all(6),
+      margin: EdgeInsets.all(6),
 
-  //    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+      //    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       child: Column(
         children: [
           // that is the header to the post and it contains the username his photo  and function delete post
           Container(
-
-         //   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16).copyWith(right: 0),
+            //   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16).copyWith(right: 0),
             child: Row(
               children: [
+                SizedBox(
+                  width: 5,
+                ),
                 CircleAvatar(
-                  radius: 24,
+                  radius: 20,
                   backgroundImage: NetworkImage(
                     widget.snapshot['profileUrl'],
                   ),
@@ -83,7 +84,11 @@ class _EventCardState extends State<EventCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
+                        Text(
+                          widget.snapshot['username'],
+                          style: const TextStyle(
+                              fontSize: 14, color: Colors.black),
+                        ),
                       ],
                     ),
                   ),
@@ -93,7 +98,7 @@ class _EventCardState extends State<EventCard> {
                     widget.snapshot['dataPublished'].toDate(),
                   ),
                   // ' ${}',
-                  style: const TextStyle(fontSize: 16, color: Colors.black),
+                  style: const TextStyle(fontSize: 12, color: Colors.black),
                 ),
                 IconButton(
                   onPressed: () {
@@ -108,17 +113,18 @@ class _EventCardState extends State<EventCard> {
                           children: ['Delete']
                               .map(
                                 (e) => InkWell(
-                              onTap: () async{
-                                FireStoreMethods().deleteevent(widget.snapshot['EventID']) ;
-                                Navigator.of(context).pop();
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16),
-                                child: Text(e),
-                              ),
-                            ),
-                          )
+                                  onTap: () async {
+                                    FireStoreMethods().deleteevent(
+                                        widget.snapshot['EventID']);
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Text(e),
+                                  ),
+                                ),
+                              )
                               .toList(),
                         ),
                       ),
@@ -126,6 +132,7 @@ class _EventCardState extends State<EventCard> {
                   },
                   icon: const Icon(
                     Icons.more_horiz_outlined,
+                    size: 20,
                   ),
                 ),
               ],
@@ -141,175 +148,421 @@ class _EventCardState extends State<EventCard> {
               });
             },
             child: Stack(
-              
               alignment: Alignment.center,
               children: [
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.35,
-                        width: 230,
-              //          color: Colors.pink,
-                        child: Image.network(
-                          widget.snapshot['EventUrl'],
-                          //    fit: BoxFit.scaleDown,
+                      child: InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              child: ListView(shrinkWrap: true, children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.70,
+                                      width: 450,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(0),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                            widget.snapshot['EventUrl'],
+                                          ),
+                                          fit: BoxFit.fill,
+                                          alignment: FractionalOffset.topCenter,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ]),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.32,
+                          width: 230,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  widget.snapshot['EventUrl'],
+                                ),
+                                fit: BoxFit.fill,
+                                alignment: FractionalOffset.topCenter,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 5,),
+                    const SizedBox(
+                      width: 5,
+                    ),
                     Expanded(
-
-                          child:
-                              Container(
-                             //   color: Colors.cyan.shade200,
-                                child: Column(
-
-                                  children:  [
+                      child: InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              backgroundColor:  primary,
+                              child: ListView(shrinkWrap: true, children: [
+                                Column(
+                                  children: [
                                     Container(
-   //                                 color: Colors.purple,
-                                      height: 40,
-                                      width: 180,
-                                      child: Row(
+                                      width: 450,
+                                      margin: EdgeInsets.all(15),
+                                      padding: EdgeInsets.all(15),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(0),
+                                      ),
+                                      child: Column(
                                         children: [
-                                        /*
-                                          const Text("Event : " ,  style: const TextStyle(
-                                            color: Colors.black,
+                                          Row(
+                                            children: [
+                                              SizedBox( height: 10,width: 10,) ,
+                                               Text(
+                                                "Event : ",
+                                                style:  TextStyle(
+                                                  color: webBackgroundColor,
+                                                  fontSize: 20,
 
-                                            fontSize: 20,
-                                          ),),
-                                         */
+                                                ),
+                                              ),
+                                              Text(
+                                                widget.snapshot['name'],
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Divider(color: Colors.grey,),
+                                          SizedBox(height: 30,) ,
                                           Text(
-                                            widget.snapshot['name'],
+                                            widget.snapshot['description'],
                                             style: const TextStyle(
 
                                               fontSize: 20,
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(height: 2,color: Colors.black,),
-                                    Container(
-                                      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(7),
-                                     //   color: Colors.yellowAccent,
-                                      ),
-
-                                      height: 40,
-                                      width: 180,
-                                      child: Row(
-                                        children:  [
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                          Divider(color: Colors.grey, ),
+                                          Row(
                                             children: [
-
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.calendar_today_outlined ,size: 14,),
-                                                  Text('Date : ' , style: const TextStyle(
-
-                                                    fontSize: 18,
-                                                  ),),
-                                                ],
+                                              Icon(
+                                                Icons.calendar_today_outlined,
+                                                size: 18,
                                               ),
-                                              Container(width: 70,height: 1,color: Colors.black,) ,
+                                              SizedBox(width: 12,) ,
+                                              Text(
+                                                'Date : ',
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
                                               Text(
                                                 widget.snapshot['date'],
                                                 style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
                                                 ),
                                               ),
                                             ],
                                           ),
-                                         SizedBox(width: 30,),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                          SizedBox(width: 12,height: 15,) ,
+                                          Row(
                                             children: [
-
-                                              Row(
-                                                children: [
-                                                  Icon(Icons.timer ,size: 14,),
-
-                                                  Text('Time : ', style: const TextStyle(
-
-                                                    fontSize: 18,
-                                                  ),),
-                                                ],
+                                              Icon(
+                                                Icons.timer,
+                                                size: 18,
                                               ),
-                                              Container(width: 70,height: 1,color: Colors.black,) ,
+                                              SizedBox(width: 12,) ,
+                                              Text(
+                                                'Time : ',
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
                                               Text(
                                                 widget.snapshot['time'],
                                                 style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
                                                 ),
                                               ),
                                             ],
                                           ),
+                                          SizedBox(height: 15,) ,
+                                          Row(
+                                            children: [
+                                              Icon(
 
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(height: 2,color: Colors.black,) ,
-                                    SizedBox(height: 5,),
-                                    Row(
-                                      children: [
-                                        Text('Place : ' ,
-                                          style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18 ,
-                                        ),),
-                                        Container(
-                                      //    color: Colors.yellow,
-                                          width: 120,
-                                          child: Text(
-                                            widget.snapshot['place'],
-                                            style: const TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18
-                                            ),
-                                          ),
-                                        ),
-
-                                      ],
-                                    ),
-
-                                    Divider(height: 2,color: Colors.black,) ,
-                                    SizedBox(height: 5,),
-                                    Container(
-                                      width: 170,
-                                //      color: Colors.yellowAccent,
-                                      child: Row(
-                                        children:  [
-                                          Container(
-                                            width: 170,
-                                            child: Text(
-                                              widget.snapshot['description'],
-                                              style: const TextStyle(
-                                                color: Colors.black,
-
-                                                fontSize: 18,
+                                                Icons.place ,
+                                                size: 28,
+                                                color: selection2,
                                               ),
-                                            ),
+                                              SizedBox(width: 12,) ,
+                                              Text(
+                                                'Place : ',
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              Text(
+                                                widget.snapshot['place'],
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                            ],
                                           ),
+                                          Divider(color: Colors.grey, ),
                                         ],
                                       ),
                                     ),
-                                    Divider(height: 2,color: Colors.black,) ,
+                                    Container(
+                                      margin: EdgeInsets.all(15),
+                                      padding: EdgeInsets.all(15),
+                                      child: SingleChildScrollView(
+
+                                      physics: const ClampingScrollPhysics(),
+                                      child:    Row(
+                                        children: [
+                                          Expanded(
+                                            child: FutureBuilder(
+                                                future: FirebaseFirestore.instance
+                                                    .collection('events')
+                                                    .get(),
+                                                builder: (context, snapshot) {
+                                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                                    return const Center(
+                                                      child: CircularProgressIndicator(),
+                                                    );
+                                                  }
+                                                  return GridView.builder(
+                                                    primary: false,
+                                                    shrinkWrap: true,
+                                                    padding: EdgeInsets.zero,
+
+                                                    itemCount: (snapshot.data! as dynamic).docs.length,
+                                                    gridDelegate:
+                                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 4,
+                                                      crossAxisSpacing: 18,
+
+                                                    ),
+                                                    itemBuilder: (context, index) {
+                                                      DocumentSnapshot snap =
+                                                      (snapshot.data! as dynamic).docs[index];
+
+                                                      return InkWell(
+                                                        onTap: (){},
+
+                                                        child: Container(
+                                                          child: Image(
+                                                            fit: BoxFit.fill,
+                                                            image: NetworkImage(snap['EventUrl']),
+                                                          ),
+
+                                                        ),
+                                                      ) ;
+                                                    },
+                                                  );
+                                                }),
+
+                                          ),
+
+
+                                        ],
+                                      ),
+
+
+
+                                        ),
+                                    )
 
                                   ],
                                 ),
+                              ]),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          //   color: Colors.cyan.shade200,
+                          child: Column(
+                            children: [
+                              Container(
+                                //                                 color: Colors.purple,
+                                height: 40,
+                                width: 180,
+                                child: Row(
+                                  children: [
+                                    /*
+                                            const Text("Event : " ,  style: const TextStyle(
+                                              color: Colors.black,
+
+                                              fontSize: 20,
+                                            ),),
+                                           */
+                                    Text(
+                                      widget.snapshot['name'],
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-
-
+                              Divider(
+                                height: 2,
+                                color: Colors.black,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadiusDirectional.circular(7),
+                                  //   color: Colors.yellowAccent,
+                                ),
+                                height: 40,
+                                width: 180,
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.calendar_today_outlined,
+                                              size: 14,
+                                            ),
+                                            Text(
+                                              'Date : ',
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 0,
+                                          height: 3,
+                                        ),
+                                        Text(
+                                          widget.snapshot['date'],
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.timer,
+                                              size: 14,
+                                            ),
+                                            Text(
+                                              'Time : ',
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 0,
+                                          height: 3,
+                                        ),
+                                        Text(
+                                          widget.snapshot['time'],
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                height: 2,
+                                color: Colors.black,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Place : ',
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Container(
+                                    //    color: Colors.yellow,
+                                    width: 120,
+                                    child: Text(
+                                      widget.snapshot['place'],
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                width: 170,
+                                //      color: Colors.yellowAccent,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 170,
+                                      child: Text(
+                                        widget.snapshot['description'],
+                                        maxLines: 4,
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                height: 2,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
                         ),
-
+                      ),
+                    ),
                   ],
                 ),
                 AnimatedOpacity(
-                  duration: const Duration(milliseconds:100),
+                  duration: const Duration(milliseconds: 100),
                   opacity: isLikeAnimating ? 1 : 0,
                   child: Like_Animation(
                     child: const Icon(
@@ -346,13 +599,15 @@ class _EventCardState extends State<EventCard> {
                   },
                   icon: widget.snapshot['likes'].contains(user.uid)
                       ? const Icon(
-                    Icons.people,
-                    color: Colors.red,
-                  )
+                          Icons.people,
+                          color: Colors.red,
+                          size: 28,
+                        )
                       : const Icon(
-                    Icons.person,
-                    color: Colors.black,
-                  ),
+                          Icons.person,
+                          color: Colors.black,
+                          size: 19,
+                        ),
                 ),
               ),
               IconButton(
@@ -366,6 +621,16 @@ class _EventCardState extends State<EventCard> {
                 icon: const Icon(
                   Icons.quickreply,
                   color: Colors.black,
+                  size: 19,
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  child: Text(
+                    ' $commentLenght comments',
+                    style: const TextStyle(fontSize: 16, color: secondaryColor),
+                  ),
                 ),
               ),
               IconButton(
@@ -415,65 +680,34 @@ class _EventCardState extends State<EventCard> {
                 icon: const Icon(
                   Icons.repeat,
                   color: Colors.black,
+                  size: 18,
                 ),
               ),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomRight,
-
-                  child: Stack(
-
-                    children: [
+                  child: Stack(children: [
                     CircleAvatar(
-                      backgroundColor:selection2 ,
+                      backgroundColor: selection2,
                       radius: 24,
                       child: IconButton(
-                            color: Colors.white,
-                        onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);},
-                        icon: const Icon(Icons.location_on ,size: 25)
-                      ),
+                          color: Colors.white,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => GoogleMapPage(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(Icons.location_on, size: 25)),
                     ),
                     //  Positioned(child: Text('MAP') ,left: 9,bottom: 35,)
-                    ]
-                  ),
+                  ]),
                 ),
               ),
             ],
           ),
           //Description
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(
-                    top: 8.0,
-                  ),
-                /* child: RichText(
-                    /*text: TextSpan(
-                      style: const TextStyle(
-                        color: mobileBackgroundColor,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: widget.snapshot['description'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),*/
-                  ),*/
-                ),
-
-
-              ],
-            ),
-          ),
         ],
       ),
     );

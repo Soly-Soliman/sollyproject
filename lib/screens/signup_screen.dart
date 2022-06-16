@@ -85,7 +85,8 @@ class _SingupScreenState extends State<SingupScreen>{
   Widget build(BuildContext context)
   {
     return Scaffold(
-      backgroundColor: blue1,
+      appBar: AppBar(backgroundColor: selection,),
+      backgroundColor: primary,
       body: SafeArea(
         child: Container(
           padding: const  EdgeInsets.symmetric(horizontal: 35),
@@ -95,14 +96,17 @@ class _SingupScreenState extends State<SingupScreen>{
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // row with 2 children 1 for logo & the other for the name of the app
-                Row(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
                   Hero(tag: 'logo',
                     child: Container(
                       child: Image.asset('images/hi1.jpg',),
                       height: 90 ,
                       width: 100,
                     ),),
-                  const SizedBox(width: 20,height: 1,) ,
+                  const SizedBox(width: 10,height: 1,) ,
 
                 ],),
                 // circular widget to accept and show our selected file
@@ -209,9 +213,9 @@ class _SingupScreenState extends State<SingupScreen>{
                     GestureDetector(
                       onTap: navigateToLogin,
                       child:  Container(
-                        child: const  Text('Log in ' ,
+                        child:   Text('Log in ' ,
                           style: TextStyle(
-                            color: Colors.amber,
+                            color: selection2,
                             fontSize: 20,
                             fontWeight:FontWeight.bold ,
 

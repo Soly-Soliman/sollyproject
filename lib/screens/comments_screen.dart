@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/comment_card.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
+import '../Utils/colors.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 
@@ -27,11 +28,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
+      backgroundColor:blue1 ,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: selection,
         title: const Text(
           'Comments',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: false,
       ),
@@ -59,10 +61,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
           }),
       //////////////////////////////////////////////
       bottomNavigationBar: SafeArea(
+
         child: Container(
+          
           margin:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           padding: const EdgeInsets.only(left: 16, right: 8),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(10)
+          ),
           child: Row(
             children: [
               InkWell(
@@ -110,9 +118,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                  child: const Icon(
+                  child:  Icon(
                     Icons.ads_click_rounded,
-                    color: Colors.blue,
+                    color: selection2,
                   ),
                 ),
               ),

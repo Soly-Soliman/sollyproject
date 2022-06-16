@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../Utils/colors.dart';
+
 
 class CommentCard extends StatefulWidget {
   final snap;
@@ -15,12 +17,13 @@ class _CommentCardState extends State<CommentCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+
+      margin: const EdgeInsets.all(2.0),
       padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF) ,
+        color: blue1 ,
           border: Border.all(color: Colors.blue,),
-        borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
+        borderRadius: const BorderRadius.all(Radius.circular(8.0) //                 <--- border radius here
         ),
       ),
          child: Row(
@@ -36,7 +39,7 @@ class _CommentCardState extends State<CommentCard> {
                  ),
                ),
              ),
-             Padding(padding: const EdgeInsets.only(left:10 ) ,
+             Padding(padding: const EdgeInsets.only(left:2 ) ,
                child: Column(
                  mainAxisAlignment: MainAxisAlignment.start,
                  crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,8 +70,9 @@ class _CommentCardState extends State<CommentCard> {
                      ],
                    ),
                 Container(
-                    margin: const EdgeInsets.all(3.0),
-                    padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
+                  width: 258,
+
+                    padding: const EdgeInsets.symmetric(vertical: 3 ,horizontal: 5) ,
                     decoration: BoxDecoration(
                       color: Colors.white ,
                       border: Border.all(color: Colors.blueAccent,),
@@ -85,16 +89,17 @@ class _CommentCardState extends State<CommentCard> {
                  ],
                ),
              ),
+           /*
              Container(
-               padding: const EdgeInsets.only(left: 10.0,right: 3,bottom: 3),
-               margin:  const EdgeInsets.only(left: 2),
+
              //  color: Colors.red,
                child: InkWell(
                  onTap: (){},
 
-                 child:const Icon(Icons.favorite,color: Colors.white,size: 30,),
+                 child:const Icon(Icons.favorite,color: Colors.white,size: 20,),
                ),
              ),
+            */
            ],
          ),
     

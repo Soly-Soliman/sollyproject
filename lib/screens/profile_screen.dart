@@ -25,19 +25,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   var userdata = {};
   int postlenght = 0;
   int eventlength = 0;
+  int Hobbylength = 0;
+
+
   int followers = 0;
   int following = 0;
   bool isFollowing = false;
   bool isLoading = false;
-  var _imageList = [
-  'images/1.jpg',
-  'images/2.jpeg',
-  'images/3.jpg',
-  'images/4.jpeg',
-  'images/5.jpg',
-  'images/16.jpeg',
-  'images/17.jpg',
-  'images/18.jpeg', ] ;
+
   @override
   void initState() {
     super.initState();
@@ -63,7 +58,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('events')
           .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .get();
+      var HobbySnap = await FirebaseFirestore.instance
+          .collection('events')
+          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .get();
       eventlength =EventSnap.docs.length;
+      Hobbylength =HobbySnap.docs.length;
       postlenght = postSnap.docs.length;
       followers = userSnap.data()!['followers'].length;
       following = userSnap.data()!['following'].length;
@@ -483,7 +483,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           (snapshot.data! as dynamic).docs[index];
 
                           return InkWell(
-                            onTap: (){},
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => Dialog(
+                                  child: ListView(shrinkWrap: true, children: [
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height:
+                                          MediaQuery.of(context).size.height *
+                                              0.70,
+                                          width: 450,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(0),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                snap['EventUrl'],
+                                              ),
+                                              fit: BoxFit.fill,
+                                              alignment: FractionalOffset.topCenter,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
+                                ),
+                              );
+                            },
                             child: Container(
                               child: Image(
                                 fit: BoxFit.fill,
@@ -497,6 +525,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     }),
 
               ),
+
               Expanded(
                 child: FutureBuilder(
                     future: FirebaseFirestore.instance
@@ -525,12 +554,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           DocumentSnapshot snap =
                           (snapshot.data! as dynamic).docs[index];
 
-                          return Container(
-                            child: Image(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(snap['PostUrl']),
-                            ),
+                          return InkWell(onTap: ()
+                          {
+                            showDialog(
+                              context: context,
+                              builder: (context) => Dialog(
+                                child: ListView(shrinkWrap: true, children: [
+                                  Column(
+                                    children: [
+                                      Container(
+                                        height:
+                                        MediaQuery.of(context).size.height *
+                                            0.70,
+                                        width: 450,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(0),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                              snap['PostUrl'],
+                                            ),
+                                            fit: BoxFit.fill,
+                                            alignment: FractionalOffset.topCenter,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ]),
+                              ),
+                            );
+                          },
+                            child: Container(
+                              child: Image(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(snap['PostUrl']),
+                              ),
 
+                            ),
                           ) ;
                         },
                       );
@@ -540,7 +600,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Expanded(
                 child: FutureBuilder(
                     future: FirebaseFirestore.instance
-                        .collection('events')
+                        .collection('Hobby')
                         .where('uid', isEqualTo: widget.uid)
                         .get(),
                     builder: (context, snapshot) {
@@ -565,12 +625,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           DocumentSnapshot snap =
                           (snapshot.data! as dynamic).docs[index];
 
-                          return Container(
-                            child: Image(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(snap['EventUrl']),
-                            ),
+                          return InkWell(
+                            onTap: ()
+                            {
+                              showDialog(
+                                context: context,
+                                builder: (context) => Dialog(
+                                  child: ListView(shrinkWrap: true, children: [
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height:
+                                          MediaQuery.of(context).size.height *
+                                              0.70,
+                                          width: 450,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(0),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                snap['HobbyUrl'],
+                                              ),
+                                              fit: BoxFit.fill,
+                                              alignment: FractionalOffset.topCenter,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Image(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(snap['HobbyUrl']),
+                              ),
 
+                            ),
                           ) ;
                         },
                       );
@@ -748,7 +840,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           height: 40,
           color: Colors.grey,
         ),
-        _infoCell(title: 'H', value: "\$65"),
+        _infoCell(title: 'H', value: "$Hobbylength"),
         _infoCell(title: 'P', value: '$postlenght'),
         _infoCell(title: 'E', value: '$eventlength'),
         Container(
@@ -832,7 +924,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Row(
           children: [
             Container(
-              width: 250,
+              width: 240,
               child: Text(
                 userdata['email'],
                 style: TextStyle(
@@ -843,13 +935,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Container(
-              width: 120,
+              width: 100,
               child: Text(
                 userdata['phone'],
                 style: TextStyle(
                   fontFamily: 'NimbusSanL',
                   fontStyle: FontStyle.italic,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
             ),

@@ -5,10 +5,14 @@ import 'package:graduation_1/Components/post_card.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/screens/events_feed_screan.dart';
+import 'package:graduation_1/screens/profile_screen.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 import 'package:graduation_1/screens/testing_profile.dart';
+import '../resourses/aut_methods.dart';
 import 'AboutAPP.dart';
 import 'Hoppey_feed_screan.dart';
+import 'add_hobby_screen.dart';
+import 'login_screen.dart';
 
 
 class FeedScreen extends StatefulWidget {
@@ -86,247 +90,278 @@ class _FeedScreenState extends State<FeedScreen> {
           backgroundColor: selection,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 5,
-                  color: selection,
-
-                ),
-
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left:20.0),
-                      child: CircleAvatar(
-                        radius: 28,
-                        backgroundColor: selection2,
-                        child:  const CircleAvatar(
-                          radius: 24.0,
+                    Container(
+                      width: double.infinity,
+                      height: 5,
+                      color: selection,
 
-                        ),
-                      ),
                     ),
-                    const SizedBox(height: 30 ,width: 10,),
-                    Column(
-                      children: const [
-                        const SizedBox(height: 30 ,width: 10,),
-                        Text(
-                          'SUlly@gmail.com',
-                          style: TextStyle(color: primary),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          textAlign: TextAlign.justify,
-                        ),
-                     const   SizedBox(height: 30,) ,
 
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left:20.0),
+                          child: CircleAvatar(
+                            radius: 28,
+                            backgroundColor: selection2,
+                            child:  const CircleAvatar(
+                              radius: 24.0,
+                              backgroundImage: NetworkImage('https://scontent.fcai19-3.fna.fbcdn.net/v/t39.30808-6/257519657_1701296376733077_3716489816494877546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHAABM9D1pgkY7l-bH0_HFoseAgtqZYPh6x4CC2plg-HmIyWzOOg2FxvPIaug-NxaBvvcYLdbxMvcBQSriYrFMm&_nc_ohc=ohF93afXcVYAX8554Lq&_nc_ht=scontent.fcai19-3.fna&oh=00_AT9LgEceD_qxmMKJUlbH3GugE3lI5J5B7nM1JtxdcU4zCQ&oe=62AD6ED6'),
+
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 30 ,width: 10,),
+                        Column(
+                          children: const [
+                            const SizedBox(height: 30 ,width: 10,),
+                            Text(
+                              'SUlly@gmail.com',
+                              style: TextStyle(color: primary),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              textAlign: TextAlign.justify,
+                            ),
+                         const   SizedBox(height: 30,) ,
+
+
+                          ],
+                        ),
 
                       ],
                     ),
+                    SizedBox(height: 30,width: 10,) ,
+                    Row(
+                      children: [
+                        SizedBox(height: 10,width: 10,) ,
+                        CircleAvatar(backgroundColor:selection2 , radius: 25,
+                        ),
+                        SizedBox(height: 10,width: 10,) ,
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const About()),
+                            );
+                          },
+                          child: Container(
+
+                              width: 180,
+                              height: 45,
+                              decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                                color: primary,
+                              ),
+                              child: const Center(child: Text('About The APP',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                        ),
+                      ],
+                    ) ,
+                    SizedBox(height: 30,width: 10,) ,
+                    Row(
+                              children: [
+                                SizedBox(height: 10,width: 10,) ,
+                                CircleAvatar(backgroundColor:selection2 , radius: 25,
+                                  backgroundImage: NetworkImage('https://scontent.fcai19-3.fna.fbcdn.net/v/t39.30808-6/257519657_1701296376733077_3716489816494877546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHAABM9D1pgkY7l-bH0_HFoseAgtqZYPh6x4CC2plg-HmIyWzOOg2FxvPIaug-NxaBvvcYLdbxMvcBQSriYrFMm&_nc_ohc=ohF93afXcVYAX8554Lq&_nc_ht=scontent.fcai19-3.fna&oh=00_AT9LgEceD_qxmMKJUlbH3GugE3lI5J5B7nM1JtxdcU4zCQ&oe=62AD6ED6'),
+                                ),
+                                SizedBox(height: 10,width: 10,) ,
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>  ProfileScreen(uid:  FirebaseAuth.instance.currentUser!.uid,)),
+                                    );
+                                  },
+                                  child: Container(
+
+                                    width: 180,
+                                    height: 45,
+                                    decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                                      color: primary,
+                                    ),
+                                    child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                                ),
+
+                              ],
+                            ) ,
+                    SizedBox(height: 10,width: 10,) ,
 
                   ],
                 ),
-                SizedBox(height: 30,width: 10,) ,
-                Row(
-                  children: [
-                    SizedBox(height: 10,width: 10,) ,
-                    CircleAvatar(backgroundColor:selection2 , radius: 25,),
-                    SizedBox(height: 10,width: 10,) ,
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const About()),
-                        );
-                      },
-                      child: Container(
+                Positioned(
 
-                          width: 180,
-                          height: 45,
-                          decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
-                            color: primary,
-                          ),
-                          child: const Center(child: Text('About The APP',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                  child: Container(
+                    width: 50,
+                    height: 45,
+                    decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                      color: primary,
                     ),
-                  ],
-                ) ,
-                SizedBox(height: 30,width: 10,) ,
-                        Row(
-                          children: [
-                            SizedBox(height: 10,width: 10,) ,
-                            CircleAvatar(backgroundColor:selection2 , radius: 25,),
-                            SizedBox(height: 10,width: 10,) ,
-                            InkWell(
-                              onTap: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>  ProfilePage()),
-                                );
-                              },
-                              child: Container(
-
-                                width: 180,
-                                height: 45,
-                                decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
-                                  color: primary,
-                                ),
-                                child: const Center(child: Text('About The APP',style: TextStyle(color: Colors.black,fontSize: 15),))),
-                            ),
-                          ],
-                        ) ,
+                    child: IconButton(onPressed: () async{
+                      await AuthMethod().SignOut();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const LoginScreen(),),) ;
 
 
+                    }, icon: Icon(Icons.logout_outlined),),
+                  ),
+                ),
               ],
             ),
+
           ),
 
         ),
-          body:  SafeArea
-             (
+          body:  SafeArea(
 
-            child: Column(
-              children: [
-
-                Container(
-             //     color: Colors.amber,
-                  margin: const EdgeInsets.only(top: 0,bottom: 2),
-
-                  height: 37,
-                 child: Row(
-                   children: [
-                     Expanded(
-                       child: Container(
-                         height: 30,
-                         width: 60,
-                         padding: const EdgeInsets.all(3),
-                         child: MaterialButton(
-                         //  color: Colors.lightBlue.shade500,
-                           color: selection2,
-                           height: 10,
-                           minWidth: 40,
-                           onPressed: () {Navigator.push(
-                             context,
-                             MaterialPageRoute(
-                                 builder: (context) => const EventsFeedScreen()),
-                           );},
-                           child: const Text(
-                             'Events',
-                             style: TextStyle(
-                               color: Colors.black,
+            child: Scaffold(
+              backgroundColor: blue1,
+              body: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 0,bottom: 2),
+                    height: 37,
+                   child: Row(
+                     children: [
+                       Expanded(
+                         child: Container(
+                           height: 30,
+                           width: 60,
+                           padding: const EdgeInsets.all(3),
+                           child: MaterialButton(
+                             color: selection2,
+                             height: 10,
+                             minWidth: 40,
+                             onPressed: () {Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                   builder: (context) => const EventsFeedScreen()),
+                             );},
+                             child: const Text(
+                               'Events',
+                               style: TextStyle(
+                                 color: Colors.black,
+                               ),
                              ),
                            ),
                          ),
-                       ),
 
-                     ),
-                     Expanded(
-                       child: Container(
-                         height: 30,
-                         width: 60,
-                         padding: const EdgeInsets.all(3),
-                         child: MaterialButton(
-                           //  color: Colors.lightBlue.shade500,
-                           color: selection2,
-                           height: 10,
-                           minWidth: 40,
-                           onPressed: () {Navigator.push(
-                             context,
-                             MaterialPageRoute(
-                                 builder: (context) => const EventsFeedScreen()),
-                           );},
-                           child: const Text(
-                             'Events',
-                             style: TextStyle(
-                               color: Colors.black,
+                       ),
+                       Expanded(
+                         child: Container(
+                           height: 30,
+                           width: 60,
+                           padding: const EdgeInsets.all(3),
+                           child: MaterialButton(
+                             //  color: Colors.lightBlue.shade500,
+                             color: selection2,
+                             height: 10,
+                             minWidth: 40,
+                             onPressed: () {Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                   builder: (context) => const Add_Hobyy()),
+                             );},
+                             child: const Text(
+                               'hobby',
+                               style: TextStyle(
+                                 fontSize: 13,
+                                 color: Colors.black,
+                               ),
                              ),
                            ),
                          ),
-                       ),
 
-                     ),
-                     Expanded(
-                       child: Container(
-                         height: 30,
-                         width: 60,
-                         padding: const EdgeInsets.all(3),
-                         child: MaterialButton(
-                           //  color: Colors.lightBlue.shade500,
-                           color: selection2,
-                           height: 10,
-                           minWidth: 40,
-                           onPressed: () {Navigator.push(
-                             context,
-                             MaterialPageRoute(
-                                 builder: (context) => const EventsFeedScreen()),
-                           );},
-                           child: const Text(
-                             'Events',
-                             style: TextStyle(
-                               color: Colors.black,
+                       ),
+                       Expanded(
+                         child: Container(
+                           height: 30,
+                           width: 60,
+                           padding: const EdgeInsets.all(3),
+                           child: MaterialButton(
+                             //  color: Colors.lightBlue.shade500,
+                             color: selection2,
+                             height: 10,
+                             minWidth: 40,
+                             onPressed: () {Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                   builder: (context) => const EventsFeedScreen()),
+                             );},
+                             child: const Text(
+                               'Challange',
+                               style: TextStyle(
+                                 fontSize: 13,
+                                 color: Colors.black,
+                               ),
                              ),
                            ),
                          ),
-                       ),
 
-                     ),
-                     Expanded(
-                       
-                       child: MaterialButton(
-                         padding: const EdgeInsets.all(10),
-                         color: Colors.lightBlue.shade500,
-                         onPressed: () {Navigator.push(
-                           context,
-                           MaterialPageRoute(
-                               builder: (context) => const HoppyFeedScreen()),
-                         );},
-                         child: const Text(
-                           'Hoppies',
-                           style: TextStyle(
-                             color: Colors.black,
+                       ),
+                       Expanded(
+
+                         child: Container(
+                           padding: const EdgeInsets.all(3),
+                           child: MaterialButton(
+
+                             color: Colors.lightBlue.shade500,
+                             onPressed: () {
+                               Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                   builder: (context) => const HoppyFeedScreen()),
+                             );},
+                             child: const Text(
+                               'Custom Hobbies',
+                               style: TextStyle(
+                                 fontSize: 12,
+                                 color: Colors.black,
+                               ),
+                             ),
                            ),
                          ),
-                       ),
 
-                     )
-                   ],
-                 ),
-                ),
-                Container(
-                  color: Colors.black,
-                  height: 2,
-                ),
-               Expanded(
-                  child:
-                  StreamBuilder(
-                    stream: FirebaseFirestore.instance.collection('posts').snapshots(),
-                    builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
-                    {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
+                       )
+                     ],
+                   ),
+                  ),
+                  Container(
+                    color: Colors.black,
+                    height: 2,
+                  ),
+                 Expanded(
+                    child:
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance.collection('posts').snapshots(),
+                      builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
+                      {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index)=>Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: width >webScreenSize?width*0.3 :0 ,
+                              vertical: width >webScreenSize?15 :0 ,
+                            ),
+                            child: PostCard(
+                              snapshot: snapshot.data!.docs[index].data() ,
+
+                            ),
+                          ),
                         );
                       }
-                      return ListView.builder(
-                        itemCount: snapshot.data!.docs.length,
-                        itemBuilder: (context, index)=>Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: width >webScreenSize?width*0.3 :0 ,
-                            vertical: width >webScreenSize?15 :0 ,
-                          ),
-                          child: PostCard(
-                            snapshot: snapshot.data!.docs[index].data() ,
+                  ),)
 
-                          ),
-                        ),
-                      );
-                    }
-                ),)
-
-              ],
+                ],
+              ),
             ),
 
       ),

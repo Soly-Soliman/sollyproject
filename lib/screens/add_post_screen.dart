@@ -11,6 +11,8 @@ import 'package:graduation_1/screens/search_screen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import 'add_hobby_screen.dart';
+
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
 
@@ -154,79 +156,147 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         icon: const Icon(Icons.search_rounded))
                   ],
                 ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    // height: 45,
-                    width: 400,
-                    padding: const EdgeInsets.all(15),
-                    decoration: const BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
+                Container(
+                  height: 120,
+                  color:blue1 ,
+                  child: Row(children: [
+                  Expanded(
+                    child: InkWell(
+                       onTap:(){
+                             Navigator.push(
+                                   context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Add_Event()));
+                        } ,
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        // height: 45,
+                        width: 400,
+                        padding: const EdgeInsets.all(15),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+
+                              child: const Text('ADD Event ....'),
+
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.event),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Add_Event()));
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 120,
-                          height: 45,
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: selection,
-                            borderRadius: const BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: const Text('ADD Event ....'),
-
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => _selctImage(context),
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        padding: const EdgeInsets.all(15),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.event),
-                          onPressed: () {
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: const Text('ADD PHOTO'),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.upload_outlined),
+                              onPressed: () => _selctImage(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],),
+                ),
+                Container(
+                  height: 120,
+                  color:blue1 ,
+                  child: Row(children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const Add_Event()));
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    padding: const EdgeInsets.all(15),
-                    decoration: const BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
+                                    builder: (context) => const  Add_Hobyy()));
+                          }
+
+                        },
+                        child: Container(
                           alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          height: 45,
-                          width: 120,
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          // height: 45,
+                          width: 400,
                           padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
-                            color: Colors.lightBlue,
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: const Text('ADD Hobby ..'),
+                              ),
+                              Icon(Icons.event),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const  Add_Hobyy()));
+                          }
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          padding: const EdgeInsets.all(15),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: const Text('ADD PHOTO'),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: const Text('ADD Challange'),
+                              ),
+                              Icon(
+                               Icons.upload_outlined),
+                            ],
+                          ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.upload_outlined),
-                          onPressed: () => _selctImage(context),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],),
                 ),
               ],
             ),
@@ -250,69 +320,74 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 TextButton(
                     onPressed: () =>
                         UpImagePost(user.uid, user.username, user.photoUrl),
-                    child: const Text(
+                    child:  Text(
                       'up',
                       style: TextStyle(
-                        color: Colors.teal,
+                        color:   selection2,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ))
               ],
             ),
-            body: Column(
+            body: ListView(
               children: [
-                _isLoading
-                    ? const LinearProgressIndicator()
-                    : const Padding(
-                        padding: EdgeInsets.only(top: 0),
-                      ),
-                const Divider(
-                  color: Colors.black,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(user.photoUrl),
-                        radius: 35,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      child: TextField(
-                        controller: _descriptionController,
-                        decoration: const InputDecoration(
-                          hintText: ' caption ....',
-                          border: InputBorder.none,
+               Column(
+                children: [
+                  _isLoading
+                      ? const LinearProgressIndicator()
+                      : const Padding(
+                          padding: EdgeInsets.only(top: 0),
                         ),
-                        maxLines: 8,
+                  const Divider(
+                    color: Colors.black,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(user.photoUrl),
+                          radius: 35,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: AspectRatio(
-                        aspectRatio: 487 / 451,
-                        child: Container(
-                          // padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: MemoryImage(_file!),
-                              fit: BoxFit.fill,
-                              alignment: FractionalOffset.topCenter,
-                            ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        child: TextField(
+                          controller: _descriptionController,
+                          decoration: const InputDecoration(
+                            hintText: ' caption ....',
+                            border: InputBorder.none,
+                          ),
+                          maxLines: 8,
+                        ),
+                      ),
+
+                      const Divider(),
+                    ],
+
+                  ),
+                  SizedBox(
+                    height: 360,
+                    width: 360,
+                    child: AspectRatio(
+                      aspectRatio: 487 / 451,
+                      child: Container(
+                        // padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: MemoryImage(_file!),
+                            fit: BoxFit.fill,
+                            alignment: FractionalOffset.topCenter,
                           ),
                         ),
                       ),
                     ),
-                    const Divider(),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),],
             ),
           );
   }
