@@ -59,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .get();
       var HobbySnap = await FirebaseFirestore.instance
-          .collection('events')
+          .collection('Hobby')
           .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .get();
       eventlength =EventSnap.docs.length;
@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                preferredSize: const Size.fromHeight(33,),
                child: AppBar(
                  backgroundColor:selection ,
-                 foregroundColor: primary,
+                 foregroundColor: black,
 
                  title: Text(userdata['username'],),
                  centerTitle: true,
@@ -429,6 +429,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         children: <Widget>[
           Container(
+
             padding: EdgeInsets.symmetric(horizontal: 10),
             height: MediaQuery.of(context).size.height * 0.35,
             child: Column(
@@ -452,181 +453,111 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Expanded(child: Text("Hoppy")),
             ],
           ),
-          Row(
-            children: [
-              Expanded(
-                child: FutureBuilder(
-                    future: FirebaseFirestore.instance
-                        .collection('events')
-                        .where('uid', isEqualTo: widget.uid)
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      return GridView.builder(
-                        primary: false,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
+          Container(
+            color: blue1,
+            child: Row(
+              children: [
+                Expanded(
+                  child: FutureBuilder(
+                      future: FirebaseFirestore.instance
+                          .collection('events')
+                          .where('uid', isEqualTo: widget.uid)
+                          .get(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return GridView.builder(
+                          primary: false,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
 
-                        itemCount: (snapshot.data! as dynamic).docs.length,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          crossAxisSpacing: 18,
+                          itemCount: (snapshot.data! as dynamic).docs.length,
+                          gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            crossAxisSpacing: 18,
 
-                        ),
-                        itemBuilder: (context, index) {
-                          DocumentSnapshot snap =
-                          (snapshot.data! as dynamic).docs[index];
+                          ),
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot snap =
+                            (snapshot.data! as dynamic).docs[index];
 
-                          return InkWell(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => Dialog(
-                                  child: ListView(shrinkWrap: true, children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height:
-                                          MediaQuery.of(context).size.height *
-                                              0.70,
-                                          width: 450,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(0),
-                                            image: DecorationImage(
-                                              image: NetworkImage(
-                                                snap['EventUrl'],
+                            return InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => Dialog(
+                                    child: ListView(shrinkWrap: true, children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            height:
+                                            MediaQuery.of(context).size.height *
+                                                0.70,
+                                            width: 450,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(0),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  snap['EventUrl'],
+                                                ),
+                                                fit: BoxFit.fill,
+                                                alignment: FractionalOffset.topCenter,
                                               ),
-                                              fit: BoxFit.fill,
-                                              alignment: FractionalOffset.topCenter,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ]),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              child: Image(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(snap['EventUrl']),
-                              ),
-
-                            ),
-                          ) ;
-                        },
-                      );
-                    }),
-
-              ),
-
-              Expanded(
-                child: FutureBuilder(
-                    future: FirebaseFirestore.instance
-                        .collection('posts')
-                        .where('uid', isEqualTo: widget.uid)
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      return GridView.builder(
-                        primary: false,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-
-                        itemCount: (snapshot.data! as dynamic).docs.length,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          crossAxisSpacing: 18,
-
-                        ),
-                        itemBuilder: (context, index) {
-                          DocumentSnapshot snap =
-                          (snapshot.data! as dynamic).docs[index];
-
-                          return InkWell(onTap: ()
-                          {
-                            showDialog(
-                              context: context,
-                              builder: (context) => Dialog(
-                                child: ListView(shrinkWrap: true, children: [
-                                  Column(
-                                    children: [
-                                      Container(
-                                        height:
-                                        MediaQuery.of(context).size.height *
-                                            0.70,
-                                        width: 450,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(0),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                              snap['PostUrl'],
-                                            ),
-                                            fit: BoxFit.fill,
-                                            alignment: FractionalOffset.topCenter,
-                                          ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
+                                    ]),
                                   ),
-                                ]),
+                                );
+                              },
+                              child: Container(
+                                child: Image(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(snap['EventUrl']),
+                                ),
+
                               ),
-                            );
+                            ) ;
                           },
-                            child: Container(
-                              child: Image(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(snap['PostUrl']),
-                              ),
-
-                            ),
-                          ) ;
-                        },
-                      );
-                    }),
-
-              ),
-              Expanded(
-                child: FutureBuilder(
-                    future: FirebaseFirestore.instance
-                        .collection('Hobby')
-                        .where('uid', isEqualTo: widget.uid)
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
                         );
-                      }
-                      return GridView.builder(
-                        primary: false,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
+                      }),
 
-                        itemCount: (snapshot.data! as dynamic).docs.length,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 1,
-                          crossAxisSpacing: 18,
+                ),
 
-                        ),
-                        itemBuilder: (context, index) {
-                          DocumentSnapshot snap =
-                          (snapshot.data! as dynamic).docs[index];
+                Expanded(
+                  child: FutureBuilder(
+                      future: FirebaseFirestore.instance
+                          .collection('posts')
+                          .where('uid', isEqualTo: widget.uid)
+                          .get(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return GridView.builder(
+                          primary: false,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
 
-                          return InkWell(
-                            onTap: ()
+                          itemCount: (snapshot.data! as dynamic).docs.length,
+                          gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            crossAxisSpacing: 18,
+
+                          ),
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot snap =
+                            (snapshot.data! as dynamic).docs[index];
+
+                            return InkWell(onTap: ()
                             {
                               showDialog(
                                 context: context,
@@ -643,7 +574,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             borderRadius: BorderRadius.circular(0),
                                             image: DecorationImage(
                                               image: NetworkImage(
-                                                snap['HobbyUrl'],
+                                                snap['PostUrl'],
                                               ),
                                               fit: BoxFit.fill,
                                               alignment: FractionalOffset.topCenter,
@@ -656,20 +587,93 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               );
                             },
-                            child: Container(
-                              child: Image(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(snap['HobbyUrl']),
+                              child: Container(
+                                child: Image(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(snap['PostUrl']),
+                                ),
+
                               ),
+                            ) ;
+                          },
+                        );
+                      }),
 
-                            ),
-                          ) ;
-                        },
-                      );
-                    }),
+                ),
+                Expanded(
+                  child: FutureBuilder(
+                      future: FirebaseFirestore.instance
+                          .collection('Hobby')
+                          .where('uid', isEqualTo: widget.uid)
+                          .get(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return GridView.builder(
+                          primary: false,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
 
-              ),
-            ],
+                          itemCount: (snapshot.data! as dynamic).docs.length,
+                          gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            crossAxisSpacing: 18,
+
+                          ),
+                          itemBuilder: (context, index) {
+                            DocumentSnapshot snap =
+                            (snapshot.data! as dynamic).docs[index];
+
+                            return InkWell(
+                              onTap: ()
+                              {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => Dialog(
+                                    child: ListView(shrinkWrap: true, children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            height:
+                                            MediaQuery.of(context).size.height *
+                                                0.70,
+                                            width: 450,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(0),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  snap['HobbyUrl'],
+                                                ),
+                                                fit: BoxFit.fill,
+                                                alignment: FractionalOffset.topCenter,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ]),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                child: Image(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(snap['HobbyUrl']),
+                                ),
+
+                              ),
+                            ) ;
+                          },
+                        );
+                      }),
+
+                ),
+              ],
+            ),
           ),
          
         ],
@@ -684,17 +688,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Visibility(
           visible: !_isOpen,
           child: Expanded(
-            child: OutlineButton(
-              onPressed: () => _panelController.open(),
-              borderSide:  BorderSide(color: selection2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              child: const Text(
-                'VIEW PROFILE',
-                style: TextStyle(
-                  fontFamily: 'NimbusSanL',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
+            child: Container(
+              height: 38,
+              decoration: BoxDecoration(
+                color: selection3,
+                borderRadius: BorderRadius.circular(15)
+              ),
+            
+              child: OutlineButton(
+                onPressed: () => _panelController.open(),
+                borderSide:  BorderSide(color: selection2),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: const Text(
+                  'VIEW PROFILE',
+                  style: TextStyle(
+                    fontFamily: 'NimbusSanL',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
@@ -723,12 +735,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                     child:  Container(
-         //             color: Colors.grey,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14) ,
+                        color: selection3,
+                      ),
+
+                      height: 38,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.build ,size: 25,color: selection2,),
+                          Icon(Icons.build ,size: 25,color: selection,),
                           SizedBox(width: 4,) ,
                           Text(
                             'EDIT',
@@ -750,7 +767,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: selection2,
                         textColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(20)),
                         child:Text(
                           'Chat',
                           style: TextStyle(
@@ -789,7 +806,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 )
                 :
-                        FlatButton(
+                    FlatButton(
                           onPressed: () async {
                             await FireStoreMethods()
                                 .followuser(
@@ -806,7 +823,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: selection2,
                           textColor: Colors.black,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                              borderRadius: BorderRadius.circular(25)),
                           child: const Text(
 
                             'Follow',

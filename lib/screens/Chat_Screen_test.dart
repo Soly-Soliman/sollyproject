@@ -30,14 +30,14 @@ class _SearchChatScreenState extends State<SearchChatScreen> {
         foregroundColor: primary,
         title: Form(
           child: TextFormField(
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: black),
             controller: searchController,
             decoration: const InputDecoration(
                 hintText: 'Search For User',
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: black),
                 icon: Icon(
                   Icons.search_rounded,
-                  color: Colors.white,
+                  color: black,
                 )),
             onFieldSubmitted: (String _) {
               setState(() {

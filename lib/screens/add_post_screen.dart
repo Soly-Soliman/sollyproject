@@ -156,93 +156,18 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         icon: const Icon(Icons.search_rounded))
                   ],
                 ),
-                Container(
-                  height: 120,
-                  color:blue1 ,
-                  child: Row(children: [
-                  Expanded(
-                    child: InkWell(
-                       onTap:(){
-                             Navigator.push(
-                                   context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Add_Event()));
-                        } ,
-                      child: Container(
-                        alignment: Alignment.center,
-                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        // height: 45,
-                        width: 400,
-                        padding: const EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-
-                              child: const Text('ADD Event ....'),
-
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.event),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Add_Event()));
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => _selctImage(context),
-                      child: Container(
-                        alignment: Alignment.center,
-                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        padding: const EdgeInsets.all(15),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: const Text('ADD PHOTO'),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.upload_outlined),
-                              onPressed: () => _selctImage(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],),
-                ),
-                Container(
-                  height: 120,
-                  color:blue1 ,
-                  child: Row(children: [
+                Expanded(
+                  child: Container(
+                    color: primary,
+                    child: Row(children: [
                     Expanded(
                       child: InkWell(
-                        onTap: (){
-                          {
-                            Navigator.push(
-                                context,
+                         onTap:(){
+                               Navigator.push(
+                                     context,
                                 MaterialPageRoute(
-                                    builder: (context) => const  Add_Hobyy()));
-                          }
-
-                        },
+                                    builder: (context) => const Add_Event()));
+                          } ,
                         child: Container(
                           alignment: Alignment.center,
                           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -250,7 +175,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           width: 400,
                           padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color:    selection3,
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
                             ),
@@ -258,9 +183,19 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: const Text('ADD Hobby ..'),
+
+                                child: const Text('ADD Event ....'),
+
                               ),
-                              Icon(Icons.event),
+                              IconButton(
+                                icon: const Icon(Icons.event),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Add_Event()));
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -268,35 +203,106 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     ),
                     Expanded(
                       child: InkWell(
-                        onTap: (){
-                          {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const  Add_Hobyy()));
-                          }
-                        },
+                        onTap: () => _selctImage(context),
                         child: Container(
                           alignment: Alignment.center,
                           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                           padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: selection3,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                           child: Row(
                             children: [
                               Expanded(
-                                child: const Text('ADD Challange'),
+                                child: const Text('ADD PHOTO'),
                               ),
-                              Icon(
-                               Icons.upload_outlined),
+                              IconButton(
+                                icon: const Icon(Icons.upload_outlined),
+                                onPressed: () => _selctImage(context),
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
-                  ],),
+                ],),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    child: Row(children: [
+                      Expanded(
+                        child: Container(
+
+                          child: InkWell(
+
+                            onTap: (){
+                              {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const  Add_Hobyy()));
+                              }
+
+                            },
+                            child: Container(
+
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              // height: 45,
+                              width: 400,
+                              padding: const EdgeInsets.all(15),
+                              decoration: const BoxDecoration(
+                                color: selection3,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: const Text('ADD Hobby ..'),
+                                  ),
+                                  Icon(Icons.event),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: (){
+                            {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const  Add_Hobyy()));
+                            }
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            padding: const EdgeInsets.all(15),
+                            decoration: const BoxDecoration(
+                              color: selection2,
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: const Text('ADD Challange'),
+                                ),
+                                Icon(
+                                 Icons.upload_outlined),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],),
+                  ),
                 ),
               ],
             ),

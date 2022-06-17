@@ -58,10 +58,18 @@ class _Add_EventState extends State<Add_Event> {
        ProfileImage
    );
    if (res == 'success') {
-     setState(() {_isLoading = false;});
+     setState(() {
+       _placeController.text="";
+       _eventDescriptionController.text='';
+       _nameController.text='';
+       _isLoading = false;
+
+
+     });
      showSnackBar('Event Created', context);
      //the next function is important because it makes the file = to null so the screen back to the first layout that contains the upload immage
      clearImage();
+
    } else {
      setState(() {
        _isLoading = false;
@@ -314,7 +322,7 @@ class _Add_EventState extends State<Add_Event> {
                 Row(
                   children: [
                     RaisedButton(
-                      color: Colors.lightBlue.shade200, splashColor: Colors.blueAccent,
+                      color: selection, splashColor: Colors.blueAccent,
                         mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                     async {
@@ -339,7 +347,7 @@ class _Add_EventState extends State<Add_Event> {
                       child:
                       Text(
                         Date,style: const TextStyle(
-                        color: Colors.black
+                        color: Colors.white
                       ),
                       ),
                     ),
@@ -348,7 +356,7 @@ class _Add_EventState extends State<Add_Event> {
                       width: 50,
                     ),
                     RaisedButton(
-                      color: Colors.lightBlue.shade200, splashColor: Colors.blue,
+                      color:selection, splashColor: Colors.blue,
                       mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                       async {
@@ -375,7 +383,7 @@ class _Add_EventState extends State<Add_Event> {
                          "${selectedTime.format(context)}",
                        // "${selectedTime.hourOfPeriod} :${selectedTime.minute}:${selectedTime.period}",
                         style: const TextStyle(
-                          color: Colors.black
+                          color: Colors.white
                       ),
                       ),
                     ),
@@ -401,17 +409,22 @@ class _Add_EventState extends State<Add_Event> {
                     ),
                   ),
                 ),
-               FlatButton(
-                 color: Colors.purple.shade200,
-                 onPressed:()
-                 {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
-                 ,child: Row(
-                   children: [
-                      Icon(Icons.location_on,size: 25, color: Colors.black,),
-                     const Text('Click  go to the Map'),
+               Container(
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(5)
+                 ),
+                 child: FlatButton(
+                   color: selection2,
+                   onPressed:()
+                   {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
+                   ,child: Row(
+                     children: [
+                        Icon(Icons.location_on,size: 25, color: Colors.black,),
+                       const Text('go to the Map'),
 
-                   ],
-                 ),) ,
+                     ],
+                   ),),
+               ) ,
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -429,14 +442,15 @@ class _Add_EventState extends State<Add_Event> {
                 Row(
                   children: [
                     _file == null
-                        ? IconButton(
-                            onPressed: () => _selctImage(context),
-                            icon: const Icon(
-                              Icons.image,
-                              size: 40,
-                              color: Colors.lightBlue,
-                            ),
-                          )
+                        ?  InkWell(
+                      onTap: () => _selctImage(context),
+
+                          child: Icon(
+                                Icons.image,
+                                size: 80,
+                                color: selection,
+                              ),
+                        )
                         : Container(
                             height: 150.0,
                             width: 150.0,
@@ -473,7 +487,8 @@ class _Add_EventState extends State<Add_Event> {
                               onPressed: clearImage,
                               icon: const Icon(
                                 Icons.delete,
-                                color: Colors.blue,
+                                color: Colors.red,
+                                size: 40,
                               ),
                             ),
                           ),
@@ -490,9 +505,7 @@ class _Add_EventState extends State<Add_Event> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),*/
-                const SizedBox(
-                  height: 30.0,
-                ),
+
             /*    SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -562,17 +575,21 @@ class _Add_EventState extends State<Add_Event> {
                   ),
                 ),*/
                 const SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),color: selection,
+                  ),
                   width: double.infinity,
-                  color: Colors.blue,
+                       alignment: Alignment.center,
                   child: MaterialButton(
                     onPressed: ()=> create_event(user.uid,user.username,user.photoUrl),
                     child: const Text(
                       'Create',
                       style: const TextStyle(
                         color: Colors.white,
+                        fontSize: 28
                       ),
                     ),
                   ),

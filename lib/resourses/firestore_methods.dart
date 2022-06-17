@@ -9,6 +9,7 @@ import 'package:graduation_1/models/event.dart';
 import 'package:graduation_1/resourses/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
+import '../models/Fback.dart';
 import '../models/Massage.dart';
 
 class FireStoreMethods {
@@ -131,6 +132,42 @@ class FireStoreMethods {
     }
     return res ;
 
+  } Future<String> uploadfeedback(
+      String description,
+      String description2,
+      String name,
+      String uid,
+      String username,
+      String profileImageUrl,
+
+      ) async {
+    String res = ' some error occurred';
+
+    try {
+
+      String FeedBackID = const Uuid().v1();
+      fbmodel event = fbmodel(
+
+          username: username,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: description,
+          description2: description2,
+          profileImageUrl: profileImageUrl,
+
+          name:name,
+
+         fdID: FeedBackID,
+         );
+      _firestore.collection('FeedBack').doc(FeedBackID).set(
+        event.toJason(),
+      );
+      res ='success' ;
+    } catch (error) {
+      res =error.toString();
+    }
+    return res ;
+
   }
 
 
@@ -156,7 +193,28 @@ try{
   print(e.toString()) ;
 }
   }
+  Future <void> likedHobby(String postId, String uid,List likes) async{
 
+    try{
+      if(likes.contains(uid)){
+        await _firestore.collection('Hobby').doc(postId).update(
+            {
+              'likes' : FieldValue.arrayRemove([uid]),
+            }
+        );
+      }else{
+        await _firestore.collection('Hobby').doc(postId).update(
+            {
+              'likes' : FieldValue.arrayUnion([uid]),
+            }
+        );
+      }
+
+
+    }catch(e){
+      print(e.toString()) ;
+    }
+  }
   Future <void> likedEvent(String eventId, String uid,List likes) async{
 
     try{
@@ -271,10 +329,43 @@ try{
       print (e.toString()) ;
     }
   }
+  Future<void> Hobbycomment( String HobbyID,String text,String uid,String name ,String ProfilePicture ,) async{
+    try{
 
+      String commentID =const Uuid().v1();
+      Comment comment = Comment(
+          username: name,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: text,
+          CommentID: commentID,
+          profileImageUrl: ProfilePicture
+      );
+      if(text.isNotEmpty){
+        await _firestore.collection('Hobby').doc(HobbyID).collection('comments').doc(commentID).set(
+
+          comment.toJason(),
+
+        );
+      }
+      else{
+        print('Text is empty') ;
+      }
+    }catch(e){
+      print (e.toString()) ;
+    }
+  }
   Future<void> deletepost(String PostID) async{
     try{
         await _firestore.collection('posts').doc(PostID).delete();
+    }catch(error){
+      print(error.toString());
+
+    }
+  }
+  Future<void> deletehobby(String PostID) async{
+    try{
+      await _firestore.collection('Hobby').doc(PostID).delete();
     }catch(error){
       print(error.toString());
 

@@ -14,7 +14,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
              appBar: AppBar(
-               backgroundColor: selection2,
+               backgroundColor: selection,
            actions: [
                 IconButton(onPressed: () async{
                   await AuthMethod().SignOut();
@@ -107,41 +107,7 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15.0),
-              SizedBox(
-                height: 50.0,
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration:   InputDecoration(
-                    hintText: 'Blood',
-                    border:OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    ) ,
-                    hintStyle:   TextStyle(
-                      fontSize: 20.0,
 
-                      fontWeight: FontWeight.bold,
-                    ),
-                    suffixIcon: IconButton(
-                        onPressed: (){},
-                        icon:  Icon(
-                          Icons.favorite,
-                        )),
-                  ),
-                  keyboardType:TextInputType.name ,
-
-                  //controller: emailcontroller,
-                  validator: (String ?value){
-                    if(value!.isEmpty)
-                    {
-                      return 'Please enter Blood';
-                    }
-                    return null;
-                  },
-
-
-                ),
-              ),
-              const SizedBox(height: 15.0),
               SizedBox(
                 height: 50.0,
                 child: TextFormField(
@@ -177,75 +143,8 @@ class EditProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15.0),
-              SizedBox(
-                height: 50.0,
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration:   InputDecoration(
-                    hintText: 'Height',
-                    border:OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    ) ,
-                    hintStyle:   TextStyle(
-                      fontSize: 20.0,
-
-                      fontWeight: FontWeight.bold,
-                    ),
-                    suffixIcon: IconButton(
-                        onPressed: (){},
-                        icon:  Icon(
-                          Icons.favorite,
-                        )),
-                  ),
-                  keyboardType:TextInputType.number ,
-
-                  //controller: emailcontroller,
-                  validator: (String ?value){
-                    if(value!.isEmpty)
-                    {
-                      return 'Please enter Height';
-                    }
-                    return null;
-                  },
 
 
-                ),
-              ),
-              const SizedBox(height: 15.0),
-              SizedBox(
-                height: 50.0,
-                child: TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration:   InputDecoration(
-                    hintText: 'Weight',
-                    border:OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    ) ,
-                    hintStyle:   TextStyle(
-                      fontSize: 20.0,
-
-                      fontWeight: FontWeight.bold,
-                    ),
-                    suffixIcon: IconButton(
-                        onPressed: (){},
-                        icon:  Icon(
-                          Icons.favorite,
-                        )),
-                  ),
-                  keyboardType:TextInputType.number ,
-
-                  //controller: emailcontroller,
-                  validator: (String ?value){
-                    if(value!.isEmpty)
-                    {
-                      return 'Please enter Weight';
-                    }
-                    return null;
-                  },
-
-
-                ),
-              ),
               const SizedBox(height: 15.0),
               SizedBox(
                 height: 50.0,

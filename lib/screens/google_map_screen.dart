@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:graduation_1/Utils/colors.dart';
 
 class GoogleMapPage extends StatefulWidget
 {
@@ -50,7 +51,9 @@ class _GoogleMapPageState extends State<GoogleMapPage>{
 
       appBar: AppBar(
         title: Text('Google Maps'),
-        foregroundColor: Colors.white,
+        centerTitle: true,
+        backgroundColor: selection,
+        foregroundColor: black,
       ),
       body: SafeArea(
         child: Stack(

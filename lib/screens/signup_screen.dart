@@ -85,8 +85,16 @@ class _SingupScreenState extends State<SingupScreen>{
   Widget build(BuildContext context)
   {
     return Scaffold(
-      appBar: AppBar(backgroundColor: selection,),
+
       backgroundColor: primary,
+      appBar: AppBar(backgroundColor: selection,
+
+        title: Text(
+          'Sign Up In HobbyTopia ' ,
+          style: TextStyle(
+            color: black ,
+            fontSize:24 ,
+          ),     ),),
       body: SafeArea(
         child: Container(
           padding: const  EdgeInsets.symmetric(horizontal: 35),
@@ -128,8 +136,8 @@ class _SingupScreenState extends State<SingupScreen>{
                     left:  90.0,
                       child:IconButton(
                         onPressed: selectImage,
-                        icon: const Icon(Icons.add_a_photo,
-                        color: Colors.blue,),
+                        icon:  Icon(Icons.add_a_photo,
+                        color: selection,),
                       ),
                   ),
                   ],
@@ -183,25 +191,68 @@ class _SingupScreenState extends State<SingupScreen>{
                     child:
                     _isLoading ?
                     const Center(child: CircularProgressIndicator(
-                      color: Colors.black,
+                      color: Colors.white,
                     ),)
-                        : const Text('Sing up '),
+                        :  Text('Sing up ' ,style: TextStyle(color: black ,fontSize: 28),  ),
                     width: double.infinity,
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(vertical: 20),
-                    decoration: const ShapeDecoration(
+                    decoration:  ShapeDecoration(
                         shape:RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),),
                         ),
-                        color: Colors.blue
+                        color:selection2,
                     ),
 
                   ),
                 ),
-                // transitioning to register or to forget password
-                const SizedBox(height: 25,width: 10,),
-                // WE need row to put them side by side
+                SizedBox(height: 25,width: 10,),
+                Row(children: [
+                  Expanded(
+                    child: Container(
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/face.png' ,),
+                        ),
+                      ),
+
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/lin.png' ,),
+                        ),
+                      ),
+
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/G.png',),
+                        ),
+                      ),
+
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+
+                ],) ,
+                SizedBox(height: 25,),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -215,7 +266,7 @@ class _SingupScreenState extends State<SingupScreen>{
                       child:  Container(
                         child:   Text('Log in ' ,
                           style: TextStyle(
-                            color: selection2,
+                            color: selection,
                             fontSize: 20,
                             fontWeight:FontWeight.bold ,
 

@@ -28,15 +28,16 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // backgroundColor:blue1 ,
+     backgroundColor:blue1 ,
       appBar: AppBar(
         backgroundColor:selection ,
-        foregroundColor: primary,
+        foregroundColor: black,
         title: Form(
           child: TextFormField(
             controller: searchController,
+            style: TextStyle(color: black ,fontSize: 18),
             decoration:
-            const InputDecoration(hintText: 'Search'),
+            const InputDecoration(hintText: 'Search',hintStyle: TextStyle(color: black ,fontSize: 16)),
 
             onFieldSubmitted: (String _) {
               setState(() {

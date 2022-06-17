@@ -58,8 +58,16 @@ class _Add_HobyyState extends State<Add_Hobyy> {
        username,
        ProfileImage, _AgeController.text);
    if (res == 'success') {
-     setState(() {_isLoading = false;});
-     showSnackBar('Event Created', context);
+     setState(() {
+       _hobbyDescriptionController.text='';
+       _nameController.text ='';
+       _placeController.text='';
+       _isLoading = false;
+       _AgeController.text='';
+
+
+     });
+     showSnackBar('Hobby Is Done', context);
      //the next function is important because it makes the file = to null so the screen back to the first layout that contains the upload immage
      clearImage();
    } else {

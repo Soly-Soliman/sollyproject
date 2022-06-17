@@ -4,20 +4,28 @@ import 'package:graduation_1/Utils/Diamentions.dart';
 
 import '../Components/User.dart';
 import '../Utils/colors.dart';
-class FeedUsersScreen extends StatefulWidget {
-  const FeedUsersScreen ({ Key? key }) : super(key: key);
+class FeedUsers__Screen extends StatefulWidget {
+  const FeedUsers__Screen ({ Key? key }) : super(key: key);
 
   @override
-  State<FeedUsersScreen> createState() => _FeedUsersScreenState();
+  State<FeedUsers__Screen> createState() => _FeedUsers__ScreenState();
 }
 
-class _FeedUsersScreenState extends State<FeedUsersScreen> {
+class _FeedUsers__ScreenState extends State<FeedUsers__Screen> {
   @override
   Widget build(BuildContext context) {
     final width =MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor:blue1 ,
+
+      appBar: AppBar(
+        backgroundColor: selection,
+        title: Text(
+          'ALL Users' ,
+              style: TextStyle(color: Colors.white ,fontSize: 18),
+        ),
+      ),
+      backgroundColor:Colors.white ,
 
 
       body:  SafeArea

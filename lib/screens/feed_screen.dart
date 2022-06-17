@@ -10,8 +10,12 @@ import 'package:graduation_1/screens/search_screen.dart';
 import 'package:graduation_1/screens/testing_profile.dart';
 import '../resourses/aut_methods.dart';
 import 'AboutAPP.dart';
+import 'Hobby_feed_screan.dart';
 import 'Hoppey_feed_screan.dart';
+import 'add_feedback_screen.dart';
 import 'add_hobby_screen.dart';
+import 'feed_users_screen.dart';
+import 'google_map_screen.dart';
 import 'login_screen.dart';
 
 
@@ -35,29 +39,12 @@ class _FeedScreenState extends State<FeedScreen> {
           appBar: width >webScreenSize ? null
               : AppBar(
             backgroundColor:selection ,
-            foregroundColor: primary,
+            foregroundColor: black,
 
             flexibleSpace: Row(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  mainAxisAlignment: MainAxisAlignment.start,
                    children: [
-                   Container(
-                  margin: const EdgeInsets.all(6),
-                  padding: const EdgeInsets.only(left: 2),
-                  //  color: Colors.amber,
-                  child: IconButton(
-                      onPressed:(){}
-
-                  , icon: Icon(Icons.menu ,color: Colors.white,))
-                  /*InkWell(
-                    onTap: (){},
-                    child: const CircleAvatar(
-                      radius: 25,
-                      backgroundColor: Colors.grey,
-                     
-                    ),
-                  ),*/
-                ),
                 SizedBox(
                   width: 5,
                   height: 55,
@@ -69,9 +56,9 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
 
             centerTitle: true,
-                    title:  const Text('HOBBY APP' ,
+                    title:  const Text('HOBBY' ,
                    style: TextStyle(
-                       color: mobileBackgroundColor,
+                       color: black,
                      ),
                 ),
               //هنا المفروض هيبقي اللوجو
@@ -79,7 +66,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 IconButton(onPressed: (){
                     Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
                },
-                         icon: const Icon(Icons.search_outlined, color: Colors.white,),) ,
+                         icon: const Icon(Icons.search_outlined, color: black,),) ,
            //  IconButton(onPressed: (){
              //  Navigator.push(context,MaterialPageRoute(builder: (context) =>const FeedUsersScreen()));
           //   },
@@ -136,6 +123,35 @@ class _FeedScreenState extends State<FeedScreen> {
                       ],
                     ),
                     SizedBox(height: 30,width: 10,) ,
+
+                    Row(
+                      children: [
+                        SizedBox(height: 10,width: 10,) ,
+                        CircleAvatar(backgroundColor:selection2 , radius: 25,
+                          backgroundImage: NetworkImage('https://scontent.fcai19-3.fna.fbcdn.net/v/t39.30808-6/257519657_1701296376733077_3716489816494877546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHAABM9D1pgkY7l-bH0_HFoseAgtqZYPh6x4CC2plg-HmIyWzOOg2FxvPIaug-NxaBvvcYLdbxMvcBQSriYrFMm&_nc_ohc=ohF93afXcVYAX8554Lq&_nc_ht=scontent.fcai19-3.fna&oh=00_AT9LgEceD_qxmMKJUlbH3GugE3lI5J5B7nM1JtxdcU4zCQ&oe=62AD6ED6'),
+                        ),
+                        SizedBox(height: 10,width: 10,) ,
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>  ProfileScreen(uid:  FirebaseAuth.instance.currentUser!.uid,)),
+                            );
+                          },
+                          child: Container(
+
+                              width: 180,
+                              height: 45,
+                              decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                                color: primary,
+                              ),
+                              child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                        ),
+
+                      ],
+                    ) ,
+                    SizedBox(height: 30,width: 10,) ,
                     Row(
                       children: [
                         SizedBox(height: 10,width: 10,) ,
@@ -162,51 +178,113 @@ class _FeedScreenState extends State<FeedScreen> {
                       ],
                     ) ,
                     SizedBox(height: 30,width: 10,) ,
-                    Row(
-                              children: [
-                                SizedBox(height: 10,width: 10,) ,
-                                CircleAvatar(backgroundColor:selection2 , radius: 25,
-                                  backgroundImage: NetworkImage('https://scontent.fcai19-3.fna.fbcdn.net/v/t39.30808-6/257519657_1701296376733077_3716489816494877546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHAABM9D1pgkY7l-bH0_HFoseAgtqZYPh6x4CC2plg-HmIyWzOOg2FxvPIaug-NxaBvvcYLdbxMvcBQSriYrFMm&_nc_ohc=ohF93afXcVYAX8554Lq&_nc_ht=scontent.fcai19-3.fna&oh=00_AT9LgEceD_qxmMKJUlbH3GugE3lI5J5B7nM1JtxdcU4zCQ&oe=62AD6ED6'),
-                                ),
-                                SizedBox(height: 10,width: 10,) ,
-                                InkWell(
-                                  onTap: (){
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>  ProfileScreen(uid:  FirebaseAuth.instance.currentUser!.uid,)),
-                                    );
-                                  },
-                                  child: Container(
 
-                                    width: 180,
-                                    height: 45,
-                                    decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
-                                      color: primary,
-                                    ),
-                                    child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15),))),
-                                ),
-
-                              ],
-                            ) ,
-                    SizedBox(height: 10,width: 10,) ,
 
                   ],
                 ),
+
                 Positioned(
 
                   child: Container(
-                    width: 50,
+                    margin: EdgeInsets.only(left: 20),
+                    width: 180,
                     height: 45,
                     decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
                       color: primary,
                     ),
-                    child: IconButton(onPressed: () async{
-                      await AuthMethod().SignOut();
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const LoginScreen(),),) ;
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>  FeedUsers__Screen()),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Text('  All Users ' ,textAlign: TextAlign.center,style: TextStyle(color: Colors.black ,fontSize: 18 ,),),
+                          SizedBox(width: 15,),
+                          Icon(
 
+                              Icons.people_outline)
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
 
-                    }, icon: Icon(Icons.logout_outlined),),
+                SizedBox(height: 30,),
+                Positioned(
+
+                  child: InkWell(
+                    onTap: ()
+                    {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const Add_feedback(),),) ;
+                    }
+                    ,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20),
+                      width: 180,
+                      height: 45,
+                      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                        color: primary,
+                      ),
+                      child: Row(
+                        children: [
+                          Text('    FeedBack ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.mail_sharp,size: 18,color: Colors.black,),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Positioned(
+
+                  child: InkWell(
+                    onTap: ()
+                    {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  GoogleMapPage(),),) ;
+                    }
+                    ,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20),
+                      width: 180,
+                      height: 45,
+                      decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                        color: primary,
+                      ),
+                      child: Row(
+                        children: [
+                          Text('    Neerby Peoble ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                          SizedBox(width: 15,),
+                          Icon(Icons.location_on,size: 18,color: Colors.black,),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30,),
+                Positioned(
+
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20),
+                    width: 180,
+                    height: 45,
+                    decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
+                      color: primary,
+                    ),
+                    child: Row(
+                      children: [
+                        Text('    Sing out ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                        SizedBox(width: 15,),
+                        IconButton(onPressed: () async{
+                          await AuthMethod().SignOut();
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const LoginScreen(),),) ;
+                        }, icon: Icon(Icons.logout_outlined),),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -263,7 +341,7 @@ class _FeedScreenState extends State<FeedScreen> {
                              onPressed: () {Navigator.push(
                                context,
                                MaterialPageRoute(
-                                   builder: (context) => const Add_Hobyy()),
+                                   builder: (context) => const HobbyFeed()),
                              );},
                              child: const Text(
                                'hobby',

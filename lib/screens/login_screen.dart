@@ -63,6 +63,14 @@ class _LoginScreenState extends State<LoginScreen>{
   {
     return Scaffold(
       backgroundColor:primary ,
+      appBar: AppBar(backgroundColor: selection,
+        foregroundColor: black,
+        title: Text(
+          'Log In HobbyTopia ' ,
+          style: TextStyle(
+            color:black ,
+            fontSize:24 ,
+          ),     ),),
       body: SafeArea(
         child: ListView(
           children: [
@@ -87,9 +95,9 @@ class _LoginScreenState extends State<LoginScreen>{
                   Text(
                     ' Hobby',
                     style: TextStyle(
-                      color: selection,
+                      color: black,
                       fontSize: 45.0,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],),
@@ -119,8 +127,8 @@ class _LoginScreenState extends State<LoginScreen>{
                   child: Container(
                     child: _isloading ?
                     const Center(child: CircularProgressIndicator(
-                     color: Colors.black,
-                    ),) : const Text('Log IN'),
+                     color: Colors.white,
+                    ),) :  Text('Log IN',style: TextStyle(color: black,fontSize: 28),),
                     width: double.infinity,
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(vertical: 20),
@@ -129,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen>{
                           borderRadius: BorderRadius.all(
                         Radius.circular(10),),
                         ),
-                      color: selection2
+                      color: selection2 ,
                   ),
 
                   ),
@@ -137,6 +145,51 @@ class _LoginScreenState extends State<LoginScreen>{
                 // transitioning to register or to forget password
                 const SizedBox(height: 25,width: 10,),
                 // WE need row to put them side by side
+
+                Row(children: [
+                  Expanded(
+                    child: Container(
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/face.png' ,),
+                        ),
+                      ),
+                    
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/lin.png' ,),
+                        ),
+                      ),
+
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        image: DecorationImage(
+                          image: AssetImage('images/G.png' ,),
+                        ),
+                      ),
+
+                      height: 40 ,
+                      width: 60,
+                    ),
+                  ),
+
+                ],) ,
+                SizedBox(height: 25,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -145,21 +198,22 @@ class _LoginScreenState extends State<LoginScreen>{
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
                     const SizedBox(height: 5 ,width: 10,),
-                GestureDetector(
-                  onTap: navigateToSignUp,
-                  child:  Container(
-                      child:   Text('Register' ,
-                        style: TextStyle(
-                        color: selection,
-                        fontSize: 20,
-                        fontWeight:FontWeight.bold ,
+                    GestureDetector(
+                      onTap: navigateToSignUp,
+                      child:  Container(
+                        child:   Text('Register' ,
+                          style: TextStyle(
+                            color: selection,
+                            fontSize: 20,
+                            fontWeight:FontWeight.bold ,
 
-                      ),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                    ),),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),),
                   ],
                 ),
+
               ],
             ),
           ),],

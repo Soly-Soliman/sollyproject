@@ -96,10 +96,10 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
     } else {
       return SafeArea(
         child: Scaffold(
-          backgroundColor: blue1,
+          backgroundColor: primary,
             appBar: AppBar(
               backgroundColor:selection ,
-              foregroundColor: primary,
+              foregroundColor: black,
               flexibleSpace:
             Row(
               children: [
@@ -116,7 +116,7 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                 Text(
                   userdata['username'],
                   style: const TextStyle(
-                      color: Colors.white, fontSize: 25),
+                      color: black, fontSize: 25),
                 ),
               ],
             ),
@@ -175,7 +175,7 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                   ? Text(
                 userdata['username'],
                 style: const TextStyle(
-                    color: Colors.black, fontSize: 25),
+                    color: black, fontSize: 25),
               ):
               Row(
                 children: [
@@ -213,11 +213,16 @@ class _CHAT_ID_ScreenState extends State<CHAT_ID_Screen> {
                       });
                     },
                     child: Container(
+                      
+                      decoration: BoxDecoration(
+                        color: selection3,
+                        borderRadius: BorderRadius.circular(7),
+                      ),
                       padding:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       child: const Icon(
                         Icons.ads_click_rounded,
-                        color: Colors.blue,
+                        color :black,
                       ),
                     ),
                   ),
