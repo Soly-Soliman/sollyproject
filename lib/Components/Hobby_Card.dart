@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../models/user.dart';
 import '../providers/user_provider.dart';
-import '../screens/Hobby_comment_screen.dart';
+import '../screens/hobby/Hobby_comment_screen.dart';
 
 class Hobby_Card extends StatefulWidget {
   final snapshot;

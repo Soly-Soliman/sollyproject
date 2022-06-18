@@ -9,12 +9,12 @@ import 'package:place_picker/entities/localization_item.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:place_picker/widgets/place_picker.dart';
 import 'package:provider/provider.dart';
-import '../Utils/colors.dart';
-import '../Utils/utils.dart';
-import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../../Utils/colors.dart';
+import '../../Utils/utils.dart';
+import '../../models/user.dart';
+import '../../providers/user_provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'google_map_screen.dart';
+import '../google_map_screen.dart';
 
 // ignore: must_be_immutable
 class Add_feedback extends StatefulWidget {

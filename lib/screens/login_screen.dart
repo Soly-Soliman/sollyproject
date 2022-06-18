@@ -63,18 +63,27 @@ class _LoginScreenState extends State<LoginScreen>{
   {
     return Scaffold(
       backgroundColor:primary ,
-      appBar: AppBar(backgroundColor: selection,
+      appBar: AppBar(
+
+        backgroundColor: selection,
         foregroundColor: black,
+
+        centerTitle: true,
         title: Text(
-          'Log In HobbyTopia ' ,
+          'Log In ' ,
           style: TextStyle(
+            fontFamily: 'Sofiar',
+            fontWeight: FontWeight.w800,
             color:black ,
             fontSize:24 ,
-          ),     ),),
+          ),     ),
+
+        ),
       body: SafeArea(
         child: ListView(
           children: [
           Container(
+            color: Colors.white,
             padding: MediaQuery.of(context).size.width> webScreenSize
                 ? EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width/3)
                 :  const  EdgeInsets.symmetric(horizontal: 35),
@@ -87,8 +96,8 @@ class _LoginScreenState extends State<LoginScreen>{
 
                   Hero(tag: 'logo',
                     child: Container(
-                      child: Image.asset('images/hi1.jpg',),
-                      height: 90 ,
+                      child: Image.asset('images/loo1.jpg',),
+                      height: 60 ,
                       width: 100,
                     ),),
                   const SizedBox(width: 10,height: 2,) ,
@@ -97,7 +106,9 @@ class _LoginScreenState extends State<LoginScreen>{
                     style: TextStyle(
                       color: black,
                       fontSize: 45.0,
-                      fontWeight: FontWeight.w500,
+                     letterSpacing: 6,
+                     fontFamily: 'Quintessential' ,
+
                     ),
                   ),
                 ],),
@@ -203,8 +214,9 @@ class _LoginScreenState extends State<LoginScreen>{
                       child:  Container(
                         child:   Text('Register' ,
                           style: TextStyle(
-                            color: selection,
-                            fontSize: 20,
+                            color: selection4,
+                            fontFamily: 'Sofiar',
+                            fontSize: 16,
                             fontWeight:FontWeight.bold ,
 
                           ),

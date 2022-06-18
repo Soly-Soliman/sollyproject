@@ -6,12 +6,12 @@ import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/models/user.dart';
 import 'package:graduation_1/providers/user_provider.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
-import 'package:graduation_1/screens/add_event_screen.dart';
+import 'package:graduation_1/screens/event/add_event_screen.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import 'add_hobby_screen.dart';
+import 'hobby/add_hobby_screen.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);

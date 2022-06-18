@@ -9,26 +9,25 @@ import 'package:place_picker/entities/localization_item.dart';
 import 'package:place_picker/entities/location_result.dart';
 import 'package:place_picker/widgets/place_picker.dart';
 import 'package:provider/provider.dart';
-import '../Utils/colors.dart';
-import '../Utils/utils.dart';
-import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../../Utils/colors.dart';
+import '../../Utils/utils.dart';
+import '../../models/user.dart';
+import '../../providers/user_provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'google_map_screen.dart';
+import '../google_map_screen.dart';
 
 // ignore: must_be_immutable
-class Add_Hobyy extends StatefulWidget {
-  const Add_Hobyy({Key? key}) : super(key: key);
+class Add_Event extends StatefulWidget {
+  const Add_Event({Key? key}) : super(key: key);
 
   @override
-  _Add_HobyyState createState() => _Add_HobyyState();
+  _Add_EventState createState() => _Add_EventState();
 }
 
-class _Add_HobyyState extends State<Add_Hobyy> {
+class _Add_EventState extends State<Add_Event> {
   Uint8List? _file;
   bool _isLoading = false;
-  final TextEditingController _hobbyDescriptionController = TextEditingController();
-  final TextEditingController _AgeController = TextEditingController();
+  final TextEditingController _eventDescriptionController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -40,15 +39,15 @@ class _Add_HobyyState extends State<Add_Hobyy> {
   String Date= '00/00/0000';
   late Localizations _localizations ;
 
-  void Add_hobby(
+  void create_event(
       String uid ,
       String username ,
       String ProfileImage ,
 
       ) async{
     try{
-   String res = await FireStoreMethods().uploadHobby(
-       _hobbyDescriptionController.text,
+   String res = await FireStoreMethods().uploadevent
+     (_eventDescriptionController.text,
        _nameController.text,
        _placeController.text,
        Date,
@@ -56,20 +55,21 @@ class _Add_HobyyState extends State<Add_Hobyy> {
        _file!,
        uid,
        username,
-       ProfileImage, _AgeController.text);
+       ProfileImage
+   );
    if (res == 'success') {
      setState(() {
-       _hobbyDescriptionController.text='';
-       _nameController.text ='';
-       _placeController.text='';
+       _placeController.text="";
+       _eventDescriptionController.text='';
+       _nameController.text='';
        _isLoading = false;
-       _AgeController.text='';
 
 
      });
-     showSnackBar('Hobby Is Done', context);
+     showSnackBar('Event Created', context);
      //the next function is important because it makes the file = to null so the screen back to the first layout that contains the upload immage
      clearImage();
+
    } else {
      setState(() {
        _isLoading = false;
@@ -122,16 +122,81 @@ class _Add_HobyyState extends State<Add_Hobyy> {
           );
         });
   }
+  Future _choosedate(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return SimpleDialog(
+            title: const Text('Set Date'),
+            children: [
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(10),
+                child: const Text('one day'),
+                onPressed: () async {
+                  _dateTime = (await showDatePicker(
+                    initialDatePickerMode: DatePickerMode.day,
+                    initialEntryMode: DatePickerEntryMode.calendar,
+                    confirmText: 'ok',
+                    fieldHintText: 'event for one day ',
+                    helpText: 'Event\'s DAY',
+
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2022),
+                    lastDate: DateTime(2030),
+                  ))!;
+                  setState(() {
+                    final now = DateTime.now();
+                    Date=DateFormat('dd/MM/yyyy').format(_dateTime);
+                    //Date =_dateTime.toString();
+                  });
+                },
+              ),
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(10),
+                child: const Text('multi days'),
+                onPressed: ()async {
+                  _dateTime = (await showDatePicker(
+                    initialDatePickerMode: DatePickerMode.day,
+                    initialEntryMode: DatePickerEntryMode.calendar,
+                    confirmText: 'ok',
+                    fieldHintText: 'event for one day ',
+                    helpText: 'Event\'s DAY',
+
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2022),
+                    lastDate: DateTime(2030),
+                  ))!;
+                  setState(() {
+                    final now = DateTime.now();
+                    Date=DateFormat('dd/MM/yyyy').format(_dateTime);
+                    //Date =_dateTime.toString();
+                  });
+                },
+              ),
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(10),
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+
+
   @override
   void dispose() {
     super.dispose();
     _dateController.dispose();
-    _hobbyDescriptionController.dispose();
+    _eventDescriptionController.dispose();
     _nameController.dispose();
     _timeController.dispose();
     _placeController.dispose();
-    _AgeController.dispose() ;
-
   }
 
   void clearImage() {
@@ -139,7 +204,6 @@ class _Add_HobyyState extends State<Add_Hobyy> {
       _file = null;
     });
   }
-
   void showPlacePicker() async {
     LocationResult result = await Navigator.of(context).push(
         MaterialPageRoute(builder: (context) =>
@@ -155,7 +219,6 @@ class _Add_HobyyState extends State<Add_Hobyy> {
     // Handle the result in your way
     print(result);
   }
-
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
@@ -163,8 +226,8 @@ class _Add_HobyyState extends State<Add_Hobyy> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: selection,
-        title:  Center(
-          child: Text('Write About Hobby'),
+        title: const Center(
+          child: Text('Create New Event'),
         ),
       ),
       body: Padding(
@@ -175,115 +238,82 @@ class _Add_HobyyState extends State<Add_Hobyy> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
                       radius: 33,
                       backgroundColor: selection2,
                       backgroundImage: NetworkImage(user.photoUrl),
                     ),
-                    SizedBox(width: 15,),
-                    Column(
-                      children: [
-                        const Text(
-                          'Hobby Name',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize:17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(width: 15,height: 10,),
-                        Container(
-                          
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(8) ,
-                          ),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.65,
-                            height: 30,
-                            child: TextFormField(
-                              controller: _nameController,
-                              maxLines: 1,
-                              decoration: const InputDecoration(
-                                hintText: 'Name',
-                                suffixIcon: Icon(
-                                  Icons.drive_file_rename_outline,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
                 const Divider(
                   color: Colors.black,
                 ),
-
-                const SizedBox(
-                  height: 5.0,
-                ),
                 const Text(
-                  'About The Hobby ..',
+                  'Event Name',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(8) ,
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width ,
-
-                    child: TextField(
-                       maxLines: 8,
-                      controller: _hobbyDescriptionController,
-
-
-                      decoration: const InputDecoration(
-                      hintText: 'About',
-                        hintStyle : TextStyle(
-                          color: Colors.black ,
-                        ),
-                        suffixIcon: Icon(
-                          Icons.account_box,
-                        ),
-                      ),
+                TextFormField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'name',
+                    suffixIcon: Icon(
+                      Icons.account_box,
                     ),
                   ),
                 ),
-               /*
-
-                   Row(
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const Text(
+                  'Discription',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextFormField(
+                  controller: _eventDescriptionController,
+                  decoration: const InputDecoration(
+                    labelText: 'Discription',
+                    suffixIcon: Icon(
+                      Icons.account_box,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: const [
                     Text(
-                      'suggested Day ',
+                      'Date',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 17,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
-
                       ),
                     ),
                     // IconButton(onPressed: (){}, icon: Icon(Icons.date_range),)
 
                     SizedBox(
                       height: 10.0,
-                      width: 30,
+                      width: 120,
                     ),
                     Text(
-                      'Time To practice ',
+                      'Time',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 17,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -292,7 +322,7 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                 Row(
                   children: [
                     RaisedButton(
-                      color: Colors.grey.shade400, splashColor: Colors.blueAccent,
+                      color: selection, splashColor: Colors.blueAccent,
                         mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                     async {
@@ -317,7 +347,7 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                       child:
                       Text(
                         Date,style: const TextStyle(
-                        color: Colors.black
+                        color: Colors.white
                       ),
                       ),
                     ),
@@ -326,7 +356,7 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                       width: 50,
                     ),
                     RaisedButton(
-                      color: Colors.grey.shade400, splashColor: Colors.blue,
+                      color:selection, splashColor: Colors.blue,
                       mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                       async {
@@ -353,13 +383,12 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                          "${selectedTime.format(context)}",
                        // "${selectedTime.hourOfPeriod} :${selectedTime.minute}:${selectedTime.period}",
                         style: const TextStyle(
-                          color: Colors.black
+                          color: Colors.white
                       ),
                       ),
                     ),
                   ],
                 ),
-                */
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -367,93 +396,43 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                   'Place',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(8) ,
-                          ),
-                          child: TextFormField(
-
-                            controller: _placeController,
-                            decoration: const InputDecoration(
-                              hintText: 'Place To do It',
-                              suffixIcon: Icon(
-                                Icons.location_on,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                    Container(
-                      height: 48,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8) ,
-                      ),
-                      child: FlatButton(
-                        color: Colors.purple.shade200,
-                        onPressed:()
-                        {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
-                        ,child: Row(
-                        children: [
-                          Icon(Icons.location_on,size: 16, color: Colors.black,),
-                          const Text('The Map',style: TextStyle(fontSize: 12),),
-
-                        ],
-                      ),),
-                    ) ,
-                  ],
+                TextFormField(
+                  controller: _placeController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter the place ',
+                    suffixIcon: Icon(
+                      Icons.location_on,
+                    ),
+                  ),
                 ),
+               Container(
+                 decoration: BoxDecoration(
+                   borderRadius: BorderRadius.circular(5)
+                 ),
+                 child: FlatButton(
+                   color: selection2,
+                   onPressed:()
+                   {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
+                   ,child: Row(
+                     children: [
+                        Icon(Icons.location_on,size: 25, color: Colors.black,),
+                       const Text('go to the Map'),
+
+                     ],
+                   ),),
+               ) ,
                 const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  children: [
-                    Container( width: 74,
-                    child: const Text(
-                      'Age',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(8) ,
-                        ),
-                        child: TextFormField(
-                          controller: _AgeController,
-                          decoration: const InputDecoration(
-                            hintText: 'Perfect Age ..',
-                            suffixIcon: Icon(
-                              Icons.check,
-                              color: Colors.green,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
                 const Text(
                   'Image',
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 17.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -463,16 +442,14 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                 Row(
                   children: [
                     _file == null
-                        ? InkWell(
+                        ?  InkWell(
                       onTap: () => _selctImage(context),
-                          child: Container(
-                            child: Icon(
-                                  Icons.image,
-                                  size: 80,
-                                  color: selection2,
-                                ),
-                              ),
 
+                          child: Icon(
+                                Icons.image,
+                                size: 80,
+                                color: selection,
+                              ),
                         )
                         : Container(
                             height: 150.0,
@@ -507,12 +484,11 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                             height: 150.0,
                             width: 150.0,
                             child: IconButton(
-
                               onPressed: clearImage,
                               icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
-                                size: 70,
+                                size: 40,
                               ),
                             ),
                           ),
@@ -529,6 +505,7 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),*/
+
             /*    SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -598,22 +575,21 @@ class _Add_HobyyState extends State<Add_Hobyy> {
                   ),
                 ),*/
                 const SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 Container(
-
-                  width: double.infinity,
                   decoration: BoxDecoration(
-                    color: selection2,
-                    borderRadius: BorderRadius.circular(8) ,
+                    borderRadius: BorderRadius.circular(8),color: selection,
                   ),
+                  width: double.infinity,
+                       alignment: Alignment.center,
                   child: MaterialButton(
-                    onPressed: ()=> Add_hobby(user.uid,user.username,user.photoUrl),
+                    onPressed: ()=> create_event(user.uid,user.username,user.photoUrl),
                     child: const Text(
                       'Create',
                       style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 30
+                        color: Colors.white,
+                        fontSize: 28
                       ),
                     ),
                   ),

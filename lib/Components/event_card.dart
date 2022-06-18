@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/animatios.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
-import 'package:graduation_1/screens/eventcomments.dart';
+import 'package:graduation_1/screens/event/eventcomments.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -225,19 +225,13 @@ class _EventCardState extends State<EventCard> {
                                         children: [
                                           Row(
                                             children: [
-                                              SizedBox( height: 10,width: 10,) ,
-                                               Text(
-                                                "Event : ",
-                                                style:  TextStyle(
-                                                  color: webBackgroundColor,
-                                                  fontSize: 20,
 
-                                                ),
-                                              ),
-                                              Text(
-                                                widget.snapshot['name'],
-                                                style: const TextStyle(
-                                                  fontSize: 20,
+                                              Container(width: 90,
+                                                child: Text(
+                                                  widget.snapshot['name'],
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -305,12 +299,7 @@ class _EventCardState extends State<EventCard> {
                                                 color: selection2,
                                               ),
                                               SizedBox(width: 12,) ,
-                                              Text(
-                                                'Place : ',
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                              ),
+
                                               Text(
                                                 widget.snapshot['place'],
                                                 style: const TextStyle(

@@ -100,6 +100,19 @@ flutter:
           weight: 700
         - asset: fonts/NimbusSanL-RegIta.otf
           style: italic
+    - family: Quintessential
+      fonts:
+        - asset: fonts/Quintessential-Regular.ttf
+
+    - family: Sofiar
+      fonts:
+        - asset: fonts/Sofia-Regular.ttf
+    - family: Lemon
+      fonts:
+        - asset: fonts/Lemon-Regular.ttf
+    - family: Trocchi
+      fonts:
+        - asset: fonts/Trocchi-Regular.ttf
     - family: OpenSans
       fonts:
         - asset: fonts/OpenSans-Bold.ttf

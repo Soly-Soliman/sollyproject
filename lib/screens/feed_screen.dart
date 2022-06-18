@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/post_card.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
-import 'package:graduation_1/screens/events_feed_screan.dart';
+import 'package:graduation_1/screens/event/events_feed_screan.dart';
 import 'package:graduation_1/screens/profile_screen.dart';
 import 'package:graduation_1/screens/search_screen.dart';
-import 'package:graduation_1/screens/testing_profile.dart';
 import '../resourses/aut_methods.dart';
 import 'AboutAPP.dart';
 import 'Hobby_feed_screan.dart';
 import 'Hoppey_feed_screan.dart';
-import 'add_feedback_screen.dart';
-import 'add_hobby_screen.dart';
+import 'feedback/add_feedback_screen.dart';
 import 'feed_users_screen.dart';
 import 'google_map_screen.dart';
 import 'login_screen.dart';
@@ -30,10 +28,6 @@ class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     final width =MediaQuery.of(context).size.width;
-    bool _isevent = false;
-
-
-
     return SafeArea(
       child: Scaffold(
           appBar: width >webScreenSize ? null
@@ -59,6 +53,9 @@ class _FeedScreenState extends State<FeedScreen> {
                     title:  const Text('HOBBY' ,
                    style: TextStyle(
                        color: black,
+                     fontFamily: 'Sofiar',
+                     fontSize: 30,
+                     fontWeight: FontWeight.bold,
                      ),
                 ),
               //هنا المفروض هيبقي اللوجو
@@ -91,12 +88,12 @@ class _FeedScreenState extends State<FeedScreen> {
 
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left:20.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left:20.0),
                           child: CircleAvatar(
                             radius: 28,
                             backgroundColor: selection2,
-                            child:  const CircleAvatar(
+                            child:  CircleAvatar(
                               radius: 24.0,
                               backgroundImage: NetworkImage('https://scontent.fcai19-3.fna.fbcdn.net/v/t39.30808-6/257519657_1701296376733077_3716489816494877546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHAABM9D1pgkY7l-bH0_HFoseAgtqZYPh6x4CC2plg-HmIyWzOOg2FxvPIaug-NxaBvvcYLdbxMvcBQSriYrFMm&_nc_ohc=ohF93afXcVYAX8554Lq&_nc_ht=scontent.fcai19-3.fna&oh=00_AT9LgEceD_qxmMKJUlbH3GugE3lI5J5B7nM1JtxdcU4zCQ&oe=62AD6ED6'),
 
@@ -109,10 +106,11 @@ class _FeedScreenState extends State<FeedScreen> {
                             const SizedBox(height: 30 ,width: 10,),
                             Text(
                               'SUlly@gmail.com',
-                              style: TextStyle(color: primary),
+                              style: TextStyle(color: primary ,fontFamily: 'Trocchi',fontSize: 20),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               textAlign: TextAlign.justify,
+
                             ),
                          const   SizedBox(height: 30,) ,
 
@@ -146,7 +144,7 @@ class _FeedScreenState extends State<FeedScreen> {
                               decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
                                 color: primary,
                               ),
-                              child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                              child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'Trocchi'),))),
                         ),
 
                       ],
@@ -173,7 +171,7 @@ class _FeedScreenState extends State<FeedScreen> {
                               decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
                                 color: primary,
                               ),
-                              child: const Center(child: Text('About The APP',style: TextStyle(color: Colors.black,fontSize: 15),))),
+                              child: const Center(child: Text('About The APP',style: TextStyle(color:black,fontSize: 15,fontFamily: 'Trocchi'),))),
                         ),
                       ],
                     ) ,
@@ -202,7 +200,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       },
                       child: Row(
                         children: [
-                          Text('  All Users ' ,textAlign: TextAlign.center,style: TextStyle(color: Colors.black ,fontSize: 18 ,),),
+                          Text('  All Users ' ,textAlign: TextAlign.center,style: TextStyle(color: black ,fontSize: 18 ,fontFamily: 'Trocchi'),),
                           SizedBox(width: 15,),
                           Icon(
 
@@ -231,9 +229,9 @@ class _FeedScreenState extends State<FeedScreen> {
                       ),
                       child: Row(
                         children: [
-                          Text('    FeedBack ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                          Text('    FeedBack ' ,style: TextStyle(color: black ,fontSize: 18 ,fontFamily: 'Trocchi'),),
                           SizedBox(width: 15,),
-                          Icon(Icons.mail_sharp,size: 18,color: Colors.black,),
+                          Icon(Icons.mail_sharp,size: 18,color: black,),
                         ],
                       ),
                     ),
@@ -257,9 +255,9 @@ class _FeedScreenState extends State<FeedScreen> {
                       ),
                       child: Row(
                         children: [
-                          Text('    Neerby Peoble ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                          Text('    Neerby Peoble ' ,style: TextStyle(color: black ,fontSize: 14,fontFamily: 'Trocchi'),),
                           SizedBox(width: 15,),
-                          Icon(Icons.location_on,size: 18,color: Colors.black,),
+                          Icon(Icons.location_on,size: 18,color: black,),
                         ],
                       ),
                     ),
@@ -277,7 +275,7 @@ class _FeedScreenState extends State<FeedScreen> {
                     ),
                     child: Row(
                       children: [
-                        Text('    Sing out ' ,style: TextStyle(color: Colors.black ,fontSize: 18),),
+                        Text('    Sing out ' ,style: TextStyle(color: black ,fontSize: 18 ,fontFamily: 'Trocchi'),),
                         SizedBox(width: 15,),
                         IconButton(onPressed: () async{
                           await AuthMethod().SignOut();
@@ -321,7 +319,8 @@ class _FeedScreenState extends State<FeedScreen> {
                              child: const Text(
                                'Events',
                                style: TextStyle(
-                                 color: Colors.black,
+                                 color: black,
+                                   fontFamily: 'Trocchi'
                                ),
                              ),
                            ),
@@ -347,7 +346,8 @@ class _FeedScreenState extends State<FeedScreen> {
                                'hobby',
                                style: TextStyle(
                                  fontSize: 13,
-                                 color: Colors.black,
+                                 color: black,
+                                   fontFamily: 'Trocchi',
                                ),
                              ),
                            ),
@@ -372,8 +372,11 @@ class _FeedScreenState extends State<FeedScreen> {
                              child: const Text(
                                'Challange',
                                style: TextStyle(
-                                 fontSize: 13,
-                                 color: Colors.black,
+                                 fontSize: 11,
+                                 color: black,
+                                 fontFamily: 'Trocchi' ,
+                                 fontWeight: FontWeight.w500 ,
+
                                ),
                              ),
                            ),
@@ -383,10 +386,10 @@ class _FeedScreenState extends State<FeedScreen> {
                        Expanded(
 
                          child: Container(
-                           padding: const EdgeInsets.all(3),
+                           padding: const EdgeInsets.all(4),
                            child: MaterialButton(
 
-                             color: Colors.lightBlue.shade500,
+                             color: selection4,
                              onPressed: () {
                                Navigator.push(
                                context,
@@ -394,10 +397,11 @@ class _FeedScreenState extends State<FeedScreen> {
                                    builder: (context) => const HoppyFeedScreen()),
                              );},
                              child: const Text(
-                               'Custom Hobbies',
+                               'Custom ',
                                style: TextStyle(
-                                 fontSize: 12,
-                                 color: Colors.black,
+                                 fontSize: 18,
+                                 color: primary,
+                                 fontFamily: 'Sofiar',
                                ),
                              ),
                            ),
@@ -408,7 +412,7 @@ class _FeedScreenState extends State<FeedScreen> {
                    ),
                   ),
                   Container(
-                    color: Colors.black,
+                    color: black,
                     height: 2,
                   ),
                  Expanded(

@@ -6,20 +6,21 @@ import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
 
-import '../Components/text_field_input.dart';
-import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../../Components/text_field_input.dart';
+import '../../models/user.dart';
+import '../../providers/user_provider.dart';
+import '../../providers/user_provider.dart';
 
-class eventCommentsScreen extends StatefulWidget {
+class HobbyCommentsScreen extends StatefulWidget {
   final snapshot;
   //final String Comment ;
-  const eventCommentsScreen({Key? key, required this.snapshot}) : super(key: key);
+  const HobbyCommentsScreen({Key? key, required this.snapshot}) : super(key: key);
 
   @override
-  _eventCommentsScreenState createState() => _eventCommentsScreenState();
+  _HobbyCommentsScreenState createState() => _HobbyCommentsScreenState();
 }
 
-class _eventCommentsScreenState extends State<eventCommentsScreen> {
+class _HobbyCommentsScreenState extends State<HobbyCommentsScreen> {
   final TextEditingController _commentController = TextEditingController();
   @override
   void dispose() {
@@ -32,7 +33,7 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
     final User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: selection,
         title: const Text(
           'Comments',
           style: TextStyle(color: Colors.black),
@@ -42,8 +43,8 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
       //////////////////////////////////////////////
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('events')
-              .doc(widget.snapshot['EventID'])
+              .collection('Hobby')
+              .doc(widget.snapshot['HobbyID'])
               .collection('comments')
           //.orderBy('datePublished',descending: true)
               .snapshots(),
@@ -101,8 +102,8 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
               ),
               InkWell(
                 onTap: () async {
-                  FireStoreMethods().eventcomment(
-                      widget.snapshot['EventID'],
+                  FireStoreMethods().Hobbycomment(
+                      widget.snapshot['HobbyID'],
                       _commentController.text,
                       user.uid,
                       user.username,
