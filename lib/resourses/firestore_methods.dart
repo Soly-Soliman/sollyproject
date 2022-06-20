@@ -144,8 +144,9 @@ class FireStoreMethods {
       String username,
       String profileImageUrl,
       String Age,
+      )
 
-      ) async {
+  async {
     String res = ' some error occurred';
 
     try {
@@ -175,7 +176,55 @@ class FireStoreMethods {
     }
     return res ;
 
-  } Future<String> uploadfeedback(
+  }
+  Future<String> uploadWork(
+      String description,
+      String name,
+      String place,
+      String date,
+      String time,
+      Uint8List file,
+      String uid,
+      String username,
+      String profileImageUrl,
+      String Age,
+      )
+
+  async {
+    String res = ' some error occurred';
+
+    try {
+      String PhotoUrl =  await StorageMethods().uploadImagetoStorage('Work', file, true);
+      String HobbyID = const Uuid().v1();
+      Hobby event = Hobby(
+          likes: [],
+          follower: [],
+          username: username,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: description,
+          profileImageUrl: profileImageUrl,
+          time: time,
+          name:name,
+          date: date ,
+          place:place,
+          HobbyUrl: PhotoUrl,
+          HobbyID: HobbyID,
+          Age: Age );
+      _firestore.collection('Work').doc(HobbyID).set(
+        event.toJason(),
+      );
+      res ='success' ;
+    } catch (error) {
+      res =error.toString();
+    }
+    return res ;
+
+  }
+
+
+
+  Future<String> uploadfeedback(
       String description,
       String description2,
       String name,
@@ -258,6 +307,28 @@ try{
       print(e.toString()) ;
     }
   }
+  Future <void> likedWork(String postId, String uid,List likes) async{
+
+    try{
+      if(likes.contains(uid)){
+        await _firestore.collection('Work').doc(postId).update(
+            {
+              'likes' : FieldValue.arrayRemove([uid]),
+            }
+        );
+      }else{
+        await _firestore.collection('Work').doc(postId).update(
+            {
+              'likes' : FieldValue.arrayUnion([uid]),
+            }
+        );
+      }
+
+
+    }catch(e){
+      print(e.toString()) ;
+    }
+  }
   Future <void> likedEvent(String eventId, String uid,List likes) async{
 
     try{
@@ -284,7 +355,7 @@ try{
 
     try{
       if(likes.contains(uid)){
-        await _firestore.collection('events').doc(CH_ID).update(
+        await _firestore.collection('Challenges').doc(CH_ID).update(
             {
               'likes' : FieldValue.arrayRemove([uid]),
             }
@@ -313,6 +384,7 @@ try{
           dataPublished: DateTime.now(),
           description: text,
           CommentID: commentID,
+          PostID: PostID,
           profileImageUrl: ProfilePicture
       );
              if(text.isNotEmpty){
@@ -377,7 +449,7 @@ try{
           dataPublished: DateTime.now(),
           description: text,
           CommentID: commentID,
-          profileImageUrl: ProfilePicture
+          profileImageUrl: ProfilePicture, PostID: eventID
       );
       if(text.isNotEmpty){
         await _firestore.collection('events').doc(eventID).collection('comments').doc(commentID).set(
@@ -403,10 +475,36 @@ try{
           dataPublished: DateTime.now(),
           description: text,
           CommentID: commentID,
-          profileImageUrl: ProfilePicture
+          profileImageUrl: ProfilePicture, PostID: HobbyID
       );
       if(text.isNotEmpty){
         await _firestore.collection('Hobby').doc(HobbyID).collection('comments').doc(commentID).set(
+
+          comment.toJason(),
+
+        );
+      }
+      else{
+        print('Text is empty') ;
+      }
+    }catch(e){
+      print (e.toString()) ;
+    }
+  }
+  Future<void> Workcomment( String HobbyID,String text,String uid,String name ,String ProfilePicture ,) async{
+    try{
+
+      String commentID =const Uuid().v1();
+      Comment comment = Comment(
+          username: name,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: text,
+          CommentID: commentID,
+          profileImageUrl: ProfilePicture, PostID: HobbyID
+      );
+      if(text.isNotEmpty){
+        await _firestore.collection('Work').doc(HobbyID).collection('comments').doc(commentID).set(
 
           comment.toJason(),
 
@@ -429,7 +527,7 @@ try{
           dataPublished: DateTime.now(),
           description: text,
           CommentID: commentID,
-          profileImageUrl: ProfilePicture
+          profileImageUrl: ProfilePicture, PostID: CH_ID
       );
       if(text.isNotEmpty){
         await _firestore.collection('Challenges').doc(CH_ID).collection('comments').doc(commentID).set(
@@ -461,6 +559,16 @@ try{
 
     }
   }
+  Future<void> deletecomment(String name,String CommentID,String ID) async{
+    try{
+      await _firestore.collection(name).doc(ID).collection('comments').doc(CommentID).delete();
+    }catch(error){
+      print(error.toString());
+
+    }
+  }
+
+
   Future<void> deleteMassage(String uid , String ReciverID ,String MassageID) async{
     try{
       _firestore..collection('Users').doc(uid) .collection('chats')
@@ -475,6 +583,7 @@ try{
 
     }
   }
+
   Future<void> deleteevent(String eventID) async{
     try{
       await _firestore.collection('events').doc(eventID).delete();

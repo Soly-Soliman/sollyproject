@@ -22,7 +22,7 @@ class _Massage_CardState extends State<Massage_Card> {
       margin: const EdgeInsets.all(8.0),
    //   padding: const EdgeInsets.symmetric(vertical: 6 ,horizontal: 5) ,
       decoration: BoxDecoration(
-      color: selection,
+      color: blue1,
 
         borderRadius: const BorderRadius.all(Radius.circular(10.0) //                 <--- border radius here
         ),

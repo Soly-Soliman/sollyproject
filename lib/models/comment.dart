@@ -8,6 +8,7 @@ class Comment{
   final  dataPublished;
   final String description;
   final String CommentID ;
+  final String PostID ;
 
 
 
@@ -18,6 +19,8 @@ class Comment{
     required this.dataPublished,
     required this.description,
     required this.CommentID ,
+    required this.PostID ,
+
 
     //GPS LOCATION
 
@@ -29,6 +32,7 @@ class Comment{
     'dataPublished':dataPublished,
     'description' :description ,
     'CommentID'   : CommentID ,
+    'PostID'   : PostID ,
 
   } ;
 
@@ -42,6 +46,7 @@ class Comment{
       dataPublished: snapshot['dataPublished'],
       description: snapshot['description'],
       CommentID: snapshot['CommentID'],
+      PostID: snapshot['PostID'],
 
 
     ) ;

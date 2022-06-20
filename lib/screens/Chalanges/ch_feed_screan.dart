@@ -27,7 +27,7 @@ class _Chs_FeedScreenState extends State<Chs_FeedScreen> {
         foregroundColor: black,
         centerTitle: false,
         title:  const
-        Text('Events' ,
+        Text('Challenges' ,
           style: TextStyle(
             fontFamily: 'Sofiar' ,
             color: black,

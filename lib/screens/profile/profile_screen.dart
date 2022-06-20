@@ -7,6 +7,7 @@ import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:graduation_1/screens/profile/Edit_Profile_Screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../Utils/colors.dart';
+import '../Chat/Chat_ID_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -760,7 +761,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Expanded(
                       child: FlatButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CHAT_ID_Screen(
+                                uid: widget.uid,
+
+                              ),
+                            ),
+                          );
+                        },
                          minWidth: 35,
                         color: selection2,
                         textColor: Colors.black,

@@ -11,6 +11,7 @@ import 'package:graduation_1/screens/search_screen.dart';
 import '../../resourses/aut_methods.dart';
 import '../AboutAPP.dart';
 import '../Chalanges/ch_feed_screan.dart';
+import '../Experts/Expert_feed_screan.dart';
 import '../hobby/Hobby_feed_screan.dart';
 import '../hobby/Hoppey_Data_feed_screan.dart';
 import '../feedback/add_feedback_screen.dart';
@@ -292,9 +293,21 @@ class _FeedScreenState extends State<FeedScreen> {
           body:  SafeArea(
 
             child: Scaffold(
+              floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.start),
+                foregroundColor: black,
+                focusColor:selection2 ,
+                backgroundColor:selection ,
+               onPressed: () {Navigator.push(
+                 context,
+                 MaterialPageRoute(
+                     builder: (context) => const Expert_Feed()),
+               );},
+              ),
               backgroundColor: blue1,
               body: Column(
                 children: [
+
                   Container(
                     margin: const EdgeInsets.only(top: 0,bottom: 2),
                     height: 37,
