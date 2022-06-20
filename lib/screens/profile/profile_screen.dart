@@ -2,13 +2,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_1/Components/follow_button.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
-import 'package:graduation_1/screens/Edit_Profile_Screen.dart';
+import 'package:graduation_1/screens/profile/Edit_Profile_Screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-import '../Utils/colors.dart';
+import '../../Utils/colors.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -92,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                  backgroundColor:selection ,
                  foregroundColor: black,
 
-                 title: Text(userdata['username'],),
+                 title: Text(userdata['username'],style:TextStyle(color: black,fontFamily: 'Lemon') ,),
                  centerTitle: true,
                ),
              ),

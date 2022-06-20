@@ -4,13 +4,13 @@ import 'package:graduation_1/Components/text_field_input.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/aut_methods.dart';
-import 'package:graduation_1/screens/Home_screen.dart';
-import 'package:graduation_1/screens/signup_screen.dart';
+import 'package:graduation_1/screens/hobby/Home_screen.dart';
+import 'package:graduation_1/screens/SignUp_SignIn/signup_screen.dart';
 
-import '../Responsive/Responsive_layout_Screen.dart';
-import '../Responsive/mobile_screen_layout.dart';
-import '../Responsive/web_screen_layout.dart';
-import '../Utils/colors.dart';
+import '../../Responsive/Responsive_layout_Screen.dart';
+import '../../Responsive/mobile_screen_layout.dart';
+import '../../Responsive/web_screen_layout.dart';
+import '../../Utils/colors.dart';
 
 class LoginScreen extends StatefulWidget{
   const LoginScreen({Key?key}) :super(key: key) ;

@@ -11,20 +11,22 @@ import 'package:provider/provider.dart';
 import '../Utils/colors.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
+
+import '../screens/Chalanges/ch_comments_screen.dart';
 import '../screens/Google/google_map_screen.dart';
 
-class EventCard extends StatefulWidget {
+class ch_Card extends StatefulWidget {
   final snapshot;
-  const EventCard({
+  const ch_Card({
     Key? key,
     required this.snapshot,
   }) : super(key: key);
 
   @override
-  State<EventCard> createState() => _EventCardState();
+  State<ch_Card> createState() => _ch_CardState();
 }
 
-class _EventCardState extends State<EventCard> {
+class _ch_CardState extends State<ch_Card> {
   bool isLikeAnimating = false;
   int commentLenght = 0;
   @override
@@ -36,8 +38,8 @@ class _EventCardState extends State<EventCard> {
   void getComment() async {
     try {
       QuerySnapshot snap = await FirebaseFirestore.instance
-          .collection('events')
-          .doc(widget.snapshot['EventID'])
+          .collection('Challenges')
+          .doc(widget.snapshot['CH_ID'])
           .collection('comments')
           .get();
       commentLenght = snap.docs.length;
@@ -87,7 +89,7 @@ class _EventCardState extends State<EventCard> {
                         Text(
                           widget.snapshot['username'],
                           style: const TextStyle(
-                              fontSize: 14, color: Colors.black),
+                              fontSize: 14, color: black),
                         ),
                       ],
                     ),
@@ -98,7 +100,7 @@ class _EventCardState extends State<EventCard> {
                     widget.snapshot['dataPublished'].toDate(),
                   ),
                   // ' ${}',
-                  style: const TextStyle(fontSize: 12, color: Colors.black),
+                  style: const TextStyle(fontSize: 12, color: black),
                 ),
                 IconButton(
                   onPressed: () {
@@ -141,7 +143,7 @@ class _EventCardState extends State<EventCard> {
 
           GestureDetector(
             onDoubleTap: () async {
-              await FireStoreMethods().likedPost(widget.snapshot['EventID'],
+              await FireStoreMethods().likedPost(widget.snapshot['CH_ID'],
                   user.uid, widget.snapshot['likes']);
               setState(() {
                 isLikeAnimating = true;
@@ -170,7 +172,7 @@ class _EventCardState extends State<EventCard> {
                                         borderRadius: BorderRadius.circular(0),
                                         image: DecorationImage(
                                           image: NetworkImage(
-                                            widget.snapshot['EventUrl'],
+                                            widget.snapshot['Url'],
                                           ),
                                           fit: BoxFit.fill,
                                           alignment: FractionalOffset.topCenter,
@@ -191,7 +193,7 @@ class _EventCardState extends State<EventCard> {
                               borderRadius: BorderRadius.circular(15),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  widget.snapshot['EventUrl'],
+                                  widget.snapshot['Url'],
                                 ),
                                 fit: BoxFit.fill,
                                 alignment: FractionalOffset.topCenter,
@@ -236,15 +238,7 @@ class _EventCardState extends State<EventCard> {
                                               ),
                                             ],
                                           ),
-                                          Divider(color: Colors.grey,),
-                                          SizedBox(height: 30,) ,
-                                          Text(
-                                            widget.snapshot['description'],
-                                            style: const TextStyle(
 
-                                              fontSize: 20,
-                                            ),
-                                          ),
                                           Divider(color: Colors.grey, ),
                                           Row(
                                             children: [
@@ -289,6 +283,50 @@ class _EventCardState extends State<EventCard> {
                                               ),
                                             ],
                                           ),
+                                          Divider(color: Colors.grey, ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.calendar_today_outlined,
+                                                size: 18,
+                                              ),
+                                              SizedBox(width: 12,) ,
+                                              Text(
+                                                'Ends In : ',
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              Text(
+                                                widget.snapshot['date2'],
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(width: 12,height: 15,) ,
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.timer,
+                                                size: 18,
+                                              ),
+                                              SizedBox(width: 12,) ,
+                                              Text(
+                                                'Time : ',
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              Text(
+                                                widget.snapshot['time2'],
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                           SizedBox(height: 15,) ,
                                           Row(
                                             children: [
@@ -300,12 +338,7 @@ class _EventCardState extends State<EventCard> {
                                               ),
                                               SizedBox(width: 12,) ,
 
-                                              Text(
-                                                widget.snapshot['place'],
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                ),
-                                              ),
+
                                             ],
                                           ),
                                           Divider(color: Colors.grey, ),
@@ -323,7 +356,7 @@ class _EventCardState extends State<EventCard> {
                                           Expanded(
                                             child: FutureBuilder(
                                                 future: FirebaseFirestore.instance
-                                                    .collection('events')
+                                                    .collection('Challenges')
                                                     .get(),
                                                 builder: (context, snapshot) {
                                                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -353,7 +386,7 @@ class _EventCardState extends State<EventCard> {
                                                         child: Container(
                                                           child: Image(
                                                             fit: BoxFit.fill,
-                                                            image: NetworkImage(snap['EventUrl']),
+                                                            image: NetworkImage(snap['Url']),
                                                           ),
 
                                                         ),
@@ -389,13 +422,7 @@ class _EventCardState extends State<EventCard> {
                                 width: 180,
                                 child: Row(
                                   children: [
-                                    /*
-                                            const Text("Event : " ,  style: const TextStyle(
-                                              color: Colors.black,
 
-                                              fontSize: 20,
-                                            ),),
-                                           */
                                     Text(
                                       widget.snapshot['name'],
                                       style: const TextStyle(
@@ -409,6 +436,7 @@ class _EventCardState extends State<EventCard> {
                                 height: 2,
                                 color: Colors.black,
                               ),
+                              SizedBox(height: 10,),
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius:
@@ -478,7 +506,7 @@ class _EventCardState extends State<EventCard> {
                                         Text(
                                           widget.snapshot['time'],
                                           style: const TextStyle(
-                                            color: Colors.black,
+                                            color: black,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -486,63 +514,98 @@ class _EventCardState extends State<EventCard> {
                                     ),
                                   ],
                                 ),
+
                               ),
                               Divider(
                                 height: 2,
-                                color: Colors.black,
+                                color: black,
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Place : ',
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Container(
-                                    //    color: Colors.yellow,
-                                    width: 120,
-                                    child: Text(
-                                      widget.snapshot['place'],
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                height: 2,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
+                              SizedBox(height: 10,),
                               Container(
-                                width: 170,
-                                //      color: Colors.yellowAccent,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                  BorderRadiusDirectional.circular(7),
+                                  //   color: Colors.yellowAccent,
+                                ),
+                                height: 40,
+                                width: 180,
                                 child: Row(
                                   children: [
-                                    Container(
-                                      width: 170,
-                                      child: Text(
-                                        widget.snapshot['description'],
-                                        maxLines: 4,
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18,
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.calendar_today_outlined,
+                                              size: 14,
+                                            ),
+                                            Text(
+                                              'Ends in: ',
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
+                                        SizedBox(
+                                          width: 0,
+                                          height: 3,
+                                        ),
+                                        Text(
+                                          widget.snapshot['date2'],
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.timer,
+                                              size: 14,
+                                            ),
+                                            Text(
+                                              'Time : ',
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 0,
+                                          height: 3,
+                                        ),
+                                        Text(
+                                          widget.snapshot['time2'],
+                                          style: const TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
+
                               ),
                               Divider(
                                 height: 2,
-                                color: Colors.black,
+                                color: black,
                               ),
+
+
                             ],
                           ),
                         ),
@@ -556,7 +619,7 @@ class _EventCardState extends State<EventCard> {
                   child: Like_Animation(
                     child: const Icon(
                       Icons.favorite,
-                      color: Colors.pink,
+                      color:Colors.red,
                       size: 130,
                     ),
                     isAnimating: isLikeAnimating,
@@ -581,19 +644,19 @@ class _EventCardState extends State<EventCard> {
                 smallLike: true,
                 child: IconButton(
                   onPressed: () async {
-                    await FireStoreMethods().likedEvent(
-                        widget.snapshot['EventID'],
+                    await FireStoreMethods().likedch(
+                        widget.snapshot['CH_ID'],
                         user.uid,
                         widget.snapshot['likes']);
                   },
                   icon: widget.snapshot['likes'].contains(user.uid)
                       ? const Icon(
-                          Icons.people,
-                          color: Colors.red,
+                          Icons.calendar_today_outlined,
+                          color: Colors.orange,
                           size: 28,
                         )
                       : const Icon(
-                          Icons.person,
+                    Icons.calendar_today_outlined,
                           color: Colors.black,
                           size: 19,
                         ),
@@ -602,7 +665,7 @@ class _EventCardState extends State<EventCard> {
               IconButton(
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => eventCommentsScreen(
+                    builder: (context) => chs_CommentsScreen(
                       snapshot: widget.snapshot,
                     ),
                   ),
@@ -622,65 +685,16 @@ class _EventCardState extends State<EventCard> {
                   ),
                 ),
               ),
-              IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => Dialog(
-                      child: ListView(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                          ),
-                          shrinkWrap: true,
-                          children: [
-                            Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    SimpleDialogOption(
-                                      padding: const EdgeInsets.all(10),
-                                      child: const Text('Send'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                    const Icon(Icons.send),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Text(
-                                      'Share',
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      icon: const Icon(Icons.repeat),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ]),
-                    ),
-                  );
-                },
-                icon: const Icon(
-                  Icons.repeat,
-                  color: Colors.black,
-                  size: 18,
-                ),
-              ),
+
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Stack(children: [
                     CircleAvatar(
-                      backgroundColor: selection2,
+                      backgroundColor: selection,
                       radius: 24,
                       child: IconButton(
-                          color: Colors.white,
+                          color: primary,
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(

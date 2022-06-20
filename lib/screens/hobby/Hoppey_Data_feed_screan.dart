@@ -6,15 +6,15 @@ import 'package:flutter/services.dart' as rootBundle;
 import 'package:graduation_1/JsonScreens/Boxing.dart';
 import 'package:graduation_1/models/DataviewModel.dart';
 
-import '../JsonScreens/Basketball.dart';
-import '../JsonScreens/Bicycling.dart';
-import '../JsonScreens/Drawing.dart';
-import '../JsonScreens/football.dart';
-import '../JsonScreens/racing.dart';
-import '../JsonScreens/swimming.dart';
-import '../JsonScreens/tennis.dart';
-import '../Utils/colors.dart';
-import '../JsonScreens/All_Hoppey_feed_screan.dart';
+import '../../JsonScreens/Basketball.dart';
+import '../../JsonScreens/Bicycling.dart';
+import '../../JsonScreens/Drawing.dart';
+import '../../JsonScreens/football.dart';
+import '../../JsonScreens/racing.dart';
+import '../../JsonScreens/swimming.dart';
+import '../../JsonScreens/tennis.dart';
+import '../../Utils/colors.dart';
+import '../../JsonScreens/All_Hoppey_feed_screan.dart';
 
 class HoppyFeedScreen extends StatefulWidget {
   const HoppyFeedScreen({
@@ -42,9 +42,10 @@ class _HoppyFeedScreenState extends State<HoppyFeedScreen> {
           ),
           child: AppBar(
             backgroundColor: selection,
-            foregroundColor: primary,
+            foregroundColor: black,
             title: const Text(
               'Learn Hobby',
+              style: TextStyle( fontFamily: 'Sofiar' ,color: black),
             ),
             centerTitle: true,
           ),

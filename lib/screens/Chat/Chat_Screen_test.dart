@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/User.dart';
-import '../Utils/colors.dart';
+import '../../Utils/colors.dart';
 import 'Chat_ID_screen.dart';
 
 class SearchChatScreen extends StatefulWidget {

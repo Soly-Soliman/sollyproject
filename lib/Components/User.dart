@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 import '../Utils/colors.dart';
-import '../screens/Chat_ID_screen.dart';
+import '../screens/Chat/Chat_ID_screen.dart';
 class User_card extends StatefulWidget {
   final snapshot;
   const User_card({

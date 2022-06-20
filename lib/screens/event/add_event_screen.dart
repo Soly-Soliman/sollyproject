@@ -14,7 +14,7 @@ import '../../Utils/utils.dart';
 import '../../models/user.dart';
 import '../../providers/user_provider.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import '../google_map_screen.dart';
+import '../Google/google_map_screen.dart';
 
 // ignore: must_be_immutable
 class Add_Event extends StatefulWidget {
@@ -249,12 +249,12 @@ class _Add_EventState extends State<Add_Event> {
                   ],
                 ),
                 const Divider(
-                  color: Colors.black,
+                  color: black,
                 ),
                 const Text(
                   'Event Name',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -274,7 +274,7 @@ class _Add_EventState extends State<Add_Event> {
                 const Text(
                   'Discription',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -298,7 +298,7 @@ class _Add_EventState extends State<Add_Event> {
                     Text(
                       'Date',
                       style: TextStyle(
-                        color: Colors.black,
+                        color:black,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -312,7 +312,7 @@ class _Add_EventState extends State<Add_Event> {
                     Text(
                       'Time',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: black,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -347,7 +347,7 @@ class _Add_EventState extends State<Add_Event> {
                       child:
                       Text(
                         Date,style: const TextStyle(
-                        color: Colors.white
+                        color: black
                       ),
                       ),
                     ),
@@ -356,7 +356,7 @@ class _Add_EventState extends State<Add_Event> {
                       width: 50,
                     ),
                     RaisedButton(
-                      color:selection, splashColor: Colors.blue,
+                      color:selection2, splashColor: selection,
                       mouseCursor:MouseCursor.uncontrolled,
                       onPressed: ()
                       async {
@@ -383,7 +383,7 @@ class _Add_EventState extends State<Add_Event> {
                          "${selectedTime.format(context)}",
                        // "${selectedTime.hourOfPeriod} :${selectedTime.minute}:${selectedTime.period}",
                         style: const TextStyle(
-                          color: Colors.white
+                          color: primary
                       ),
                       ),
                     ),
@@ -395,7 +395,7 @@ class _Add_EventState extends State<Add_Event> {
                 const Text(
                   'Place',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -419,7 +419,7 @@ class _Add_EventState extends State<Add_Event> {
                    {Navigator.of(context).push(MaterialPageRoute(builder:(context) =>  GoogleMapPage(), ),);}
                    ,child: Row(
                      children: [
-                        Icon(Icons.location_on,size: 25, color: Colors.black,),
+                        Icon(Icons.location_on,size: 25, color: black,),
                        const Text('go to the Map'),
 
                      ],
@@ -448,7 +448,7 @@ class _Add_EventState extends State<Add_Event> {
                           child: Icon(
                                 Icons.image,
                                 size: 80,
-                                color: selection,
+                                color: selection2,
                               ),
                         )
                         : Container(
@@ -588,8 +588,9 @@ class _Add_EventState extends State<Add_Event> {
                     child: const Text(
                       'Create',
                       style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 28
+                        color: black,
+                        fontSize: 28 ,
+                        fontFamily: 'Lemon'
                       ),
                     ),
                   ),

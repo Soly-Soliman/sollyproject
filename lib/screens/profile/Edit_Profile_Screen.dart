@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:graduation_1/resourses/aut_methods.dart';
-import 'package:graduation_1/screens/login_screen.dart';
+import 'package:graduation_1/screens/SignUp_SignIn/login_screen.dart';
 
-import '../Utils/colors.dart';
+import '../../Utils/colors.dart';
 
 
 class EditProfileScreen extends StatelessWidget {
@@ -43,7 +43,6 @@ class EditProfileScreen extends StatelessWidget {
                               ''),
                           fit: BoxFit.cover),
                     ),
-
                   ),
                   Column(
                     children: [
@@ -52,23 +51,15 @@ class EditProfileScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                         child:  const CircleAvatar(
                           radius: 60.0,
-
                         ),
                       ),
                       const SizedBox(height: 4.0,),
                       const Text('UserName',style: TextStyle(color: Colors.black,
                           fontWeight: FontWeight.bold,
-
                           fontSize: 20.0),
                       ),
-
                     ],
                   ),
-
-
-
-
-
                 ],
               ),
               const SizedBox(height: 10.0),

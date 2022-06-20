@@ -28,9 +28,9 @@ class _racingState extends State<racing> {
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
           backgroundColor:selection ,
-          foregroundColor: primary,
+          foregroundColor: black,
 
-          title: const Text('racing',),
+          title: const Text('racing',style: TextStyle(color: black ,fontFamily: 'Sofiar'),),
           centerTitle: true,
         ),
       ),
@@ -69,6 +69,7 @@ class _racingState extends State<racing> {
                                 children: [
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].hobbies.toString(),style: TextStyle(
                                     fontSize: 30,
+                                    fontFamily: 'Lemon',
                                     fontWeight: FontWeight.bold,
                                   ),),),
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].about.toString(),style: TextStyle(

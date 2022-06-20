@@ -5,7 +5,7 @@ import 'package:graduation_1/Components/animatios.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
-import 'package:graduation_1/screens/comments_screen.dart';
+import 'package:graduation_1/screens/feed/comments_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

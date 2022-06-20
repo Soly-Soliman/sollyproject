@@ -11,7 +11,8 @@ import 'package:graduation_1/screens/search_screen.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import 'hobby/add_hobby_screen.dart';
+import '../Chalanges/add_Challange_screen.dart';
+import '../hobby/add_hobby_screen.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -278,7 +279,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const  Add_Hobyy()));
+                                      builder: (context) => const  Add_Challange()));
                             }
                           },
                           child: Container(
@@ -292,7 +293,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                             child: Row(
                               children: [
                                 Expanded(
-                                  child: const Text('ADD Challange'),
+                                  child: const Text('Set Challange'),
                                 ),
                                 Icon(
                                  Icons.upload_outlined),

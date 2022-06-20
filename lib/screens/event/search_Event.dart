@@ -1,21 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:graduation_1/Components/post_card.dart';
-import 'package:graduation_1/models/Post.dart';
-import 'package:graduation_1/screens/profile/profile_screen.dart';
-import '../Utils/Diamentions.dart';
-import '../Utils/colors.dart';
+import 'package:graduation_1/Components/event_card.dart';
+import '../../Utils/colors.dart';
 
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+class SearchEventScreen extends StatefulWidget {
+  const SearchEventScreen({Key? key}) : super(key: key);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<SearchEventScreen> createState() => _SearchEventScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchEventScreenState extends State<SearchEventScreen> {
   final TextEditingController searchController = TextEditingController();
   bool isShowUsers = false;
 
@@ -52,9 +48,9 @@ class _SearchScreenState extends State<SearchScreen> {
      isShowUsers ?
       FutureBuilder(
         future: FirebaseFirestore.instance
-            .collection('Users')
+            .collection('events')
             .where(
-          'username',
+          'name',
           isGreaterThanOrEqualTo: searchController.text,)
             .get(),
         builder: (context, snapshot) {
@@ -63,37 +59,20 @@ class _SearchScreenState extends State<SearchScreen> {
               child: CircularProgressIndicator(),
             );
           }
-          return ListView.builder(
-            itemCount: (snapshot.data! as dynamic).docs.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: ()
-                => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProfileScreen(
-                      uid: (snapshot.data! as dynamic).docs[index]['uid'],
-                    ),
+                return ListView.builder(
+                  itemCount: (snapshot.data! as dynamic).docs.length,
+                  itemBuilder:  (context, index) =>EventCard(
+                      snapshot: (snapshot.data!as dynamic).docs[index].data(),
+
                   ),
-                ),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      (snapshot.data! as dynamic).docs[index]['photoUrl'],
-                    ),
-                    radius: 16,
-                  ),
-                  title: Text(
-                    (snapshot.data! as dynamic).docs[index]['username'],
-                  ),
-                ),
-              );
-            },
-          );
+                );
+
+
         },
       )
           : FutureBuilder(
                   future: FirebaseFirestore.instance
-                   .collection('posts')
+                   .collection('events')
                    //.orderBy('datePublished')
                    .get(),
                 builder: (context,
@@ -106,7 +85,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   }
                   return ListView.builder(
                     itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) =>PostCard(
+                    itemBuilder: (context, index) =>EventCard(
                       snapshot: snapshot.data!.docs[index].data(),
                     ),
                   );
@@ -115,3 +94,37 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 }
 
+/*
+ ListView.builder(
+            itemCount: (snapshot.data! as dynamic).docs.length,
+            itemBuilder: (context, index) {
+              return
+                InkWell(
+                  onTap: (){}
+                ,
+                  child: Card(
+                   child: Row(
+                     children: [
+                       Container(
+
+                       ),
+                       CircleAvatar(
+
+                          backgroundImage: NetworkImage(
+                            (snapshot.data! as dynamic).docs[index]['EventUrl'],
+                          ),
+                          radius: 36,
+                        ),
+                          Text(
+                            (snapshot.data! as dynamic).docs[index]['name'],)
+                     ],
+                   ),
+
+                    ),
+
+                );
+            }
+
+
+          );
+ */

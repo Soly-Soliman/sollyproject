@@ -4,6 +4,7 @@ import 'package:graduation_1/Components/Hobby_Card.dart';
 import 'package:graduation_1/Components/event_card.dart';
 import 'package:graduation_1/Utils/Diamentions.dart';
 import 'package:graduation_1/Utils/colors.dart';
+import 'package:graduation_1/screens/hobby/search_Hobby.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 
 class HobbyFeed extends StatefulWidget {
@@ -22,18 +23,21 @@ class _HobbyFeedState extends State<HobbyFeed> {
       appBar: width >webScreenSize ? null
           : AppBar(
         backgroundColor: selection,
+        foregroundColor: black,
         centerTitle: false,
         title:  const Text('Hobby' ,
+
           style: TextStyle(
-            color: primary,
+            color: black,
+            fontFamily: 'Sofiar'
           ),
         ),
         //هنا المفروض هيبقي اللوجو
         actions: [
           IconButton(onPressed: (){
-            Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchScreen()));
+            Navigator.push(context,MaterialPageRoute(builder: (context) =>const SearchHobbyScreen()));
           },
-            icon: const Icon(Icons.search_outlined, color: Colors.white),) ,
+            icon: const Icon(Icons.search_outlined, color: primary),) ,
 
         ],
       ),

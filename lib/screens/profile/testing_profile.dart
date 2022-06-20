@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import '../Utils/colors.dart';
+import '../../Utils/colors.dart';
 class ProfilePage extends StatefulWidget {
 
   const ProfilePage({Key? key}) : super(key: key);

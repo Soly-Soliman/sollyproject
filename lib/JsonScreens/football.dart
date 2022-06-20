@@ -28,9 +28,9 @@ class _footballState extends State<football> {
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
           backgroundColor:selection ,
-          foregroundColor: primary,
+          foregroundColor: black,
 
-          title: const Text('Football',),
+          title: const Text('Football',style: TextStyle(color: black ,fontFamily: 'Sofiar'),),
           centerTitle: true,
         ),
       ),
@@ -69,6 +69,7 @@ class _footballState extends State<football> {
                                 children: [
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].hobbies.toString(),style: TextStyle(
                                     fontSize: 30,
+                                    fontFamily: 'Lemon',
                                     fontWeight: FontWeight.bold,
                                   ),),),
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].about.toString(),style: TextStyle(

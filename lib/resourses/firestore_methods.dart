@@ -11,6 +11,7 @@ import 'package:uuid/uuid.dart';
 
 import '../models/Fback.dart';
 import '../models/Massage.dart';
+import '../models/chellange.dart';
 
 class FireStoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -80,6 +81,48 @@ class FireStoreMethods {
           name:name,
           date: date ,place:place );
       _firestore.collection('events').doc(EventID).set(
+        event.toJason(),
+      );
+      res ='success' ;
+    } catch (error) {
+      res =error.toString();
+    }
+    return res ;
+
+  }
+  Future<String> uploadchellange(
+
+      String name,
+      String date,
+      String date2,
+      String time,
+      String time2,
+      Uint8List file,
+      String uid,
+      String username,
+      String profileImageUrl,
+
+      ) async {
+    String res = ' some error occurred';
+
+    try {
+      String PhotoUrl =  await StorageMethods().uploadImagetoStorage('Challenges', file, true);
+      String clelID = const Uuid().v1();
+      SetChell event = SetChell(
+          likes: [],
+          follower: [],
+          username: username,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          profileImageUrl: profileImageUrl,
+          time: time,
+          name:name,
+          date: date,
+          CH_ID: clelID,
+          date2: date2,
+          Ch_url: PhotoUrl,
+          time2: time2 ,);
+      _firestore.collection('Challenges').doc(clelID).set(
         event.toJason(),
       );
       res ='success' ;
@@ -237,7 +280,28 @@ try{
       print(e.toString()) ;
     }
   }
+  Future <void> likedch(String CH_ID, String uid,List likes) async{
 
+    try{
+      if(likes.contains(uid)){
+        await _firestore.collection('events').doc(CH_ID).update(
+            {
+              'likes' : FieldValue.arrayRemove([uid]),
+            }
+        );
+      }else{
+        await _firestore.collection('Challenges').doc(CH_ID).update(
+            {
+              'likes' : FieldValue.arrayUnion([uid]),
+            }
+        );
+      }
+
+
+    }catch(e){
+      print(e.toString()) ;
+    }
+  }
 
   Future<void> postcomment( String PostID,String text,String uid,String name ,String ProfilePicture ,) async{
     try{
@@ -343,6 +407,32 @@ try{
       );
       if(text.isNotEmpty){
         await _firestore.collection('Hobby').doc(HobbyID).collection('comments').doc(commentID).set(
+
+          comment.toJason(),
+
+        );
+      }
+      else{
+        print('Text is empty') ;
+      }
+    }catch(e){
+      print (e.toString()) ;
+    }
+  }
+  Future<void> ch_comment( String CH_ID,String text,String uid,String name ,String ProfilePicture ,) async{
+    try{
+
+      String commentID =const Uuid().v1();
+      Comment comment = Comment(
+          username: name,
+          uid: uid,
+          dataPublished: DateTime.now(),
+          description: text,
+          CommentID: commentID,
+          profileImageUrl: ProfilePicture
+      );
+      if(text.isNotEmpty){
+        await _firestore.collection('Challenges').doc(CH_ID).collection('comments').doc(commentID).set(
 
           comment.toJason(),
 

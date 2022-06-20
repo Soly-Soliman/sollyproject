@@ -28,10 +28,11 @@ class _All_HoppyFeedScreenState extends State<All_HoppyFeedScreen> {
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
           backgroundColor:selection ,
-          foregroundColor: primary,
+          foregroundColor: black,
 
-          title: const Text('All About Hobby',),
+          title: const Text('All About Hobby',style: TextStyle( fontFamily: 'Sofiar' ,color: black),),
           centerTitle: true,
+
         ),
       ),
       body: Scaffold(
@@ -68,6 +69,7 @@ class _All_HoppyFeedScreenState extends State<All_HoppyFeedScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].hobbies.toString(),style: TextStyle(
+                                    fontFamily: 'Lemon',
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
                                   ),),),
@@ -76,6 +78,7 @@ class _All_HoppyFeedScreenState extends State<All_HoppyFeedScreen> {
                                     fontWeight: FontWeight.bold,
                                   ),),),
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].age.toString(),style: TextStyle(
+
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),),),

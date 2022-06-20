@@ -10,9 +10,9 @@ import 'package:graduation_1/models/Massage.dart';
 import 'package:graduation_1/providers/user_provider.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
-import '../Components/post_card.dart';
-import '../Utils/colors.dart';
-import '../models/user.dart';
+import '../../Components/post_card.dart';
+import '../../Utils/colors.dart';
+import '../../models/user.dart';
 
 
 

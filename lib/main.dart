@@ -9,8 +9,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:graduation_1/providers/user_provider.dart';
-import 'package:graduation_1/screens/login_screen.dart';
-import 'package:graduation_1/screens/signup_screen.dart';
+import 'package:graduation_1/screens/SignUp_SignIn/login_screen.dart';
+import 'package:graduation_1/screens/SignUp_SignIn/signup_screen.dart';
 import 'package:provider/provider.dart';
 
 

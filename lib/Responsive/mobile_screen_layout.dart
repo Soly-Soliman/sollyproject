@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_1/Utils/colors.dart';
 import '../Utils/Diamentions.dart';
 import '../block/massages/cubitsocial.dart';
-import '../screens/add_post_screen.dart';
+import '../screens/feed/add_post_screen.dart';
 class MobileScreen extends StatefulWidget
 {
   const MobileScreen({Key?key}) :super(key: key);

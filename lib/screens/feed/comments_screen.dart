@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/comment_card.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
-import '../Utils/colors.dart';
-import '../models/user.dart';
-import '../providers/user_provider.dart';
+import '../../Utils/colors.dart';
+import '../../models/user.dart';
+import '../../providers/user_provider.dart';
 
 class CommentsScreen extends StatefulWidget {
   final snapshot;

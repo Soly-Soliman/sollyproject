@@ -6,14 +6,16 @@ import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/screens/event/search_Event.dart';
 import 'package:graduation_1/screens/search_screen.dart';
 
-class EventsFeedScreen extends StatefulWidget {
-  const EventsFeedScreen ({ Key? key }) : super(key: key);
+import '../../Components/Ch_card.dart';
+
+class Chs_FeedScreen extends StatefulWidget {
+  const Chs_FeedScreen ({ Key? key }) : super(key: key);
 
   @override
-  State<EventsFeedScreen> createState() => _EventsFeedScreenState();
+  State<Chs_FeedScreen> createState() => _Chs_FeedScreenState();
 }
 
-class _EventsFeedScreenState extends State<EventsFeedScreen> {
+class _Chs_FeedScreenState extends State<Chs_FeedScreen> {
   @override
   Widget build(BuildContext context) {
     final width =MediaQuery.of(context).size.width;
@@ -48,7 +50,7 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
                Expanded(
                 child:
                 StreamBuilder(
-                  stream: FirebaseFirestore.instance.collection('events').snapshots(),
+                  stream: FirebaseFirestore.instance.collection('Challenges').snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot)
                   {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -63,7 +65,8 @@ class _EventsFeedScreenState extends State<EventsFeedScreen> {
                           horizontal: width >webScreenSize?width*0.3 :0 ,
                           vertical: width >webScreenSize?15 :0 ,
                         ),
-                        child: EventCard(
+                        child:
+                        ch_Card(
                           snapshot: snapshot.data!.docs[index].data() ,
 
                         ),

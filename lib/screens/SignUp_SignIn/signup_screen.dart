@@ -7,10 +7,10 @@ import 'package:graduation_1/Responsive/mobile_screen_layout.dart';
 import 'package:graduation_1/Responsive/web_screen_layout.dart';
 import 'package:graduation_1/Utils/utils.dart';
 import 'package:graduation_1/resourses/aut_methods.dart';
-import 'package:graduation_1/screens/login_screen.dart';
+import 'package:graduation_1/screens/SignUp_SignIn/login_screen.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../Utils/colors.dart';
+import '../../Utils/colors.dart';
 class SingupScreen extends StatefulWidget{
   const SingupScreen({Key?key}) :super(key: key) ;
   @override

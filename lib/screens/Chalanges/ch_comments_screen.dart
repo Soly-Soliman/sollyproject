@@ -1,28 +1,22 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_1/Components/comment_card.dart';
-import 'package:graduation_1/Utils/colors.dart';
 import 'package:graduation_1/resourses/firestore_methods.dart';
 import 'package:provider/provider.dart';
-
-import '../../Components/text_field_input.dart';
+import '../../Utils/colors.dart';
 import '../../models/user.dart';
 import '../../providers/user_provider.dart';
-import '../../providers/user_provider.dart';
 
-class eventCommentsScreen extends StatefulWidget {
+class chs_CommentsScreen extends StatefulWidget {
   final snapshot;
   //final String Comment ;
-  const eventCommentsScreen({Key? key, required this.snapshot}) : super(key: key);
+  const chs_CommentsScreen({Key? key, required this.snapshot}) : super(key: key);
 
   @override
-  _eventCommentsScreenState createState() => _eventCommentsScreenState();
+  _chs_CommentsScreenState createState() => _chs_CommentsScreenState();
 }
 
-class _eventCommentsScreenState extends State<eventCommentsScreen> {
+class _chs_CommentsScreenState extends State<chs_CommentsScreen> {
   final TextEditingController _commentController = TextEditingController();
   @override
   void dispose() {
@@ -34,21 +28,22 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
+      backgroundColor:blue1 ,
       appBar: AppBar(
         backgroundColor: selection,
         title: const Text(
           'Comments',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: primary),
         ),
         centerTitle: false,
       ),
       //////////////////////////////////////////////
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('events')
-              .doc(widget.snapshot['EventID'])
+              .collection('Challenges')
+              .doc(widget.snapshot['CH_ID'])
               .collection('comments')
-          //.orderBy('datePublished',descending: true)
+               //.orderBy('datePublished',descending: true)
               .snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
@@ -66,10 +61,16 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
           }),
       //////////////////////////////////////////////
       bottomNavigationBar: SafeArea(
+
         child: Container(
+          
           margin:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           padding: const EdgeInsets.only(left: 16, right: 8),
+          decoration: BoxDecoration(
+            color: primary,
+            borderRadius: BorderRadius.circular(10)
+          ),
           child: Row(
             children: [
               InkWell(
@@ -104,8 +105,8 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
               ),
               InkWell(
                 onTap: () async {
-                  FireStoreMethods().eventcomment(
-                      widget.snapshot['EventID'],
+                  FireStoreMethods().ch_comment(
+                      widget.snapshot['CH_ID'],
                       _commentController.text,
                       user.uid,
                       user.username,
@@ -116,10 +117,10 @@ class _eventCommentsScreenState extends State<eventCommentsScreen> {
                 },
                 child: Container(
                   padding:
-                  const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                  child: const Icon(
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                  child:  Icon(
                     Icons.ads_click_rounded,
-                    color: Colors.blue,
+                    color: selection2,
                   ),
                 ),
               ),

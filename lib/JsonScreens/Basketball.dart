@@ -28,9 +28,9 @@ class _BasketBallState extends State<BasketBall> {
         preferredSize: const Size.fromHeight(48,),
         child: AppBar(
           backgroundColor:selection ,
-          foregroundColor: primary,
+          foregroundColor: black,
 
-          title: const Text('BasketBall',),
+          title: const Text('BasketBall',style: TextStyle(color: black ,fontFamily: 'Sofiar'),),
           centerTitle: true,
         ),
       ),
@@ -68,6 +68,7 @@ class _BasketBallState extends State<BasketBall> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(padding: EdgeInsets.only(left: 8,right: 8),child: Text(items[index].hobbies.toString(),style: TextStyle(
+                                    fontFamily: 'Lemon',
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
                                   ),),),
