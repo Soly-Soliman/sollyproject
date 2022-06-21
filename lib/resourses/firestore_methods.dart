@@ -351,17 +351,17 @@ try{
       print(e.toString()) ;
     }
   }
-  Future <void> likedch(String CH_ID, String uid,List likes) async{
+  Future <void> likedch(String CHID, String uid,List likes) async{
 
     try{
       if(likes.contains(uid)){
-        await _firestore.collection('Challenges').doc(CH_ID).update(
+        await _firestore.collection('Challenges').doc(CHID).update(
             {
               'likes' : FieldValue.arrayRemove([uid]),
             }
         );
       }else{
-        await _firestore.collection('Challenges').doc(CH_ID).update(
+        await _firestore.collection('Challenges').doc(CHID).update(
             {
               'likes' : FieldValue.arrayUnion([uid]),
             }
@@ -517,7 +517,7 @@ try{
       print (e.toString()) ;
     }
   }
-  Future<void> ch_comment( String CH_ID,String text,String uid,String name ,String ProfilePicture ,) async{
+  Future<void> ch_comment( String CHID,String text,String uid,String name ,String ProfilePicture ,) async{
     try{
 
       String commentID =const Uuid().v1();
@@ -527,10 +527,10 @@ try{
           dataPublished: DateTime.now(),
           description: text,
           CommentID: commentID,
-          profileImageUrl: ProfilePicture, PostID: CH_ID
+          profileImageUrl: ProfilePicture, PostID: CHID
       );
       if(text.isNotEmpty){
-        await _firestore.collection('Challenges').doc(CH_ID).collection('comments').doc(commentID).set(
+        await _firestore.collection('Challenges').doc(CHID).collection('comments').doc(commentID).set(
 
           comment.toJason(),
 
@@ -600,9 +600,9 @@ try{
 
     }
   }
-  Future<void> deleteCH(String CH_ID) async{
+  Future<void> deleteCH(String CHID) async{
     try{
-      await _firestore.collection('Challenges').doc(CH_ID).delete();
+      await _firestore.collection('Challenges').doc(CHID).delete();
     }catch(error){
       print(error.toString());
 
