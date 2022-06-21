@@ -55,7 +55,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
       showSnackBar(e.toString(), context);
     }
   }
-
   _selctImage(BuildContext context) async {
     return showDialog(
         context: context,
@@ -96,19 +95,16 @@ class _AddPostScreenState extends State<AddPostScreen> {
           );
         });
   }
-
   void clearImage() {
     setState(() {
       _file = null;
     });
   }
-
   @override
   void dispose() {
     super.dispose();
     _descriptionController.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
@@ -126,7 +122,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       Container(
                         margin: const EdgeInsets.all(6),
                         padding: const EdgeInsets.only(left: 2),
-                        //  color: Colors.amber,
                         child: InkWell(
                           onTap: (){},
                           child: CircleAvatar(
@@ -239,14 +234,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           child: InkWell(
 
                             onTap: (){
-                              {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const  Add_Hobyy()));
-                              }
-
-                            },
+                              {Navigator.push(context, MaterialPageRoute(builder: (context) => const  Add_Hobyy()));}},
                             child: Container(
 
                               alignment: Alignment.center,
@@ -287,7 +275,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                             padding: const EdgeInsets.all(15),
                             decoration: const BoxDecoration(
-                              color: selection2,
+                              color: selection3,
                               borderRadius: BorderRadius.all(Radius.circular(10)),
                             ),
                             child: Row(
@@ -347,7 +335,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           padding: EdgeInsets.only(top: 0),
                         ),
                   const Divider(
-                    color: Colors.black,
+                    color: black,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

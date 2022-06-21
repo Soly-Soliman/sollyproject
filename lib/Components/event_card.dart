@@ -12,6 +12,7 @@ import '../Utils/colors.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 import '../screens/Google/google_map_screen.dart';
+import '../screens/profile/profile_screen.dart';
 
 class EventCard extends StatefulWidget {
   final snapshot;
@@ -69,10 +70,22 @@ class _EventCardState extends State<EventCard> {
                 SizedBox(
                   width: 5,
                 ),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                    widget.snapshot['profileUrl'],
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                          uid: widget.snapshot['uid'],
+
+                        ),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                      widget.snapshot['profileUrl'],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -385,26 +398,18 @@ class _EventCardState extends State<EventCard> {
                             children: [
                               Container(
                                 //                                 color: Colors.purple,
-                                height: 40,
-                                width: 180,
-                                child: Row(
-                                  children: [
-                                    /*
-                                            const Text("Event : " ,  style: const TextStyle(
-                                              color: Colors.black,
-
-                                              fontSize: 20,
-                                            ),),
-                                           */
+                                height: 60,
+                                width: 140,
+                                child:
                                     Text(
                                       widget.snapshot['name'],
                                       style: const TextStyle(
                                         fontSize: 20,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
+
+                              ) ,
+
                               Divider(
                                 height: 2,
                                 color: Colors.black,

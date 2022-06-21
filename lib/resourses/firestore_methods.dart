@@ -559,6 +559,14 @@ try{
 
     }
   }
+  Future<void> deleteWork(String PostID) async{
+    try{
+      await _firestore.collection('Hobby').doc(PostID).delete();
+    }catch(error){
+      print(error.toString());
+
+    }
+  }
   Future<void> deletecomment(String name,String CommentID,String ID) async{
     try{
       await _firestore.collection(name).doc(ID).collection('comments').doc(CommentID).delete();
@@ -587,6 +595,14 @@ try{
   Future<void> deleteevent(String eventID) async{
     try{
       await _firestore.collection('events').doc(eventID).delete();
+    }catch(error){
+      print(error.toString());
+
+    }
+  }
+  Future<void> deleteCH(String CH_ID) async{
+    try{
+      await _firestore.collection('Challenges').doc(CH_ID).delete();
     }catch(error){
       print(error.toString());
 

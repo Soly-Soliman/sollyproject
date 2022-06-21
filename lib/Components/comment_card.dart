@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 
 import '../Utils/colors.dart';
 import '../resourses/firestore_methods.dart';
+import '../screens/Chat/Chat_ID_screen.dart';
+import '../screens/profile/profile_screen.dart';
 
 
 class CommentCard extends StatefulWidget {
@@ -66,7 +68,16 @@ class _CommentCardState extends State<CommentCard> {
              crossAxisAlignment: CrossAxisAlignment.start,
              children: [
                InkWell(
-                 onTap: (){},
+                 onTap: (){
+                   Navigator.of(context).push(
+                     MaterialPageRoute(
+                       builder: (context) => ProfileScreen(
+                         uid: widget.snap['uid'],
+
+                       ),
+                     ),
+                   );
+                 },
                  child: CircleAvatar(
                    radius: 22,
                    backgroundImage: NetworkImage(

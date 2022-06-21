@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../models/user.dart';
 import '../providers/user_provider.dart';
+import '../screens/profile/profile_screen.dart';
 
 class PostCard extends StatefulWidget {
   final snapshot;
@@ -61,80 +62,92 @@ class _PostCardState extends State<PostCard> {
       child: Column(
         children: [
           // that is the header to the post and it contains the username his photo  and function delete post
-          Container(
-            color: Colors.white,
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                    widget.snapshot['profileUrl'],
+          InkWell(
+            onTap: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen(
+                    uid: widget.snapshot['uid'],
+
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.snapshot['username'],
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+              );
+            },
+            child: Container(
+              color: Colors.white,
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                      widget.snapshot['profileUrl'],
                     ),
                   ),
-                ),
-                Container(
-                  child: Text(
-                    DateFormat.yMd().format(
-                      widget.snapshot['dataPublished'].toDate(),
-                    ),
-                    // ' ${}',
-                    style: const TextStyle(fontSize: 12, color: Colors.black),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => Dialog(
-                        child: ListView(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                          ),
-                          shrinkWrap: true,
-                          children: ['Delete']
-                              .map(
-                                (e) => InkWell(
-                                  onTap: () async {
-                                    FireStoreMethods()
-                                        .deletepost(widget.snapshot['PostID']);
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16),
-                                    child: Text(e),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8,
                       ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.more_horiz_outlined,
-                    size: 16,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.snapshot['username'],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Container(
+                    child: Text(
+                      DateFormat.yMd().format(
+                        widget.snapshot['dataPublished'].toDate(),
+                      ),
+                      // ' ${}',
+                      style: const TextStyle(fontSize: 12, color: Colors.black),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => Dialog(
+                          child: ListView(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 16,
+                            ),
+                            shrinkWrap: true,
+                            children: ['Delete']
+                                .map(
+                                  (e) => InkWell(
+                                    onTap: () async {
+                                      FireStoreMethods()
+                                          .deletepost(widget.snapshot['PostID']);
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16),
+                                      child: Text(e),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.more_horiz_outlined,
+                      size: 16,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(

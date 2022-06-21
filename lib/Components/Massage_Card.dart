@@ -4,6 +4,7 @@ import 'package:graduation_1/Utils/colors.dart';
 import 'package:intl/intl.dart';
 
 import '../resourses/firestore_methods.dart';
+import '../screens/profile/profile_screen.dart';
 
 
 class Massage_Card extends StatefulWidget {
@@ -69,7 +70,16 @@ class _Massage_CardState extends State<Massage_Card> {
                   Row(
                     children: [
                       InkWell(
-                        onTap: (){},
+                       onTap: (){
+    Navigator.of(context).push(
+    MaterialPageRoute(
+    builder: (context) => ProfileScreen(
+    uid: widget.snap['uid'],
+
+    ),
+    ),
+    );
+    },
                         child: Column(
                           children: [
                            //

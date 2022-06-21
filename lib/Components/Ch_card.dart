@@ -116,8 +116,8 @@ class _ch_CardState extends State<ch_Card> {
                               .map(
                                 (e) => InkWell(
                                   onTap: () async {
-                                    FireStoreMethods().deleteevent(
-                                        widget.snapshot['EventID']);
+                                    FireStoreMethods().deleteCH(
+                                        widget.snapshot['CH_ID']);
                                     Navigator.of(context).pop();
                                   },
                                   child: Container(
@@ -657,7 +657,7 @@ class _ch_CardState extends State<ch_Card> {
                         )
                       : const Icon(
                     Icons.calendar_today_outlined,
-                          color: Colors.black,
+                          color: black,
                           size: 19,
                         ),
                 ),
@@ -672,7 +672,7 @@ class _ch_CardState extends State<ch_Card> {
                 ),
                 icon: const Icon(
                   Icons.quickreply,
-                  color: Colors.black,
+                  color: black,
                   size: 19,
                 ),
               ),

@@ -14,6 +14,7 @@ import '../providers/user_provider.dart';
 import '../screens/Chat/Chat_ID_screen.dart';
 import '../screens/Experts/Expert_comment_screen.dart';
 import '../screens/hobby/Hobby_comment_screen.dart';
+import '../screens/profile/profile_screen.dart';
 
 class work_Card extends StatefulWidget {
   final snapshot;
@@ -68,10 +69,22 @@ class _work_CardState extends State<work_Card> {
             color: Colors.white,
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                    widget.snapshot['profileUrl'],
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                          uid: widget.snapshot['uid'],
+
+                        ),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                      widget.snapshot['profileUrl'],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -117,7 +130,7 @@ class _work_CardState extends State<work_Card> {
                                 (e) => InkWell(
                                   onTap: () async {
                                     FireStoreMethods()
-                                        .deletehobby(widget.snapshot['HobbyID']);
+                                        .deleteWork(widget.snapshot['HobbyID']);
                                     Navigator.of(context).pop();
                                   },
                                   child: Container(

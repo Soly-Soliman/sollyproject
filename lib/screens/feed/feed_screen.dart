@@ -156,7 +156,7 @@ class _FeedScreenState extends State<FeedScreen> {
                               decoration: BoxDecoration(borderRadius: BorderRadiusDirectional.circular(20),
                                 color: primary,
                               ),
-                              child: const Center(child: Text('Profile',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'Trocchi'),))),
+                              child: const Center(child: Text('Profile',style: TextStyle(color: black,fontSize: 15,fontFamily: 'Trocchi'),))),
                         ),
                       ],
                     ) ,

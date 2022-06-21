@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import '../models/user.dart';
 import '../providers/user_provider.dart';
 import '../screens/hobby/Hobby_comment_screen.dart';
+import '../screens/profile/profile_screen.dart';
 
 class Hobby_Card extends StatefulWidget {
   final snapshot;
@@ -66,10 +67,22 @@ class _Hobby_CardState extends State<Hobby_Card> {
             color: Colors.white,
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                    widget.snapshot['profileUrl'],
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                          uid: widget.snapshot['uid'],
+
+                        ),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                      widget.snapshot['profileUrl'],
+                    ),
                   ),
                 ),
                 Expanded(
