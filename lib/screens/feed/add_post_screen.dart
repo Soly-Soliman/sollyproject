@@ -178,9 +178,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           ),
                           child: Row(
                             children: [
-                              Expanded(
+                              const Expanded(
 
-                                child: const Text('ADD Event ....'),
+                                child: Text('ADD Event ....'),
 
                               ),
                               IconButton(
@@ -210,8 +210,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                           ),
                           child: Row(
                             children: [
-                              Expanded(
-                                child: const Text('ADD PHOTO'),
+                              const Expanded(
+                                child: Text('ADD PHOTO'),
                               ),
                               IconButton(
                                 icon: const Icon(Icons.upload_outlined),
@@ -226,72 +226,67 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    child: Row(children: [
-                      Expanded(
+                  child: Row(children: [
+                    Expanded(
+                      child: InkWell(
+
+                        onTap: (){
+                          {Navigator.push(context, MaterialPageRoute(builder: (context) => const  Add_Hobyy()));}},
                         child: Container(
 
-                          child: InkWell(
-
-                            onTap: (){
-                              {Navigator.push(context, MaterialPageRoute(builder: (context) => const  Add_Hobyy()));}},
-                            child: Container(
-
-                              alignment: Alignment.center,
-                              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                              // height: 45,
-                              width: 400,
-                              padding: const EdgeInsets.all(15),
-                              decoration: const BoxDecoration(
-                                color: selection3,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: const Text('ADD Hobby ..'),
-                                  ),
-                                  Icon(Icons.event),
-                                ],
-                              ),
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          // height: 45,
+                          width: 400,
+                          padding: const EdgeInsets.all(15),
+                          decoration: const BoxDecoration(
+                            color: selection3,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
                             ),
+                          ),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text('ADD Hobby ..'),
+                              ),
+                              Icon(Icons.event),
+                            ],
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: (){
-                            {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const  Add_Challange()));
-                            }
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                            padding: const EdgeInsets.all(15),
-                            decoration: const BoxDecoration(
-                              color: selection3,
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: const Text('Set Challange'),
-                                ),
-                                Icon(
-                                 Icons.upload_outlined),
-                              ],
-                            ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const  Add_Challange()));
+                          }
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          padding: const EdgeInsets.all(15),
+                          decoration: const BoxDecoration(
+                            color: selection3,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: Row(
+                            children: const [
+                              Expanded(
+                                child: Text('Set Challange'),
+                              ),
+                              Icon(
+                               Icons.upload_outlined),
+                            ],
                           ),
                         ),
                       ),
-                    ],),
-                  ),
+                    ),
+                  ],),
                 ),
               ],
             ),
@@ -315,7 +310,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 TextButton(
                     onPressed: () =>
                         UpImagePost(user.uid, user.username, user.photoUrl),
-                    child:  Text(
+                    child:  const Text(
                       'up',
                       style: TextStyle(
                         color:   selection2,
